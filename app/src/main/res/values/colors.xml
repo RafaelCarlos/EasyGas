@@ -12,7 +12,8 @@
     <color name="coloLink">#1ea4f7</color>
     <color name="colorDivider">#ccc</color>
     <color name="colorFundoFeedback">#F5F5F5</color>
-
+    <color name="colorFacebook">#304fb5</color>
+    <color name="colorGradienteGoogle">#d1492e</color>
     <color name="iron">#CCCCCC</color>
     <color name="white">#FFFFFF</color>
     <color name="colorAccent">#492416</color>
