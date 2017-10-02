@@ -24,19 +24,20 @@
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:tools="http://schemas.android.com/tools"
-            android:id="@+id/activity_dados"
+            android:id="@+id/activity_endereco_cadatro"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tv_titulo_endereco_cadastro_activity"
+                android:id="@+id/tv_titulo_cadastro_endereco_activity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
                 android:text="Insira Seu Endereço"
+                android:textAlignment="center"
                 android:textColor="#000000"
                 android:textSize="24sp" />
 
@@ -45,7 +46,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/et_cep_activity_dados"
+                    android:id="@+id/et_cep_endereco_cadatro_activity"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="CEP"
@@ -57,7 +58,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/et_rua_activity_dados"
+                    android:id="@+id/et_rua_endereco_cadastro_activity"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Rua / Alameda / Avenida" />
@@ -68,7 +69,7 @@
                 android:layout_height="match_parent">
 
                 <EditText
-                    android:id="@+id/et_complemento_activity_dados"
+                    android:id="@+id/et_complemento_endereco_cadastro_activity"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Número / Complemento" />
@@ -79,7 +80,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/et_bairro_activity_dados"
+                    android:id="@+id/et_bairro_endereco_cadastro_activity"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Bairro" />
@@ -92,7 +93,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/et_cidade_activity_dados"
+                    android:id="@+id/et_cidade_endereco_cadastro_activity"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Cidade" />
@@ -100,66 +101,30 @@
             </android.support.design.widget.TextInputLayout>
 
             <Spinner
-                android:id="@+id/sp_estados_activity_dados"
+                android:id="@+id/sp_estados_endereco_cadastro_activity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-
-                <EditText
-                    android:id="@+id/et_telefone_activity_dados"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Telefone"
-                    android:inputType="phone" />
-            </android.support.design.widget.TextInputLayout>
-
-            <TextView
-                android:id="@+id/tv_horario_activity_dados"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Melhor Horário p/ Ligarmos" />
-
-            <RadioGroup
-                android:id="@+id/rg_horarios"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:id="@+id/rb_manha"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="Manhã" />
-
-                <RadioButton
-                    android:id="@+id/rb_tarde"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="Tarde" />
-
-                <RadioButton
-                    android:id="@+id/rb_noite"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="Noite" />
-
-
-            </RadioGroup>
+                android:layout_marginBottom="6dp"
+                android:layout_marginTop="6dp"
+                android:layout_weight="1"
+                android:background="@color/colorSecondText"
+                android:visibility="visible" />
 
             <Button
-                android:id="@+id/bt_cadastrar_endereco_activity"
+                android:id="@+id/bt_cadastrar_endereco_cadastro_activity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginTop="24dp"
                 android:layout_weight="1"
+                android:background="@color/colorTema"
                 android:padding="12dp"
                 android:paddingLeft="24dp"
                 android:paddingRight="24dp"
-                android:text="Confirmar" />
+                android:text="Confirmar"
+                android:textColor="#ffffff" />
 
         </LinearLayout>
     </ScrollView>

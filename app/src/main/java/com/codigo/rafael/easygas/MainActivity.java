@@ -2,6 +2,7 @@ package com.codigo.rafael.easygas;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
@@ -19,6 +20,7 @@ import com.mikepenz.materialdrawer.DrawerBuilder;
 import com.mikepenz.materialdrawer.model.DividerDrawerItem;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
+import com.mikepenz.materialdrawer.model.SectionDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 
 public class MainActivity extends AppCompatActivity {
@@ -34,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 //        ButterKnife.bind(this);
+
         toolbar = (Toolbar) findViewById(R.id.tb_main);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation_main);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
@@ -67,8 +70,16 @@ public class MainActivity extends AppCompatActivity {
                 .withActionBarDrawerToggle(true)
                 .withActionBarDrawerToggleAnimated(true)
                 .withAccountHeader(headerResult)
-                .addDrawerItems(item1, new DividerDrawerItem())
+//                .addDrawerItems(item1, new DividerDrawerItem())
+                .withFooterDivider(true)
                 .build();
+
+        drawerMenu.addItem(new PrimaryDrawerItem().withName("Distribuidoras").withIcon(getDrawable(R.mipmap.ic_truck)));
+        drawerMenu.addItem(new PrimaryDrawerItem().withName("Meus Pedidos").withIcon(getDrawable(R.mipmap.ic_historico)));
+        drawerMenu.addItem(new PrimaryDrawerItem().withName("Feedback").withIcon(getDrawable(R.mipmap.ic_feedback)));
+        drawerMenu.addItem(new SectionDrawerItem());
+        drawerMenu.addItem(new PrimaryDrawerItem().withName("Configurações").withIcon(getDrawable(R.mipmap.ic_config)));
+        drawerMenu.addStickyFooterItem(new PrimaryDrawerItem().withName("EasyGás desenvolvido por Rafael Oliveira"));
 
         btTe = (Button) findViewById(R.id.bt_teste);
         btTe.setOnClickListener(new View.OnClickListener() {

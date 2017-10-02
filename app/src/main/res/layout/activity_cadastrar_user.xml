@@ -118,10 +118,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="46dp"
                 android:layout_marginBottom="24dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
                 android:layout_marginTop="24dp"
                 android:background="?attr/colorPrimary"
                 android:drawableLeft="@mipmap/ic_launcher"
                 android:padding="12dp"
+                android:textColor="#ffffff"
                 android:paddingLeft="24dp"
                 android:paddingRight="24dp"
                 android:text="Cadastrar" />

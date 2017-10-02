@@ -5,12 +5,12 @@
     <color name="black">#000</color>
 
     <color name="colorPrimaryLight">#00c9af</color>
-    <color name="colorPrimary">#D32F2F</color>
-    <color name="colorPrimaryDark">#8B0000</color>
+    <color name="colorPrimary">#603728</color>
+    <color name="colorPrimaryDark">#492416</color>
     <color name="colorPrimarytext">#212121</color>
     <color name="colorSecondText">#999</color>
     <color name="coloLink">#1ea4f7</color>
-    <color name="colorDivider">#ccc</color>
+    <color name="colorDivider">#492416</color>
     <color name="colorFundoFeedback">#F5F5F5</color>
     <color name="colorFacebook">#304fb5</color>
     <color name="colorGradienteGoogle">#d1492e</color>
