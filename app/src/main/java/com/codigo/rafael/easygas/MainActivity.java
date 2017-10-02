@@ -1,6 +1,7 @@
 package com.codigo.rafael.easygas;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
@@ -15,7 +16,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.codigo.rafael.easygas.fragments.ConfiguracaoFragment;
+import com.codigo.rafael.easygas.fragments.FeedbackFragment;
 import com.codigo.rafael.easygas.fragments.MenuFragment;
+import com.codigo.rafael.easygas.user.LoginActivity;
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
@@ -47,8 +51,6 @@ public class MainActivity extends AppCompatActivity {
 
         setSupportActionBar(toolbar);
         toolbar.setTitle("Distribuidoras");
-        PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIdentifier(1).withName("Home")
-                .withIcon(R.mipmap.ic_home);
 
         Fragment frag = frag = getSupportFragmentManager().findFragmentByTag("mainFrag");
 
@@ -90,18 +92,32 @@ public class MainActivity extends AppCompatActivity {
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
                         Fragment frag = null;
 
-                        if (position == 0) {
-                            frag = new MenuFragment();
-                            toolbar.setTitle("Distribuidoras");
-                        }
                         if (position == 1) {
                             frag = new MenuFragment();
+                            Toast.makeText(getApplicationContext(), "Posicao: " + position, Toast.LENGTH_SHORT).show();
+                            toolbar.setTitle("Distribuidoras");
+                            toolbar.setTitleTextColor(Color.WHITE);
                         }
                         if (position == 2) {
                             frag = new MenuFragment();
+                            toolbar.setTitle("Pedidos");
+                            toolbar.setTitleTextColor(Color.WHITE);
+                            Toast.makeText(getApplicationContext(), "Posicao: " + position, Toast.LENGTH_SHORT).show();
+
                         }
                         if (position == 3) {
-                            frag = new MenuFragment();
+                            frag = new FeedbackFragment();
+                            toolbar.setTitle("Feedback");
+                            toolbar.setTitleTextColor(Color.WHITE);
+                            Toast.makeText(getApplicationContext(), "Posicao: " + position, Toast.LENGTH_SHORT).show();
+
+                        }
+                        if (position == 5) {
+                            frag = new ConfiguracaoFragment();
+                            toolbar.setTitle("Configuração");
+                            toolbar.setTitleTextColor(Color.WHITE);
+                            Toast.makeText(getApplicationContext(), "Posicao: " + position, Toast.LENGTH_SHORT).show();
+
                         } else {
                             frag = new MenuFragment();
                         }
