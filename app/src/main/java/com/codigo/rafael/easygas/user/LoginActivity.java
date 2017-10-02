@@ -66,6 +66,12 @@ public class LoginActivity extends AppCompatActivity {
         spanString2.setSpan(new StyleSpan(Typeface.ITALIC), 0, spanString2.length(), 0);
         esqueciSenha.setText(spanString2);
 
+        SpannableString spanString = new SpannableString(_signupLink.getText().toString());
+        spanString.setSpan(new UnderlineSpan(), 0, spanString.length(), 0);
+        spanString.setSpan(new StyleSpan(Typeface.ITALIC), 0, spanString.length(), 0);
+        _signupLink.setText(spanString);
+
+
         _loginButton.setOnClickListener(new View.OnClickListener() {
 
             @Override

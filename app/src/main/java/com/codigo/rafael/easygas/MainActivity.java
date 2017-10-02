@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
@@ -13,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.codigo.rafael.easygas.fragments.MenuFragment;
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
@@ -21,6 +24,7 @@ import com.mikepenz.materialdrawer.model.DividerDrawerItem;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
 import com.mikepenz.materialdrawer.model.SectionDrawerItem;
+import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 
 public class MainActivity extends AppCompatActivity {
@@ -42,13 +46,22 @@ public class MainActivity extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         setSupportActionBar(toolbar);
-        toolbar.setTitle("Início");
+        toolbar.setTitle("Distribuidoras");
         PrimaryDrawerItem item1 = new PrimaryDrawerItem().withIdentifier(1).withName("Home")
                 .withIcon(R.mipmap.ic_home);
 
+        Fragment frag = frag = getSupportFragmentManager().findFragmentByTag("mainFrag");
+
+        if (frag == null) {
+            frag = new MenuFragment();
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.rl_fragment_container, frag, "mainFrag");
+            ft.commit();
+        }
+
         AccountHeader headerResult = new AccountHeaderBuilder()
                 .withActivity(this)
-                .withHeaderBackground(R.color.colorSecondText)
+                .withHeaderBackground(R.color.colorTema)
                 .addProfiles(
                         new ProfileDrawerItem().withName("Rafael Oliveira").withEmail("rafaellcarloss@hotmail.com")
                                 .withIcon(getResources().getDrawable(R.mipmap.ic_user))
@@ -72,6 +85,35 @@ public class MainActivity extends AppCompatActivity {
                 .withAccountHeader(headerResult)
 //                .addDrawerItems(item1, new DividerDrawerItem())
                 .withFooterDivider(true)
+                .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
+                    @Override
+                    public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
+                        Fragment frag = null;
+
+                        if (position == 0) {
+                            frag = new MenuFragment();
+                            toolbar.setTitle("Distribuidoras");
+                        }
+                        if (position == 1) {
+                            frag = new MenuFragment();
+                        }
+                        if (position == 2) {
+                            frag = new MenuFragment();
+                        }
+                        if (position == 3) {
+                            frag = new MenuFragment();
+                        } else {
+                            frag = new MenuFragment();
+                        }
+
+                        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                        ft.replace(R.id.rl_fragment_container, frag);
+                        ft.addToBackStack(null);
+                        ft.commit();
+
+                        return false;
+                    }
+                })
                 .build();
 
         drawerMenu.addItem(new PrimaryDrawerItem().withName("Distribuidoras").withIcon(getDrawable(R.mipmap.ic_truck)));
@@ -81,13 +123,7 @@ public class MainActivity extends AppCompatActivity {
         drawerMenu.addItem(new PrimaryDrawerItem().withName("Configurações").withIcon(getDrawable(R.mipmap.ic_config)));
         drawerMenu.addStickyFooterItem(new PrimaryDrawerItem().withName("EasyGás desenvolvido por Rafael Oliveira"));
 
-        btTe = (Button) findViewById(R.id.bt_teste);
-        btTe.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, ActivityTeste.class));
-            }
-        });
+
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
