@@ -14,9 +14,12 @@ import android.widget.Toast;
 
 import com.codigo.rafael.easygas.MainActivity;
 import com.codigo.rafael.easygas.R;
+import com.melnykov.fab.FloatingActionButton;
 
 
 public class PedidoFragment extends Fragment {
+
+    private FloatingActionButton fab;
 
 
     public PedidoFragment() {
@@ -34,6 +37,18 @@ public class PedidoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_pedido, container, false);
+
+        fab = (FloatingActionButton) view.findViewById(R.id.fab);
+
+        fab.show();
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Finalizando Fragment atual.
+                getActivity().getSupportFragmentManager().popBackStack();
+            }
+        });
 
         BottomNavigationView navigation = (BottomNavigationView) view.findViewById(R.id.navigation_main);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);

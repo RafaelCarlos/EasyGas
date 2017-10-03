@@ -24,6 +24,7 @@ import com.codigo.rafael.easygas.fragments.FeedbackFragment;
 import com.codigo.rafael.easygas.fragments.MenuFragment;
 import com.codigo.rafael.easygas.fragments.PedidoFragment;
 import com.codigo.rafael.easygas.user.LoginActivity;
+import com.melnykov.fab.FloatingActionButton;
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
@@ -64,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
             ft.replace(R.id.rl_fragment_container, frag, "mainFrag");
             ft.commit();
         }
+
 
         AccountHeader headerResult = new AccountHeaderBuilder()
                 .withActivity(this)
