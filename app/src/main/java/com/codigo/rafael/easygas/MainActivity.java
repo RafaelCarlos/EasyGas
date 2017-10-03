@@ -19,8 +19,10 @@ import android.widget.Toast;
 import com.codigo.rafael.easygas.fragments.AtualizarCadastro;
 import com.codigo.rafael.easygas.fragments.CompartilharFragment;
 import com.codigo.rafael.easygas.fragments.ConfiguracaoFragment;
+import com.codigo.rafael.easygas.fragments.EnderecoFragment;
 import com.codigo.rafael.easygas.fragments.FeedbackFragment;
 import com.codigo.rafael.easygas.fragments.MenuFragment;
+import com.codigo.rafael.easygas.fragments.PedidoFragment;
 import com.codigo.rafael.easygas.user.LoginActivity;
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
@@ -48,8 +50,8 @@ public class MainActivity extends AppCompatActivity {
 //        ButterKnife.bind(this);
 
         toolbar = (Toolbar) findViewById(R.id.tb_main);
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation_main);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+//        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation_main);
+//        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         setSupportActionBar(toolbar);
         toolbar.setTitle("Distribuidoras");
@@ -100,34 +102,40 @@ public class MainActivity extends AppCompatActivity {
                             toolbar.setTitle("Distribuidoras");
                             toolbar.setTitleTextColor(Color.WHITE);
                         } else if (position == 2) {
-                            frag = new MenuFragment();
+                            frag = new PedidoFragment();
                             toolbar.setTitle("Pedidos");
                             toolbar.setTitleTextColor(Color.WHITE);
                             Toast.makeText(getApplicationContext(), "Posicao: " + position, Toast.LENGTH_SHORT).show();
 
                         } else if (position == 3) {
+                            frag = new EnderecoFragment();
+                            toolbar.setTitle("Meus Endereços");
+                            toolbar.setTitleTextColor(Color.WHITE);
+                            Toast.makeText(getApplicationContext(), "Posicao: " + position, Toast.LENGTH_SHORT).show();
+
+                        } else if (position == 4) {
                             frag = new FeedbackFragment();
                             toolbar.setTitle("Feedback");
                             toolbar.setTitleTextColor(Color.WHITE);
                             Toast.makeText(getApplicationContext(), "Posicao: " + position, Toast.LENGTH_SHORT).show();
 
-                        } else if (position == 5) {
+                        } else if (position == 6) {
                             frag = new AtualizarCadastro();
                             toolbar.setTitle("Atualizar Cadastro");
                             toolbar.setTitleTextColor(Color.WHITE);
                             Toast.makeText(getApplicationContext(), "Posicao: " + position, Toast.LENGTH_SHORT).show();
 
-                        } else if (position == 6) {
+                        } else if (position == 7) {
                             frag = new ConfiguracaoFragment();
                             toolbar.setTitle("Configurações");
                             toolbar.setTitleTextColor(Color.WHITE);
                             Toast.makeText(getApplicationContext(), "Posicao: " + position, Toast.LENGTH_SHORT).show();
 
-                        } else if (position == 7) {
+                        } else if (position == 8) {
                             frag = new MenuFragment();
                             Intent sendIntent = new Intent();
                             sendIntent.setAction(Intent.ACTION_SEND);
-                            String texto = "Olá!" +"\n" +"Comece a utilizar o EasyGás! :-)" + "\n" +  "Compartilhado do aplicativo." ;
+                            String texto = "Olá!" + "\n" + "Comece a utilizar o EasyGás! :-)" + "\n" + "Compartilhado do aplicativo.";
                             sendIntent.putExtra(Intent.EXTRA_TEXT, texto);
                             sendIntent.setType("text/plain");
                             startActivity(sendIntent);
@@ -151,6 +159,7 @@ public class MainActivity extends AppCompatActivity {
 
         drawerMenu.addItem(new PrimaryDrawerItem().withName("Distribuidoras").withIcon(getDrawable(R.mipmap.ic_truck)));
         drawerMenu.addItem(new PrimaryDrawerItem().withName("Meus Pedidos").withIcon(getDrawable(R.mipmap.ic_historico)));
+        drawerMenu.addItem(new PrimaryDrawerItem().withName("Meus Endereços").withIcon(getDrawable(R.mipmap.ic_location)));
         drawerMenu.addItem(new PrimaryDrawerItem().withName("Feedback").withIcon(getDrawable(R.mipmap.ic_feedback)));
         drawerMenu.addItem(new SectionDrawerItem());
         drawerMenu.addItem(new PrimaryDrawerItem().withName("Atualizar Cadastro").withIcon(getDrawable(R.mipmap.ic_edit)));
@@ -161,24 +170,24 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    Toast.makeText(MainActivity.this, "Home", Toast.LENGTH_SHORT).show();
-                    return true;
-                case R.id.navigation_dashboard:
-                    Toast.makeText(MainActivity.this, "Dashboard", Toast.LENGTH_SHORT).show();
-                    return true;
-                case R.id.navigation_notifications:
-                    Toast.makeText(MainActivity.this, "Notication", Toast.LENGTH_SHORT).show();
-                    return true;
-            }
-            return false;
-        }
-
-    };
+//    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+//            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+//
+//        @Override
+//        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//            switch (item.getItemId()) {
+//                case R.id.navigation_home:
+//                    Toast.makeText(MainActivity.this, "Home", Toast.LENGTH_SHORT).show();
+//                    return true;
+//                case R.id.navigation_dashboard:
+//                    Toast.makeText(MainActivity.this, "Dashboard", Toast.LENGTH_SHORT).show();
+//                    return true;
+//                case R.id.navigation_notifications:
+//                    Toast.makeText(MainActivity.this, "Notication", Toast.LENGTH_SHORT).show();
+//                    return true;
+//            }
+//            return false;
+//        }
+//
+//    };
 }
