@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -62,16 +63,24 @@ public class PedidoFragment extends Fragment {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            Fragment frag = frag = getActivity().getSupportFragmentManager().findFragmentByTag("mainFrag");
+
             switch (item.getItemId()) {
                 case R.id.navigation_home:
                     Toast.makeText(getContext(), "Andamento", Toast.LENGTH_SHORT).show();
                     return true;
                 case R.id.navigation_dashboard:
                     Toast.makeText(getContext(), "Concluídos", Toast.LENGTH_SHORT).show();
+                    frag = new PedidoConcluidoFragment();
+                    FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+                    ft.replace(R.id.rl_fragment_container_pedido, frag);
+                    ft.addToBackStack(null);
+                    ft.commit();
                     return true;
                 case R.id.navigation_notifications:
                     Toast.makeText(getContext(), "Cancelados", Toast.LENGTH_SHORT).show();
                     return true;
+
             }
             return false;
         }
