@@ -56,7 +56,7 @@
                 android:textColorHint="#000000">
 
                 <EditText
-                    android:id="@+id/input_email"
+                    android:id="@+id/et_email_cadastrar_activity"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="E-mail"
@@ -74,7 +74,7 @@
                 android:textColorHint="#000000">
 
                 <EditText
-                    android:id="@+id/input_password"
+                    android:id="@+id/et_senha_cadastrar_activity"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Senha"

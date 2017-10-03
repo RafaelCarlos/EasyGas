@@ -119,15 +119,17 @@
 
     <Button
         android:id="@+id/bt_salvar_tela_configuracao"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
         android:layout_below="@+id/bt_desativar_usuario_tela_configuracao"
-        android:layout_marginTop="40dp"
+        android:layout_marginBottom="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginTop="24dp"
         android:background="?attr/colorPrimary"
         android:paddingTop="10dp"
         android:text="Salvar"
+        android:textAlignment="center"
         android:textColor="#ffffff" />
 
 

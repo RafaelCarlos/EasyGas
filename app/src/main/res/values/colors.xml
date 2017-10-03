@@ -26,4 +26,5 @@
 
     <color name="colorFAB">#1976D2</color>
     <color name="colorFABPressed">#D32F2F</color>
+    <color name="colorFeedback">#837c7c</color>
 </resources>

@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.codigo.rafael.easygas.MainActivity;
 import com.codigo.rafael.easygas.R;
+import com.codigo.rafael.easygas.entities.Usuario;
 import com.codigo.rafael.easygas.util.Mask;
 
 import java.util.ArrayList;
@@ -25,11 +26,15 @@ public class EnderecoCadastroActivity extends AppCompatActivity {
     private String estado;
     private Button btConfirmar;
 
+    private Usuario user = new Usuario();
+    private Bundle bundle = new Bundle();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_endereco_cadastro);
         preencheLista();
+        user = (Usuario) getIntent().getSerializableExtra("user");
 
         etCep = (EditText) findViewById(R.id.et_cep_endereco_cadatro_activity);
 
@@ -61,7 +66,14 @@ public class EnderecoCadastroActivity extends AppCompatActivity {
         btConfirmar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(EnderecoCadastroActivity.this, MainActivity.class));
+                bundle.putSerializable("userRecebido", user);
+                Intent intent = new Intent(EnderecoCadastroActivity.this, MainActivity.class);
+
+                intent.putExtras(bundle);
+
+                startActivity(intent);
+
+//                startActivity(new Intent(EnderecoCadastroActivity.this, MainActivity.class));
             }
         });
     }

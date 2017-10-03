@@ -31,9 +31,9 @@ public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "LoginActivity";
     private static final int REQUEST_SIGNUP = 0;
 
-    @Bind(R.id.input_email)
+    @Bind(R.id.et_email_cadastrar_activity)
     EditText _emailText;
-    @Bind(R.id.input_password)
+    @Bind(R.id.et_senha_cadastrar_activity)
     EditText _passwordText;
     @Bind(R.id.btn_login)
     Button _loginButton;

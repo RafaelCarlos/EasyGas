@@ -16,6 +16,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.codigo.rafael.easygas.fragments.AtualizarCadastro;
+import com.codigo.rafael.easygas.fragments.CompartilharFragment;
 import com.codigo.rafael.easygas.fragments.ConfiguracaoFragment;
 import com.codigo.rafael.easygas.fragments.FeedbackFragment;
 import com.codigo.rafael.easygas.fragments.MenuFragment;
@@ -97,24 +99,39 @@ public class MainActivity extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(), "Posicao: " + position, Toast.LENGTH_SHORT).show();
                             toolbar.setTitle("Distribuidoras");
                             toolbar.setTitleTextColor(Color.WHITE);
-                        }
-                        if (position == 2) {
+                        } else if (position == 2) {
                             frag = new MenuFragment();
                             toolbar.setTitle("Pedidos");
                             toolbar.setTitleTextColor(Color.WHITE);
                             Toast.makeText(getApplicationContext(), "Posicao: " + position, Toast.LENGTH_SHORT).show();
 
-                        }
-                        if (position == 3) {
+                        } else if (position == 3) {
                             frag = new FeedbackFragment();
                             toolbar.setTitle("Feedback");
                             toolbar.setTitleTextColor(Color.WHITE);
                             Toast.makeText(getApplicationContext(), "Posicao: " + position, Toast.LENGTH_SHORT).show();
 
-                        }
-                        if (position == 5) {
+                        } else if (position == 5) {
+                            frag = new AtualizarCadastro();
+                            toolbar.setTitle("Atualizar Cadastro");
+                            toolbar.setTitleTextColor(Color.WHITE);
+                            Toast.makeText(getApplicationContext(), "Posicao: " + position, Toast.LENGTH_SHORT).show();
+
+                        } else if (position == 6) {
                             frag = new ConfiguracaoFragment();
-                            toolbar.setTitle("Configuração");
+                            toolbar.setTitle("Configurações");
+                            toolbar.setTitleTextColor(Color.WHITE);
+                            Toast.makeText(getApplicationContext(), "Posicao: " + position, Toast.LENGTH_SHORT).show();
+
+                        } else if (position == 7) {
+                            frag = new MenuFragment();
+                            Intent sendIntent = new Intent();
+                            sendIntent.setAction(Intent.ACTION_SEND);
+                            String texto = "Olá!" +"\n" +"Comece a utilizar o EasyGás! :-)" + "\n" +  "Compartilhado do aplicativo." ;
+                            sendIntent.putExtra(Intent.EXTRA_TEXT, texto);
+                            sendIntent.setType("text/plain");
+                            startActivity(sendIntent);
+
                             toolbar.setTitleTextColor(Color.WHITE);
                             Toast.makeText(getApplicationContext(), "Posicao: " + position, Toast.LENGTH_SHORT).show();
 
@@ -136,7 +153,9 @@ public class MainActivity extends AppCompatActivity {
         drawerMenu.addItem(new PrimaryDrawerItem().withName("Meus Pedidos").withIcon(getDrawable(R.mipmap.ic_historico)));
         drawerMenu.addItem(new PrimaryDrawerItem().withName("Feedback").withIcon(getDrawable(R.mipmap.ic_feedback)));
         drawerMenu.addItem(new SectionDrawerItem());
+        drawerMenu.addItem(new PrimaryDrawerItem().withName("Atualizar Cadastro").withIcon(getDrawable(R.mipmap.ic_edit)));
         drawerMenu.addItem(new PrimaryDrawerItem().withName("Configurações").withIcon(getDrawable(R.mipmap.ic_config)));
+        drawerMenu.addItem(new PrimaryDrawerItem().withName("Indique-nos").withIcon(getDrawable(R.mipmap.ic_share)));
         drawerMenu.addStickyFooterItem(new PrimaryDrawerItem().withName("EasyGás desenvolvido por Rafael Oliveira"));
 
 

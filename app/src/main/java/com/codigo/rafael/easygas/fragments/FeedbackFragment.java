@@ -15,11 +15,11 @@ import com.codigo.rafael.easygas.R;
 import butterknife.Bind;
 
 public class FeedbackFragment extends Fragment {
-    @Bind(R.id.bt_enviar_tela_feedback)
-    Button btEnviarFeedback;
+    //    @Bind(R.id.bt_enviar_tela_feedback)
+    private Button btEnviarFeedback;
 
-    @Bind(R.id.et_conteudo_tela_feedback)
-    EditText etConteu;
+    //    @Bind(R.id.et_conteudo_tela_feedback)
+    private EditText etConteudo;
 
     public FeedbackFragment() {
         // Required empty public constructor
@@ -36,6 +36,9 @@ public class FeedbackFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_feedback, container, false);
+        btEnviarFeedback = (Button) view.findViewById(R.id.bt_enviar_tela_feedback);
+        etConteudo = (EditText) view.findViewById(R.id.et_conteudo_tela_feedback);
 
         btEnviarFeedback.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,8 +46,6 @@ public class FeedbackFragment extends Fragment {
                 mensagem();
             }
         });
-
-        View view = inflater.inflate(R.layout.fragment_feedback, container, false);
 
 
         return view;
@@ -71,6 +72,7 @@ public class FeedbackFragment extends Fragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
+                        etConteudo.setText("");
                     }
                 })
                 .show();

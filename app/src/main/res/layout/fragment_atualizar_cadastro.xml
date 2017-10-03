@@ -1,23 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.codigo.rafael.easygas.user.CadastrarUserActivity">
-    <!--android:fitsSystemWindows="true"-->
+    tools:context="com.codigo.rafael.easygas.fragments.AtualizarCadastro">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/tb_cadastro_user"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:layout_alignParentLeft="true"
-        android:background="?attr/colorPrimary"
-        android:elevation="4dp"
-        android:minHeight="?attr/actionBarSize"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
-
+    <!-- TODO: Update blank fragment layout -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -31,22 +19,6 @@
             android:orientation="vertical">
 
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="72dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="24dp"
-                android:src="@mipmap/ic_launcher" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="20dp"
-                android:text="Cadastre-se"
-                android:textColor="#000000"
-                android:textSize="24sp" />
-
             <!-- Name Label -->
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -56,7 +28,7 @@
                 android:textColorHint="#000000">
 
                 <EditText
-                    android:id="@+id/et_nome_cadastrar_activity"
+                    android:id="@+id/et_nome_atualizar_cadastro"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Nome"
@@ -72,7 +44,7 @@
                 android:textColorHint="#000000">
 
                 <EditText
-                    android:id="@+id/et_email_cadastrar_activity"
+                    android:id="@+id/et_email_atualizar_cadastro"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Email"
@@ -89,10 +61,26 @@
                 android:textColorHint="#000000">
 
                 <EditText
-                    android:id="@+id/et_senha_cadastrar_activity"
+                    android:id="@+id/et_senha_atualizar_cadastro"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Senha"
+                    android:hint="Senha Atual"
+                    android:inputType="textPassword" />
+            </android.support.design.widget.TextInputLayout>
+
+            <!-- Password Label -->
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:textColorHint="#000000">
+
+                <EditText
+                    android:id="@+id/et_nova_senha_atualizar_cadastro"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Nova Senha"
                     android:inputType="textPassword" />
             </android.support.design.widget.TextInputLayout>
 
@@ -105,7 +93,7 @@
                 android:textColorHint="#000000">
 
                 <EditText
-                    android:id="@+id/et_telefone_activity_cadastrar_user"
+                    android:id="@+id/et_telefone_atualizar_cadastro"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Telefone"
@@ -114,7 +102,7 @@
 
             <!-- Signup Button -->
             <android.support.v7.widget.AppCompatButton
-                android:id="@+id/bt_cadastrar_activity_cadastrar"
+                android:id="@+id/bt_atualizar_atualizar_cadastro"
                 android:layout_width="match_parent"
                 android:layout_height="46dp"
                 android:layout_marginBottom="24dp"
@@ -122,24 +110,14 @@
                 android:layout_marginRight="24dp"
                 android:layout_marginTop="24dp"
                 android:background="?attr/colorPrimary"
-                android:drawableLeft="@mipmap/ic_launcher"
                 android:padding="12dp"
-                android:textColor="#ffffff"
                 android:paddingLeft="24dp"
                 android:paddingRight="24dp"
-                android:text="Cadastrar" />
+                android:text="Atualizar"
+                android:textColor="#ffffff" />
 
-            <TextView
-                android:id="@+id/link_login"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="24dp"
-                android:gravity="center"
-                android:text="Já é cadastrado? Login"
-                android:textColor="#000000"
-                android:textColorHint="#000000"
-                android:textSize="16dip" />
 
         </LinearLayout>
     </ScrollView>
+
 </LinearLayout>
