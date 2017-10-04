@@ -1,5 +1,7 @@
 package com.codigo.rafael.easygas;
 
+import android.content.Intent;
+import android.location.Location;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -11,11 +13,14 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.codigo.rafael.easygas.entities.Cep;
+import com.codigo.rafael.easygas.entities.MessageEB;
 import com.codigo.rafael.easygas.interfaces.CepService;
+import com.codigo.rafael.easygas.service.LocationIntentService;
 import com.codigo.rafael.easygas.util.Mask;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import de.greenrobot.event.EventBus;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -23,17 +28,28 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class EnderecoAddActivity extends AppCompatActivity {
+    //Constantes
+    public static String URLBase = "https://viacep.com.br/";
+    public static final String LOCATION = "location";
+    public static final String TYPE = "type";
+    public static final String ADDRESS = "address";
 
+    private Location mLastLocation;
+
+
+    //Elementos da tela
     private Toolbar toolbar;
     private Button btBuscarCep;
     private LinearLayout llElementos;
     private EditText etCep, etComplemento, etBairro, etLogradouro, etNumero;
-    public static String URLBase = "https://viacep.com.br/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_endereco_add);
+
+        EventBus.getDefault().register(this);
+
 
 //        toolbar = findViewById(R.id.tb_endereco_add_activity);
 //        toolbar.setTitle("NOVO ENDEREÇO");
@@ -55,7 +71,7 @@ public class EnderecoAddActivity extends AppCompatActivity {
         btBuscarCep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                llElementos.setVisibility(View.VISIBLE);
+                mostrarLayout();
 
                 Toast.makeText(EnderecoAddActivity.this, "Pesquisando Cep...", Toast.LENGTH_SHORT).show();
 
@@ -94,6 +110,45 @@ public class EnderecoAddActivity extends AppCompatActivity {
             }
         });
 
-
     }
+
+
+    private void mostrarLayout() {
+        llElementos.setVisibility(View.VISIBLE);
+    }
+
+
+    public void getLocationListener(View view) {
+        mostrarLayout();
+        int type;
+        String address = null;
+
+        if (view.getId() == R.id.bt_gps_endereco_add_activity) {
+            type = 1;
+            address = etLogradouro.getText().toString();
+        } else {
+            type = 2;
+        }
+
+        callIntentService(type, address);
+    }
+
+    public void callIntentService(int type, String address) {
+        Intent it = new Intent(this, LocationIntentService.class);
+        it.putExtra(TYPE, type);
+        it.putExtra(ADDRESS, address);
+        it.putExtra(LOCATION, mLastLocation);
+        startService(it);
+    }
+
+    public void onEvent(final MessageEB m) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Log.i("LOG", m.getResultMessage());
+                etLogradouro.setText("Dados: " + m.getResultMessage());
+            }
+        });
+    }
+
 }

@@ -55,6 +55,7 @@
                 android:background="?attr/colorPrimary"
                 android:drawableLeft="@mipmap/ic_location_white"
                 android:drawablePadding="-30dp"
+                android:onClick="getLocationListener"
                 android:padding="12dp"
                 android:paddingLeft="24dp"
                 android:paddingRight="24dp"

@@ -17,6 +17,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyTheme">
+
+        <!--Ao utilizar o false, apenas essa aplicação poderá acessar esse IntentService-->
+        <service
+            android:name=".service.LocationIntentService"
+            android:exported="false" />
+
         <activity android:name=".MainActivity" />
         <activity
             android:name=".ActivityTeste"
