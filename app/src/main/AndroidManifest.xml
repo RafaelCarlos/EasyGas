@@ -29,7 +29,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".user.CadastrarUserActivity" />
-        <activity android:name=".user.EnderecoCadastroActivity"></activity>
+        <activity android:name=".user.EnderecoCadastroActivity" />
+        <activity android:name=".EnderecoAddActivity"></activity>
     </application>
 
 </manifest>

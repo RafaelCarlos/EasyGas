@@ -114,6 +114,8 @@
         android:layout_below="@+id/tv_descricao_baixo_saldo"
         android:layout_marginTop="58dp"
         android:background="#ffffff"
+        android:drawableLeft="@mipmap/ic_off"
+        android:drawablePadding="-10dp"
         android:text="Desligar Minha Conta"
         android:textColor="#000000" />
 

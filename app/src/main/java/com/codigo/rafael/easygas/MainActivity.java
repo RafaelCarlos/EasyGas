@@ -3,33 +3,25 @@ package com.codigo.rafael.easygas;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.annotation.DrawableRes;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
 import com.codigo.rafael.easygas.fragments.AtualizarCadastro;
-import com.codigo.rafael.easygas.fragments.CompartilharFragment;
 import com.codigo.rafael.easygas.fragments.ConfiguracaoFragment;
 import com.codigo.rafael.easygas.fragments.EnderecoFragment;
 import com.codigo.rafael.easygas.fragments.FeedbackFragment;
 import com.codigo.rafael.easygas.fragments.MenuFragment;
 import com.codigo.rafael.easygas.fragments.PedidoFragment;
-import com.codigo.rafael.easygas.user.LoginActivity;
-import com.melnykov.fab.FloatingActionButton;
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
-import com.mikepenz.materialdrawer.model.DividerDrawerItem;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
 import com.mikepenz.materialdrawer.model.SectionDrawerItem;
@@ -50,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 //        ButterKnife.bind(this);
 
-        toolbar = (Toolbar) findViewById(R.id.tb_main);
+        toolbar = (Toolbar) findViewById(R.id.tb_endereco_add_activity);
 //        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation_main);
 //        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
@@ -161,11 +153,11 @@ public class MainActivity extends AppCompatActivity {
 
         drawerMenu.addItem(new PrimaryDrawerItem().withName("Distribuidoras").withIcon(getDrawable(R.mipmap.ic_truck)));
         drawerMenu.addItem(new PrimaryDrawerItem().withName("Meus Pedidos").withIcon(getDrawable(R.mipmap.ic_historico)));
-        drawerMenu.addItem(new PrimaryDrawerItem().withName("Meus Endereços").withIcon(getDrawable(R.mipmap.ic_location)));
+        drawerMenu.addItem(new PrimaryDrawerItem().withName("Meus Endereços").withIcon(getDrawable(R.mipmap.ic_local)));
         drawerMenu.addItem(new PrimaryDrawerItem().withName("Feedback").withIcon(getDrawable(R.mipmap.ic_feedback)));
         drawerMenu.addItem(new SectionDrawerItem());
         drawerMenu.addItem(new PrimaryDrawerItem().withName("Atualizar Cadastro").withIcon(getDrawable(R.mipmap.ic_edit)));
-        drawerMenu.addItem(new PrimaryDrawerItem().withName("Configurações").withIcon(getDrawable(R.mipmap.ic_config)));
+        drawerMenu.addItem(new PrimaryDrawerItem().withName("Configurações").withIcon(getDrawable(R.mipmap.ic_setting)));
         drawerMenu.addItem(new PrimaryDrawerItem().withName("Indique-nos").withIcon(getDrawable(R.mipmap.ic_share)));
         drawerMenu.addStickyFooterItem(new PrimaryDrawerItem().withName("EasyGás desenvolvido por Rafael Oliveira"));
 
