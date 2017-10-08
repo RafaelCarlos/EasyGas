@@ -20,6 +20,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.codigo.rafael.easygas.MainActivity;
 import com.codigo.rafael.easygas.R;
 
@@ -108,11 +109,20 @@ public class LoginActivity extends AppCompatActivity {
 
         _loginButton.setEnabled(false);
 
-        final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this,
-                R.style.Theme_MyTheme);
-        progressDialog.setIndeterminate(true);
-        progressDialog.setMessage("Autenticando...");
-        progressDialog.show();
+//        final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this,
+//                R.style.Theme_MyTheme);
+//        progressDialog.setIndeterminate(true);
+//        progressDialog.setMessage("Autenticando...");
+//        progressDialog.show();
+
+        final MaterialDialog dialog = new MaterialDialog.Builder(this)
+                .title("")
+                .content("Autenticando" + "\nPor favor, aguarde...")
+                .icon(getDrawable(R.mipmap.ic_easygas))
+                .contentColorRes(R.color.colorAccent)
+                .progress(true, 0)
+                .show();
+
 
         String email = _emailText.getText().toString();
         String password = _passwordText.getText().toString();
@@ -125,7 +135,8 @@ public class LoginActivity extends AppCompatActivity {
                         // On complete call either onLoginSuccess or onLoginFailed
                         onLoginSuccess();
                         // onLoginFailed();
-                        progressDialog.dismiss();
+//                        progressDialog.dismiss();
+                        dialog.dismiss();
                     }
                 }, 3000);
     }
