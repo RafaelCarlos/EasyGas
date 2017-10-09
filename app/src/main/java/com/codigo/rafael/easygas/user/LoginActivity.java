@@ -181,7 +181,7 @@ public class LoginActivity extends AppCompatActivity {
 
         if (password.isEmpty() || password.length() < 1 || password.length() > 15) {
             _passwordText.setError("A senha deve ter entre 4 e 10 caracteres");
-            valid = false;
+            valid = true;
         } else {
             _passwordText.setError(null);
         }

@@ -2,13 +2,16 @@ package com.codigo.rafael.easygas;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -22,6 +25,10 @@ public class PrincipalActivity extends AppCompatActivity implements LocationList
     private TextView tvLongitude;
     private TextView tvLatitude;
     private TextView tvDescricao;
+    LocationManager locationManager;
+    String provider;
+    final int MY_PERMISSION_REQUEST_CODE = 7171;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,11 +51,42 @@ public class PrincipalActivity extends AppCompatActivity implements LocationList
             //                                          int[] grantResults)
             // to handle the case where the user grants the permission. See the documentation
             // for ActivityCompat#requestPermissions for more details.
-            return;
+
+            ActivityCompat.requestPermissions(this, new String[]{
+                    android.Manifest.permission.ACCESS_COARSE_LOCATION,
+                    android.Manifest.permission.ACCESS_FINE_LOCATION
+            }, MY_PERMISSION_REQUEST_CODE);
+        } else {
+            getLocation();
         }
 
-        lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 2000, 0, this);
+//        lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 2000, 0, this);
 
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case MY_PERMISSION_REQUEST_CODE:
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
+                    getLocation();
+                break;
+
+        }
+    }
+
+    private void getLocation() {
+        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        provider = locationManager.getBestProvider(new Criteria(), false);
+
+
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
+            return;
+        }
+        final Location location = locationManager.getLastKnownLocation(provider);
+        if (location == null)
+            Log.e("ERROR", "Location is null");
     }
 
     @Override

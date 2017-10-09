@@ -43,4 +43,13 @@
         android:layout_marginBottom="50dp"
         android:text="Página De Teste" />
 
+    <Button
+        android:id="@+id/bt_teste_geolocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/bt_geocoder_teste"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="71dp"
+        android:text="Página de Teste 2" />
+
 </RelativeLayout>

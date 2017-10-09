@@ -46,7 +46,7 @@ public class EnderecoAddActivity extends AppCompatActivity implements GoogleApiC
     public static final String LOCATION = "location";
     public static final String TYPE = "type";
     public static final String ADDRESS = "address";
-
+    private static final String CHAVE = " AIzaSyDemBk7LhpI0FcBcpzK3x7ALyu5wqUjAko ";
     private Location mLastLocation;
     private GoogleApiClient mGoogleApiClient;
 
