@@ -6,14 +6,17 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.codigo.rafael.easygas.EnderecoAddActivity;
+import com.codigo.rafael.easygas.PrincipalActivity;
 import com.codigo.rafael.easygas.R;
 import com.melnykov.fab.FloatingActionButton;
 
 
 public class EnderecoFragment extends Fragment {
     private FloatingActionButton fabAddEndereco;
+    private Button btPageTeste;
 
     public EnderecoFragment() {
         // Required empty public constructor
@@ -30,7 +33,15 @@ public class EnderecoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_endereco, container, false);
+        btPageTeste = view.findViewById(R.id.bt_geocoder_teste);
         fabAddEndereco = (FloatingActionButton) view.findViewById(R.id.fab_endereco);
+
+        btPageTeste.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(), PrincipalActivity.class));
+            }
+        });
 
         fabAddEndereco.show();
 

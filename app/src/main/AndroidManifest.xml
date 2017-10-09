@@ -19,7 +19,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyTheme">
 
-        <!--Ao utilizar o false, apenas essa aplicação poderá acessar esse IntentService-->
+        <!-- Ao utilizar o false, apenas essa aplicação poderá acessar esse IntentService -->
         <service
             android:name=".service.LocationIntentService"
             android:exported="false" />
@@ -37,7 +37,9 @@
         </activity>
         <activity android:name=".user.CadastrarUserActivity" />
         <activity android:name=".user.EnderecoCadastroActivity" />
-        <activity android:name=".EnderecoAddActivity"></activity>
+        <activity android:name=".EnderecoAddActivity" />
+        <activity android:name=".PrincipalActivity" />
+        <activity android:name=".TesteLocationActivity"></activity>
     </application>
 
 </manifest>
