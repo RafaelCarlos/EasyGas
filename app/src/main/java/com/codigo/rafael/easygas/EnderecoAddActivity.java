@@ -5,6 +5,7 @@ import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
+import android.location.LocationListener;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
@@ -45,7 +46,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class EnderecoAddActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks,
-        GoogleApiClient.OnConnectionFailedListener {
+        GoogleApiClient.OnConnectionFailedListener, LocationListener {
     //Constantes
     public static String URLBase = "https://viacep.com.br/";
     public static final String LOCATION = "location";
@@ -123,6 +124,7 @@ public class EnderecoAddActivity extends AppCompatActivity implements GoogleApiC
                         .content("Pesquisando Cep" + "\nPor favor, aguarde...")
                         .icon(getDrawable(R.mipmap.ic_easygas))
                         .contentColorRes(R.color.colorAccent)
+                        .canceledOnTouchOutside(false)
                         .progress(true, 0)
                         .show();
 
@@ -257,8 +259,34 @@ public class EnderecoAddActivity extends AppCompatActivity implements GoogleApiC
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+        Toast.makeText(this, "Não foi possível obter a localização", Toast.LENGTH_LONG).show();
+        if (mGoogleApiClient.isConnected()) {
+            mGoogleApiClient.disconnect();
+        }
+    }
+
+    @Override
+    public void onLocationChanged(Location location) {
+        etLatitude.setText(String.valueOf(location.getLatitude()));
+        etLongitude.setText(String.valueOf(location.getLongitude()));
+    }
+
+    @Override
+    public void onStatusChanged(String s, int i, Bundle bundle) {
 
     }
+
+    @Override
+    public void onProviderEnabled(String s) {
+
+    }
+
+    @Override
+    public void onProviderDisabled(String s) {
+
+    }
+
+
 
     /*
     @TODO

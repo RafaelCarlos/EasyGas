@@ -119,6 +119,7 @@ public class LoginActivity extends AppCompatActivity {
                 .title("")
                 .content("Autenticando" + "\nPor favor, aguarde...")
                 .icon(getDrawable(R.mipmap.ic_easygas))
+                .canceledOnTouchOutside(false)
                 .contentColorRes(R.color.colorAccent)
                 .progress(true, 0)
                 .show();
