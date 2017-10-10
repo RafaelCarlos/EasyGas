@@ -18,6 +18,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.codigo.rafael.easygas.entities.Cep;
 import com.codigo.rafael.easygas.entities.MessageEB;
 import com.codigo.rafael.easygas.interfaces.CepService;
@@ -54,7 +55,7 @@ public class EnderecoAddActivity extends AppCompatActivity implements GoogleApiC
     private Location mLastLocation;
     private GoogleApiClient mGoogleApiClient;
 
-
+    private MaterialDialog dialog;
     //Elementos da tela
     private Toolbar toolbar;
     private Button btBuscarCep, btBuscaLocalizacao;
@@ -117,7 +118,15 @@ public class EnderecoAddActivity extends AppCompatActivity implements GoogleApiC
 //                llElementosCep.setVisibility(View.VISIBLE);
 //                llElementosGps.setVisibility(View.INVISIBLE);
 
-                Toast.makeText(EnderecoAddActivity.this, "Pesquisando Cep...", Toast.LENGTH_SHORT).show();
+                dialog = new MaterialDialog.Builder(EnderecoAddActivity.this)
+                        .title("")
+                        .content("Pesquisando Cep" + "\nPor favor, aguarde...")
+                        .icon(getDrawable(R.mipmap.ic_easygas))
+                        .contentColorRes(R.color.colorAccent)
+                        .progress(true, 0)
+                        .show();
+
+//                Toast.makeText(EnderecoAddActivity.this, "Pesquisando Cep...", Toast.LENGTH_SHORT).show();
 
 
                 Gson gg = new GsonBuilder().create();
@@ -138,6 +147,7 @@ public class EnderecoAddActivity extends AppCompatActivity implements GoogleApiC
                     public void onResponse(Call<Cep> call, Response<Cep> response) {
                         if (response.isSuccessful()) {
                             Log.i("Entrou no  ", response.body().getBairro());
+                            dialog.dismiss();
 
 //                                Toast.makeText(DadosActivity.this, response.body().getBairro(), Toast.LENGTH_LONG).show();
                             Log.i("Cep ", response.body().getBairro());
@@ -150,7 +160,7 @@ public class EnderecoAddActivity extends AppCompatActivity implements GoogleApiC
 
                     @Override
                     public void onFailure(Call<Cep> call, Throwable t) {
-
+                        dialog.dismiss();
                     }
                 });
             }
@@ -179,7 +189,9 @@ public class EnderecoAddActivity extends AppCompatActivity implements GoogleApiC
 
             // Criamos o LatLng através do Location
             final LatLng latLng = new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude());
-            etLatitude.setText(latLng.toString());
+            etLatitude.setText(String.valueOf(mLastLocation.getLatitude()));
+            etLongitude.setText(String.valueOf(mLastLocation.getLongitude()));
+//            etLatitude.setText(latLng.toString());
             // Adicionamos um Marker com a posição...
 
 
