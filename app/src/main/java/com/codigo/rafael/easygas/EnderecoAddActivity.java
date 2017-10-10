@@ -22,7 +22,9 @@ import android.widget.Toast;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.codigo.rafael.easygas.entities.Cep;
 import com.codigo.rafael.easygas.entities.MessageEB;
+import com.codigo.rafael.easygas.entities.Results;
 import com.codigo.rafael.easygas.interfaces.CepService;
+import com.codigo.rafael.easygas.interfaces.ResultsService;
 import com.codigo.rafael.easygas.service.LocationIntentService;
 import com.codigo.rafael.easygas.util.Mask;
 import com.google.android.gms.common.ConnectionResult;
@@ -49,12 +51,15 @@ public class EnderecoAddActivity extends AppCompatActivity implements GoogleApiC
         GoogleApiClient.OnConnectionFailedListener, LocationListener {
     //Constantes
     public static String URLBase = "https://viacep.com.br/";
+    public static String URLGeocoder = "https://maps.googleapis.com/maps/api/geocode/";
     public static final String LOCATION = "location";
     public static final String TYPE = "type";
     public static final String ADDRESS = "address";
     private static final String CHAVE = " AIzaSyDemBk7LhpI0FcBcpzK3x7ALyu5wqUjAko ";
     private Location mLastLocation;
     private GoogleApiClient mGoogleApiClient;
+
+    private String slatlng;
 
     private MaterialDialog dialog;
     //Elementos da tela
@@ -108,6 +113,43 @@ public class EnderecoAddActivity extends AppCompatActivity implements GoogleApiC
             public void onClick(View view) {
                 llElementos.setVisibility(View.VISIBLE);
                 mGoogleApiClient.connect();
+                dialog = new MaterialDialog.Builder(EnderecoAddActivity.this)
+                        .title("")
+                        .content("Pesquisando Endereço" + "\nPor favor, aguarde...")
+                        .icon(getDrawable(R.mipmap.ic_easygas))
+                        .contentColorRes(R.color.colorAccent)
+                        .canceledOnTouchOutside(false)
+                        .progress(true, 0)
+                        .show();
+                Gson gg = new GsonBuilder().create();
+
+                Retrofit retro = new Retrofit.Builder()
+                        .baseUrl(URLGeocoder)
+                        .addConverterFactory(GsonConverterFactory.create(gg))
+                        .build();
+
+                ResultsService servico = retro.create(ResultsService.class);
+
+
+                final Call<Results> results = servico.dadosEndereco("json?" + slatlng);
+
+                results.enqueue(new Callback<Results>() {
+                    @Override
+                    public void onResponse(Call<Results> call, Response<Results> response) {
+                        if (response.isSuccessful()) {
+                            etLogradouro.setText(response.body().getFormatedAddress());
+                            dialog.dismiss();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<Results> call, Throwable t) {
+                        Toast.makeText(EnderecoAddActivity.this, "Não possível obter o endereço.", Toast.LENGTH_LONG).show();
+                        Log.i("Erro GPS", t.toString());
+                        dialog.dismiss();
+                    }
+                });
+
             }
         });
 
@@ -176,7 +218,10 @@ public class EnderecoAddActivity extends AppCompatActivity implements GoogleApiC
     @Override
     public void onConnected(Bundle bundle) {
         // pegamos a ultima localização
-        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED &&
+                ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION)
+                        != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
             // here to request the missing permissions, and then overriding
@@ -193,6 +238,7 @@ public class EnderecoAddActivity extends AppCompatActivity implements GoogleApiC
             final LatLng latLng = new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude());
             etLatitude.setText(String.valueOf(mLastLocation.getLatitude()));
             etLongitude.setText(String.valueOf(mLastLocation.getLongitude()));
+            slatlng = etLatitude.getText().toString() + "," + etLongitude.getText().toString();
 //            etLatitude.setText(latLng.toString());
             // Adicionamos um Marker com a posição...
 
