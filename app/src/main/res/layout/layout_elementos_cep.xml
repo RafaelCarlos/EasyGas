@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/ll_elementos_cep"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_layout_logradouro_elementos_cep"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView3"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:layout_marginTop="17dp">
+
+            <EditText
+                android:id="@+id/et_logradouro_elementos_cep"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Endereço" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_layout_numero_elementos_cep"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView3"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:layout_marginTop="17dp">
+
+            <EditText
+                android:id="@+id/et_numero_elementos_cep"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Número" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_layout_complemento_elementos_cep"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView3"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:layout_marginTop="17dp">
+
+            <EditText
+                android:id="@+id/et_complemento_elementos_cep"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Complemento" />
+        </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_layout_bairro_elementos_cep"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView3"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:layout_marginTop="17dp">
+
+            <EditText
+                android:id="@+id/et_bairro_elementos_cep"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Bairro" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_layout_referencia_elementos_cep"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView3"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:layout_marginTop="17dp">
+
+            <EditText
+                android:id="@+id/et_referencia_elementos_cep"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Ponto de Referência" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/bt_cadastrar_elementos_cep"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="24dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:layout_marginTop="24dp"
+            android:background="?attr/colorPrimary"
+            android:drawableLeft="@mipmap/ic_save"
+            android:drawablePadding="-30dp"
+            android:padding="12dp"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp"
+            android:shadowColor="@color/colorAccent"
+            android:text="Cadastrar Endereco"
+            android:textColor="#ffffff" />
+
+    </LinearLayout>
+</RelativeLayout>

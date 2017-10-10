@@ -26,10 +26,14 @@ import com.codigo.rafael.easygas.util.Mask;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.List;
 
 import de.greenrobot.event.EventBus;
@@ -53,40 +57,65 @@ public class EnderecoAddActivity extends AppCompatActivity implements GoogleApiC
 
     //Elementos da tela
     private Toolbar toolbar;
-    private Button btBuscarCep;
+    private Button btBuscarCep, btBuscaLocalizacao;
     private LinearLayout llElementos;
-    private EditText etCep, etComplemento, etBairro, etLogradouro, etNumero;
+    private EditText etCep, etComplemento, etBairro, etLogradouro, etNumero, etLatitude, etLongitude;
+    private View viewInclude;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_endereco_add);
 
-        EventBus.getDefault().register(this);
-
 
 //        toolbar = findViewById(R.id.tb_endereco_add_activity);
 //        toolbar.setTitle("NOVO ENDEREÇO");
 //        toolbar.setTitleTextColor(Color.WHITE);
         llElementos = findViewById(R.id.ll_elementos_endereco_add_activity);
+
         btBuscarCep = findViewById(R.id.bt_buscar_cep_endereco_add_activity);
         etCep = findViewById(R.id.et_cep_endereco_add_activity);
         etComplemento = findViewById(R.id.et_complemento_endereco_add_activity);
         etBairro = findViewById(R.id.et_bairro_endereco_add_activity);
         etLogradouro = findViewById(R.id.et_logradouro_endereco_add_activity);
         etNumero = findViewById(R.id.et_numero_endereco_add_activity);
+        etLatitude = findViewById(R.id.et_latitude_endereco_add_activity);
+        etLongitude = findViewById(R.id.et_longintude_endereco_add_activity);
+        btBuscaLocalizacao = findViewById(R.id.bt_gps_endereco_add_activity);
 
 
         llElementos.setVisibility(View.INVISIBLE);
-        callConnection();
+
+
+        // Vamos instanciar o GoogleApiClient, caso seja nulo
+        if (mGoogleApiClient == null) {
+            mGoogleApiClient = new GoogleApiClient.Builder(this)
+                    .addConnectionCallbacks(this) // Interface ConnectionCallbacks
+                    .addOnConnectionFailedListener(this) //Interface OnConnectionFailedListener
+                    .addApi(LocationServices.API) // Vamos a API do LocationServices
+                    .build();
+        }
+
 
         //Adicionando um TextWatcher do tipo TEL(Telefone) em um EditText.
         etCep.addTextChangedListener(Mask.insert(Mask.MaskType.CEP, etCep));
 
+
+        btBuscaLocalizacao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                llElementos.setVisibility(View.VISIBLE);
+                mGoogleApiClient.connect();
+            }
+        });
+
         btBuscarCep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mostrarLayout();
+//                mostrarLayout();
+                llElementos.setVisibility(View.VISIBLE);
+//                llElementosCep.setVisibility(View.VISIBLE);
+//                llElementosGps.setVisibility(View.INVISIBLE);
 
                 Toast.makeText(EnderecoAddActivity.this, "Pesquisando Cep...", Toast.LENGTH_SHORT).show();
 
@@ -129,59 +158,12 @@ public class EnderecoAddActivity extends AppCompatActivity implements GoogleApiC
 
     }
 
-
-    private void mostrarLayout() {
-        llElementos.setVisibility(View.VISIBLE);
-    }
-
-
-    public void getLocationListener(View view) {
-        mostrarLayout();
-        int type;
-        String address = null;
-
-        if (view.getId() == R.id.bt_gps_endereco_add_activity) {
-            type = 1;
-            address = etLogradouro.getText().toString();
-        } else {
-            type = 2;
-        }
-
-        callIntentService(type, address);
-    }
-
-    public void callIntentService(int type, String address) {
-        Intent it = new Intent(this, LocationIntentService.class);
-        it.putExtra(TYPE, type);
-        it.putExtra(ADDRESS, address);
-        it.putExtra(LOCATION, mLastLocation);
-        startService(it);
-    }
-
-    public void onEvent(final MessageEB m) {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                Log.i("LOG", m.getResultMessage());
-                etLogradouro.setText("Dados: " + m.getResultMessage());
-            }
-        });
-    }
-
-    private synchronized void callConnection() {
-        Log.i("LOG", "AddressLocationActivity.callConnection()");
-        mGoogleApiClient = new GoogleApiClient.Builder(this)
-                .addOnConnectionFailedListener(this)
-                .addConnectionCallbacks(this)
-                .addApi(LocationServices.API)
-                .build();
-        mGoogleApiClient.connect();
-    }
-
+    /*
+     * Método invocado quando o GoogleApiClient conseguir se conectar
+     */
     @Override
-    public void onConnected(@Nullable Bundle bundle) {
-        Log.i("LOG", "AddressLocationActivity.onConnected(" + bundle + ")");
-
+    public void onConnected(Bundle bundle) {
+        // pegamos a ultima localização
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
@@ -192,10 +174,69 @@ public class EnderecoAddActivity extends AppCompatActivity implements GoogleApiC
             // for ActivityCompat#requestPermissions for more details.
             return;
         }
-        Location l = LocationServices
-                .FusedLocationApi
-                .getLastLocation(mGoogleApiClient);
+        mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
+        if (mLastLocation != null) {
+
+            // Criamos o LatLng através do Location
+            final LatLng latLng = new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude());
+            etLatitude.setText(latLng.toString());
+            // Adicionamos um Marker com a posição...
+
+
+        }
     }
+    /*
+   * Ao finalizar, desconectamos!
+  */
+
+    protected void onStop() {
+        mGoogleApiClient.disconnect();
+        super.onStop();
+    }
+
+    /*
+    * Ao iniciar, connectamos !
+    */
+    protected void onStart() {
+        mGoogleApiClient.connect();
+        super.onStart();
+    }
+
+    /*
+    Método responsável por fazer a verificação de quando view está visível.
+     */
+    private void mostrarLayout() {
+        llElementos.setVisibility(View.VISIBLE);
+//        if (!llElementosCep.isShown()) {
+//            llElementosCep.setVisibility(View.VISIBLE);
+//            llElementosGps.setVisibility(View.INVISIBLE);
+//            boolean i = llElementos.isShown();
+//            Toast.makeText(this, "Visibilidade " + i, Toast.LENGTH_SHORT).show();
+//        } else if (!llElementosGps.isShown()) {
+//            llElementosGps.setVisibility(View.VISIBLE);
+//            llElementosCep.setVisibility(View.INVISIBLE);
+//
+//        }
+    }
+
+//    @Override
+//    public void onConnected(@Nullable Bundle bundle) {
+//        Log.i("LOG", "AddressLocationActivity.onConnected(" + bundle + ")");
+//
+//        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+//            // TODO: Consider calling
+//            //    ActivityCompat#requestPermissions
+//            // here to request the missing permissions, and then overriding
+//            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+//            //                                          int[] grantResults)
+//            // to handle the case where the user grants the permission. See the documentation
+//            // for ActivityCompat#requestPermissions for more details.
+//            return;
+//        }
+//        Location l = LocationServices
+//                .FusedLocationApi
+//                .getLastLocation(mGoogleApiClient);
+//    }
 
     @Override
     public void onConnectionSuspended(int i) {
