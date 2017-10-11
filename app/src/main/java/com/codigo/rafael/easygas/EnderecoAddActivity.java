@@ -1,13 +1,9 @@
 package com.codigo.rafael.easygas;
 
-import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.location.Address;
-import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -21,26 +17,17 @@ import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.codigo.rafael.easygas.entities.Cep;
-import com.codigo.rafael.easygas.entities.MessageEB;
 import com.codigo.rafael.easygas.entities.Results;
 import com.codigo.rafael.easygas.interfaces.CepService;
 import com.codigo.rafael.easygas.interfaces.ResultsService;
-import com.codigo.rafael.easygas.service.LocationIntentService;
 import com.codigo.rafael.easygas.util.Mask;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.util.List;
-
-import de.greenrobot.event.EventBus;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -58,7 +45,7 @@ public class EnderecoAddActivity extends AppCompatActivity implements GoogleApiC
     private static final String CHAVE = " AIzaSyDemBk7LhpI0FcBcpzK3x7ALyu5wqUjAko ";
     private Location mLastLocation;
     private GoogleApiClient mGoogleApiClient;
-
+    final int MY_PERMISSION_REQUEST_CODE = 7171;
     private String slatlng;
 
     private MaterialDialog dialog;
@@ -94,16 +81,6 @@ public class EnderecoAddActivity extends AppCompatActivity implements GoogleApiC
         llElementos.setVisibility(View.INVISIBLE);
 
 
-        // Vamos instanciar o GoogleApiClient, caso seja nulo
-        if (mGoogleApiClient == null) {
-            mGoogleApiClient = new GoogleApiClient.Builder(this)
-                    .addConnectionCallbacks(this) // Interface ConnectionCallbacks
-                    .addOnConnectionFailedListener(this) //Interface OnConnectionFailedListener
-                    .addApi(LocationServices.API) // Vamos a API do LocationServices
-                    .build();
-        }
-
-
         //Adicionando um TextWatcher do tipo TEL(Telefone) em um EditText.
         etCep.addTextChangedListener(Mask.insert(Mask.MaskType.CEP, etCep));
 
@@ -122,7 +99,6 @@ public class EnderecoAddActivity extends AppCompatActivity implements GoogleApiC
                         .progress(true, 0)
                         .show();
                 Gson gg = new GsonBuilder().create();
-
                 Retrofit retro = new Retrofit.Builder()
                         .baseUrl(URLGeocoder)
                         .addConverterFactory(GsonConverterFactory.create(gg))
@@ -131,13 +107,18 @@ public class EnderecoAddActivity extends AppCompatActivity implements GoogleApiC
                 ResultsService servico = retro.create(ResultsService.class);
 
 
-                final Call<Results> results = servico.dadosEndereco("json?" + slatlng);
+                final Call<Results> results = servico.dadosEndereco(slatlng);
 
                 results.enqueue(new Callback<Results>() {
                     @Override
                     public void onResponse(Call<Results> call, Response<Results> response) {
+                        Log.i("ObjRece", response.body().toString());
                         if (response.isSuccessful()) {
-                            etLogradouro.setText(response.body().getFormatedAddress());
+                            etLogradouro.setText(response.body().getFormatted_address());
+//                            Log.i("EndReceb", response.body().getFormatted_address());
+                            dialog.dismiss();
+                        } else if (response.code() == 404) {
+                            Toast.makeText(EnderecoAddActivity.this, "Endereço não encontrado", Toast.LENGTH_SHORT).show();
                             dialog.dismiss();
                         }
                     }
@@ -212,9 +193,33 @@ public class EnderecoAddActivity extends AppCompatActivity implements GoogleApiC
 
     }
 
+    private void getLocation() {
+
+        // Vamos instanciar o GoogleApiClient, caso seja nulo
+        if (mGoogleApiClient == null) {
+            mGoogleApiClient = new GoogleApiClient.Builder(this)
+                    .addConnectionCallbacks(this) // Interface ConnectionCallbacks
+                    .addOnConnectionFailedListener(this) //Interface OnConnectionFailedListener
+                    .addApi(LocationServices.API) // Vamos a API do LocationServices
+                    .build();
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case MY_PERMISSION_REQUEST_CODE:
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
+                    getLocation();
+                break;
+
+        }
+    }
+
+
     /*
-     * Método invocado quando o GoogleApiClient conseguir se conectar
-     */
+         * Método invocado quando o GoogleApiClient conseguir se conectar
+         */
     @Override
     public void onConnected(Bundle bundle) {
         // pegamos a ultima localização
@@ -222,14 +227,14 @@ public class EnderecoAddActivity extends AppCompatActivity implements GoogleApiC
                 != PackageManager.PERMISSION_GRANTED &&
                 ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION)
                         != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
+
+            ActivityCompat.requestPermissions(this, new String[]{
+                    android.Manifest.permission.ACCESS_COARSE_LOCATION,
+                    android.Manifest.permission.ACCESS_FINE_LOCATION
+            }, MY_PERMISSION_REQUEST_CODE);
+
+        } else {
+            getLocation();
         }
         mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
         if (mLastLocation != null) {
@@ -258,6 +263,7 @@ public class EnderecoAddActivity extends AppCompatActivity implements GoogleApiC
     * Ao iniciar, connectamos !
     */
     protected void onStart() {
+        getLocation();
         mGoogleApiClient.connect();
         super.onStart();
     }

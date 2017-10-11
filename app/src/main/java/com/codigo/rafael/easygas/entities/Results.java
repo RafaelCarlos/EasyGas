@@ -6,27 +6,27 @@ package com.codigo.rafael.easygas.entities;
 
 public class Results {
 
-    private String formatedAddress;
+    private String formatted_address;
 
     public Results() {
     }
 
-    public Results(String formatedAddress) {
-        this.formatedAddress = formatedAddress;
+    public Results(String formatted_address) {
+        this.formatted_address = formatted_address;
     }
 
-    public String getFormatedAddress() {
-        return formatedAddress;
+    public String getFormatted_address() {
+        return formatted_address;
     }
 
-    public void setFormatedAddress(String formatedAddress) {
-        this.formatedAddress = formatedAddress;
+    public void setFormatted_address(String formatted_address) {
+        this.formatted_address = formatted_address;
     }
 
     @Override
     public String toString() {
         return "Results{" +
-                "formatedAddress='" + formatedAddress + '\'' +
+                "formatted_address='" + formatted_address + '\'' +
                 '}';
     }
 }
