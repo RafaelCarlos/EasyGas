@@ -2,6 +2,7 @@ package com.codigo.rafael.easygas.entities.convertersendere;
 
 import java.io.Serializable;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created by shang on 10/10/2017.
@@ -15,7 +16,7 @@ public class Results implements Serializable {
 
     private String[] types;
 
-    private AddressComponents addressComponents;
+    private List<AddressComponents> addressComponents;
 
     public String getPlace_id() {
         return place_id;
@@ -42,11 +43,11 @@ public class Results implements Serializable {
         this.types = types;
     }
 
-    public AddressComponents getAddressComponents() {
+    public List<AddressComponents> getAddressComponents() {
         return addressComponents;
     }
 
-    public void setAddressComponents(AddressComponents addressComponents) {
+    public void setAddressComponents(List<AddressComponents> addressComponents) {
         this.addressComponents = addressComponents;
     }
 

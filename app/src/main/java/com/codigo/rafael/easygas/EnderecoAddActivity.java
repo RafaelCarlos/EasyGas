@@ -113,11 +113,16 @@ public class EnderecoAddActivity extends AppCompatActivity implements GoogleApiC
                 results.enqueue(new Callback<Pojo>() {
                     @Override
                     public void onResponse(Call<Pojo> call, Response<Pojo> response) {
-                        Log.i("ObjRece", response.body().toString());
                         if (response.isSuccessful()) {
-                            etLogradouro.setText(response.body().getResults().get(0).getFormatted_address());
-                            Log.i("EndReceb", response.body().getResults().get(0).toString());
-                            dialog.dismiss();
+                            if (response.body().getStatus().equals("OK")) {
+
+                                etLogradouro.setText(response.body().getResults().get(0).getFormatted_address());
+                                Log.i("EndReceb", response.body().getResults().get(0).toString());
+                                dialog.dismiss();
+                            } else {
+                                dialog.dismiss();
+                                Toast.makeText(EnderecoAddActivity.this, "Limite de consultas ultrapassado", Toast.LENGTH_SHORT).show();
+                            }
                         } else if (response.code() == 404) {
                             Toast.makeText(EnderecoAddActivity.this, "Endereço não encontrado", Toast.LENGTH_SHORT).show();
                             dialog.dismiss();
