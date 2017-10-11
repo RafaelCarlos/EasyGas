@@ -29,6 +29,9 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.util.concurrent.TimeUnit;
+
+import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -100,8 +103,15 @@ public class EnderecoAddActivity extends AppCompatActivity implements GoogleApiC
                         .progress(true, 0)
                         .show();
                 Gson gg = new GsonBuilder().create();
+
+                final OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                        .readTimeout(30, TimeUnit.SECONDS)
+                        .connectTimeout(30, TimeUnit.SECONDS)
+                        .build();
+
                 Retrofit retro = new Retrofit.Builder()
                         .baseUrl(URLGeocoder)
+                        .client(okHttpClient)
                         .addConverterFactory(GsonConverterFactory.create(gg))
                         .build();
 
