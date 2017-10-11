@@ -1,10 +1,9 @@
 package com.codigo.rafael.easygas.interfaces;
 
-import com.codigo.rafael.easygas.entities.Results;
+import com.codigo.rafael.easygas.entities.convertersendere.Pojo;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
-import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 /**
@@ -14,5 +13,5 @@ import retrofit2.http.Query;
 public interface ResultsService {
 
     @GET("json")
-    Call<Results> dadosEndereco(@Query("latlng") String latlng);
+    Call<Pojo> dadosEndereco(@Query("latlng") String latlng);
 }

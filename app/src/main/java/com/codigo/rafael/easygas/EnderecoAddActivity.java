@@ -17,7 +17,8 @@ import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.codigo.rafael.easygas.entities.Cep;
-import com.codigo.rafael.easygas.entities.Results;
+import com.codigo.rafael.easygas.entities.convertersendere.Pojo;
+import com.codigo.rafael.easygas.entities.convertersendere.Results;
 import com.codigo.rafael.easygas.interfaces.CepService;
 import com.codigo.rafael.easygas.interfaces.ResultsService;
 import com.codigo.rafael.easygas.util.Mask;
@@ -107,15 +108,15 @@ public class EnderecoAddActivity extends AppCompatActivity implements GoogleApiC
                 ResultsService servico = retro.create(ResultsService.class);
 
 
-                final Call<Results> results = servico.dadosEndereco(slatlng);
+                final Call<Pojo> results = servico.dadosEndereco(slatlng);
 
-                results.enqueue(new Callback<Results>() {
+                results.enqueue(new Callback<Pojo>() {
                     @Override
-                    public void onResponse(Call<Results> call, Response<Results> response) {
+                    public void onResponse(Call<Pojo> call, Response<Pojo> response) {
                         Log.i("ObjRece", response.body().toString());
                         if (response.isSuccessful()) {
-                            etLogradouro.setText(response.body().getFormatted_address());
-//                            Log.i("EndReceb", response.body().getFormatted_address());
+                            etLogradouro.setText(response.body().getResults().get(0).getFormatted_address());
+                            Log.i("EndReceb", response.body().getResults().get(0).toString());
                             dialog.dismiss();
                         } else if (response.code() == 404) {
                             Toast.makeText(EnderecoAddActivity.this, "Endereço não encontrado", Toast.LENGTH_SHORT).show();
@@ -124,7 +125,7 @@ public class EnderecoAddActivity extends AppCompatActivity implements GoogleApiC
                     }
 
                     @Override
-                    public void onFailure(Call<Results> call, Throwable t) {
+                    public void onFailure(Call<Pojo> call, Throwable t) {
                         Toast.makeText(EnderecoAddActivity.this, "Não possível obter o endereço.", Toast.LENGTH_LONG).show();
                         Log.i("Erro GPS", t.toString());
                         dialog.dismiss();
