@@ -39,7 +39,8 @@
         <activity android:name=".user.EnderecoCadastroActivity" />
         <activity android:name=".EnderecoAddActivity" />
         <activity android:name=".PrincipalActivity" />
-        <activity android:name=".TesteLocationActivity"></activity>
+        <activity android:name=".TesteLocationActivity" />
+        <activity android:name=".DistribuidorActivity"></activity>
     </application>
 
 </manifest>

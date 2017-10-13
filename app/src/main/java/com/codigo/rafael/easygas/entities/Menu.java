@@ -1,5 +1,7 @@
 package com.codigo.rafael.easygas.entities;
 
+import android.widget.Button;
+
 /**
  * Created by shang on 02/10/2017.
  */
@@ -12,17 +14,19 @@ public class Menu {
     private int foto;
     private String valor;
     private int avaliacao;
+    private int btCar;
 
     public Menu() {
     }
 
-    public Menu(String titulo, String bairro, double distancia, int foto, String valor, int avaliacao) {
+    public Menu(String titulo, String bairro, double distancia, int foto, String valor, int avaliacao, int btCar) {
         this.titulo = titulo;
         this.bairro = bairro;
         this.distancia = distancia;
         this.foto = foto;
         this.valor = valor;
         this.avaliacao = avaliacao;
+        this.btCar = btCar;
     }
 
     public String getTitulo() {
@@ -41,12 +45,12 @@ public class Menu {
         this.bairro = bairro;
     }
 
-    public String getValor() {
-        return valor;
+    public double getDistancia() {
+        return distancia;
     }
 
-    public void setValor(String valor) {
-        this.valor = valor;
+    public void setDistancia(double distancia) {
+        this.distancia = distancia;
     }
 
     public int getFoto() {
@@ -57,6 +61,14 @@ public class Menu {
         this.foto = foto;
     }
 
+    public String getValor() {
+        return valor;
+    }
+
+    public void setValor(String valor) {
+        this.valor = valor;
+    }
+
     public int getAvaliacao() {
         return avaliacao;
     }
@@ -65,12 +77,12 @@ public class Menu {
         this.avaliacao = avaliacao;
     }
 
-    public double getDistancia() {
-        return distancia;
+    public int getBtCar() {
+        return btCar;
     }
 
-    public void setDistancia(double distancia) {
-        this.distancia = distancia;
+    public void setBtCar(int btCar) {
+        this.btCar = btCar;
     }
 
     @Override
@@ -78,10 +90,11 @@ public class Menu {
         return "Menu{" +
                 "titulo='" + titulo + '\'' +
                 ", bairro='" + bairro + '\'' +
-                ", valor='" + valor + '\'' +
-                ", foto=" + foto +
-                ", avaliacao=" + avaliacao +
                 ", distancia=" + distancia +
+                ", foto=" + foto +
+                ", valor='" + valor + '\'' +
+                ", avaliacao=" + avaliacao +
+                ", btCar=" + btCar +
                 '}';
     }
 }

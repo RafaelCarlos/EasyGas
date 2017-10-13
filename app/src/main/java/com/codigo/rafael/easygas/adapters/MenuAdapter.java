@@ -2,13 +2,11 @@ package com.codigo.rafael.easygas.adapters;
 
 import android.content.Context;
 import android.graphics.BitmapFactory;
-import android.support.annotation.LayoutRes;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -48,24 +46,28 @@ public class MenuAdapter extends ArrayAdapter<Menu> {
         }
 
 
-        TextView tvTitulo = (TextView) convertView.findViewById(R.id.tv_titulo_item_menu_fragment);
+        TextView tvTitulo = (TextView) convertView.findViewById(R.id.tv_titulo_nome_distribuidor_activity);
         tvTitulo.setText(lista.get(position).getTitulo());
 
-        TextView tvBairro = (TextView) convertView.findViewById(R.id.tv_bairro_item_menu_fragment);
+        TextView tvBairro = (TextView) convertView.findViewById(R.id.tv_bairro_distribuidor_activity);
         tvBairro.setText(lista.get(position).getBairro());
 
-        TextView tvDistancia = (TextView) convertView.findViewById(R.id.tv_distancia_item_menu_fragment);
+        TextView tvDistancia = (TextView) convertView.findViewById(R.id.tv_distancia_distribuidor_activity);
         tvDistancia.setText(String.valueOf(lista.get(position).getDistancia()) + " km");
 
 
-        ImageView vrImageView = (ImageView) convertView.findViewById(R.id.iv_ic_car_item_menu_fragment);
+        ImageView vrImageView = (ImageView) convertView.findViewById(R.id.iv_ic_car_distribuidor_activity);
         vrImageView.setImageBitmap(BitmapFactory.decodeResource(context.getResources(), lista.get(position).getFoto()));
 
-        TextView tvValor = (TextView) convertView.findViewById(R.id.tv_valor_item_menu_fragment);
+
+        Button btCar = convertView.findViewById(R.id.bt_shopping_car_distribuidor_activity);
+//        btCar.setText(lista.get(position).getBtCar());
+
+        TextView tvValor = (TextView) convertView.findViewById(R.id.tv_valor__distribuidor_activity);
         tvValor.setText(lista.get(position).getValor());
 
 
-        RatingBar rBarAvaliacao = (RatingBar) convertView.findViewById(R.id.rbar_avaliacao_item_menu_fragment);
+        RatingBar rBarAvaliacao = (RatingBar) convertView.findViewById(R.id.rbar_avaliacao_distribuidor_activity);
 //        rBarAvaliacao.setNumStars(lista.get(position).getAvaliacao());
         rBarAvaliacao.setRating(lista.get(position).getAvaliacao());
         return convertView;
