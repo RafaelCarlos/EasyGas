@@ -46,7 +46,7 @@ public class EnderecoAddActivity extends AppCompatActivity implements GoogleApiC
     public static final String LOCATION = "location";
     public static final String TYPE = "type";
     public static final String ADDRESS = "address";
-    private static final String CHAVE = " AIzaSyDemBk7LhpI0FcBcpzK3x7ALyu5wqUjAko ";
+    private static final String KEY = "AIzaSyDemBk7LhpI0FcBcpzK3x7ALyu5wqUjAko";
     private Location mLastLocation;
     private GoogleApiClient mGoogleApiClient;
     final int MY_PERMISSION_REQUEST_CODE = 7171;
@@ -118,16 +118,18 @@ public class EnderecoAddActivity extends AppCompatActivity implements GoogleApiC
                 ResultsService servico = retro.create(ResultsService.class);
 
 
-                final Call<Pojo> results = servico.dadosEndereco(slatlng);
+                final Call<Pojo> results = servico.dadosEndereco(slatlng, KEY);
 
                 results.enqueue(new Callback<Pojo>() {
                     @Override
                     public void onResponse(Call<Pojo> call, Response<Pojo> response) {
                         if (response.isSuccessful()) {
                             if (response.body().getStatus().equals("OK")) {
+                                Log.i("Route", String.valueOf(response.body().getResults().get(0).getTypes().equals("route")));
 
                                 etLogradouro.setText(response.body().getResults().get(0).getFormatted_address());
                                 Log.i("EndReceb", response.body().getResults().get(0).toString());
+
                                 dialog.dismiss();
                             } else {
                                 dialog.dismiss();
