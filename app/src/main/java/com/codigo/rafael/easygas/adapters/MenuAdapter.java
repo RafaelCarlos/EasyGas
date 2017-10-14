@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -60,10 +59,12 @@ public class MenuAdapter extends ArrayAdapter<Menu> {
         vrImageView.setImageBitmap(BitmapFactory.decodeResource(context.getResources(), lista.get(position).getFoto()));
 
 
-        Button btCar = convertView.findViewById(R.id.bt_shopping_car_distribuidor_activity);
+        ImageView ivCar = convertView.findViewById(R.id.iv_shopping_car_item_meun_fragment);
+        ivCar.setImageBitmap(BitmapFactory.decodeResource(context.getResources(), lista.get(position).getBtCar()));
+
 //        btCar.setText(lista.get(position).getBtCar());
 
-        TextView tvValor = (TextView) convertView.findViewById(R.id.tv_valor__distribuidor_activity);
+        TextView tvValor = (TextView) convertView.findViewById(R.id.tv_valor_distribuidor_activity);
         tvValor.setText(lista.get(position).getValor());
 
 

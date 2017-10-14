@@ -2,11 +2,13 @@ package com.codigo.rafael.easygas.entities;
 
 import android.widget.Button;
 
+import java.io.Serializable;
+
 /**
- * Created by shang on 02/10/2017.
+ * Created by Rafael Carlos Oliveira on 02/10/2017.
  */
 
-public class Menu {
+public class Menu implements Serializable {
 
     private String titulo;
     private String bairro;

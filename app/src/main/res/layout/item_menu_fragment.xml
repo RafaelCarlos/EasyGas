@@ -8,8 +8,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content">
 
 
         <TextView
@@ -24,16 +23,14 @@
             android:textSize="18sp"
             android:textStyle="bold" />
 
-        <android.support.v7.widget.AppCompatButton
-            android:id="@+id/bt_shopping_car_distribuidor_activity"
-            android:layout_width="wrap_content"
+        <ImageView
+            android:id="@+id/iv_shopping_car_item_meun_fragment"
+            android:layout_width="match_parent"
             android:layout_height="20dp"
             android:layout_alignParentEnd="true"
             android:layout_marginBottom="4dp"
-            android:background="#54db06"
-            android:drawableLeft="@mipmap/ic_shopping_cart"
-            android:text="ABERTO"
-            android:textColor="#fff" />
+            android:layout_marginLeft="20dp"
+            android:src="@mipmap/ic_shopping_car_aberto" />
 
     </RelativeLayout>
 
@@ -71,7 +68,7 @@
             android:src="@mipmap/ic_car" />
 
         <TextView
-            android:id="@+id/tv_valor__distribuidor_activity"
+            android:id="@+id/tv_valor_distribuidor_activity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="4dp"

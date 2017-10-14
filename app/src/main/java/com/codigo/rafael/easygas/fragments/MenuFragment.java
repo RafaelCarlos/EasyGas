@@ -53,10 +53,10 @@ public class MenuFragment extends Fragment {
         mListView = (ListView) view.findViewById(R.id.lv_menu_fragment);
         listaMenu = new ArrayList<>();
 
-        listaMenu.add(new Menu("Adalberto Gás", "Plano Diretor Norte", 3.5, R.mipmap.ic_car, "R$ 85,00", 5, R.id.bt_shopping_car_distribuidor_activity));
-        listaMenu.add(new Menu("Distribuidor do José", "Plano Diretor Sul", 1.2, R.mipmap.ic_car, "R$ 82,00", 3, R.id.bt_shopping_car_distribuidor_activity));
+        listaMenu.add(new Menu("Adalberto Gás", "Plano Diretor Norte", 3.5, R.mipmap.ic_car, "R$ 85,00", 5, R.mipmap.ic_shopping_car_aberto));
+        listaMenu.add(new Menu("Distribuidor do José", "Plano Diretor Sul", 1.2, R.mipmap.ic_car, "R$ 82,00", 3, R.mipmap.ic_shopping_car_aberto));
 
-        listaMenu.add(new Menu("Gás e Água", "Taquaralto", 6.5, R.mipmap.ic_car, "R$ 80,00", 4, R.id.bt_shopping_car_distribuidor_activity));
+        listaMenu.add(new Menu("Gás e Água", "Taquaralto", 6.5, R.mipmap.ic_car, "R$ 80,00", 4, R.mipmap.ic_shopping_car_aberto));
 
         MenuAdapter menuAdapter = new MenuAdapter(getActivity(), listaMenu);
 
@@ -66,20 +66,23 @@ public class MenuFragment extends Fragment {
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                bundle = new Bundle();
                 menu = (Menu) mListView.getItemAtPosition(i);
                 intent = new Intent(getActivity(), DistribuidorActivity.class);
                 bundle.putSerializable("menu", (Serializable) menu);
                 intent.putExtras(bundle);
 
-                if (i == 0) {
+                startActivity(intent);
 
-                    listaMenu.get(i);
-                    Toast.makeText(getActivity(), "Você escolhe a distribuidora: " + listaMenu.get(i).getTitulo(), Toast.LENGTH_LONG).show();
-                } else if (i == 1) {
-                    Toast.makeText(getActivity(), "Você escolhe a distribuidora: " + listaMenu.get(i).getTitulo(), Toast.LENGTH_LONG).show();
-                } else {
-                    Toast.makeText(getActivity(), "Você escolhe a distribuidora: " + listaMenu.get(i).getTitulo(), Toast.LENGTH_LONG).show();
-                }
+                Toast.makeText(getActivity(), "Você escolheu a distribuidora: " + listaMenu.get(i).getTitulo(), Toast.LENGTH_LONG).show();
+//                if (i == 0) {
+//
+////                    listaMenu.get(i);
+//                } else if (i == 1) {
+//                    Toast.makeText(getActivity(), "Você escolhe a distribuidora: " + listaMenu.get(i).getTitulo(), Toast.LENGTH_LONG).show();
+//                } else {
+//                    Toast.makeText(getActivity(), "Você escolhe a distribuidora: " + listaMenu.get(i).getTitulo(), Toast.LENGTH_LONG).show();
+//                }
             }
         });
         // Inflate the layout for this fragment
