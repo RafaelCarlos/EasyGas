@@ -8,6 +8,18 @@
     android:orientation="vertical"
     tools:context="com.codigo.rafael.easygas.ActivityTeste">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/tb_activity_teste"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentLeft="true"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:minHeight="?attr/actionBarSize"
+        android:title="Teste Location"
+        android:titleTextColor="#ffffff"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
     <FrameLayout
         android:id="@+id/content"
         android:layout_width="match_parent"
