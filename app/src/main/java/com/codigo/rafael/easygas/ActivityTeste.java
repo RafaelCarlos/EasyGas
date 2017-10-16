@@ -53,6 +53,10 @@ public class ActivityTeste extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.tb_activity_teste);
         setSupportActionBar(toolbar);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
         //LocationResquest com as definições requeridas
         mLocationRequest = LocationRequest.create()
                 .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
@@ -147,5 +151,11 @@ public class ActivityTeste extends AppCompatActivity {
 
     private void handleCurrentLocation(Location currentLocation) {
         textView.setText(currentLocation.toString());
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 }

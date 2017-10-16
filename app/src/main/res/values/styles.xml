@@ -13,7 +13,8 @@
     <style name="Theme.MyTheme" parent="MaterialDrawerTheme.Light.DarkToolbar.TranslucentStatus">
         <!-- colorPrimary is used for the default action bar background -->
         <item name="colorPrimary">@color/colorTema</item>
-
+        <item name="android:windowDrawsSystemBarBackgrounds">false</item>
+        <item name="android:statusBarColor">@color/colorPrimaryDark</item>
         <!-- colorPrimaryDark is used for the status bar -->
         <item name="colorPrimaryDark">@color/colorAccent</item>
 
