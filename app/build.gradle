@@ -26,21 +26,35 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+
+    //Imports automáticos do Android Studio.
+    compile 'com.android.support:appcompat-v7:26.0.2'
+    compile 'com.android.support:design:26.+'
+    compile 'com.android.support:support-v4:26.+'
+    compile 'com.android.support:support-vector-drawable:26.+'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+
+    //Imports para elementos visuais da interface grafica.
     compile('com.mikepenz:materialdrawer:5.9.5@aar') {
         transitive = true
     }
+    compile 'com.melnykov:floatingactionbutton:1.3.0'
+    compile 'com.afollestad.material-dialogs:core:0.9.4.1'
     compile 'com.jakewharton:butterknife:7.0.1'
+
+    //Imports para conexão com a internet e conversão dos dados para Gson.
     compile 'com.squareup.retrofit2:converter-gson:2.2.0'
     compile 'com.squareup.retrofit2:retrofit:2.3.0'
+
+    //Imports para persistência de dados
     compile 'io.realm:realm-android:0.72.0'
-    compile 'com.android.support:appcompat-v7:26.0.2'
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'com.android.support:design:26.+'
+
+    //Imports para geo localização
     compile 'com.google.android.gms:play-services:11.4.2'
-    compile 'com.melnykov:floatingactionbutton:1.3.0'
-    compile 'com.android.support:support-vector-drawable:26.+'
-    compile 'com.android.support:support-v4:26.+'
+
+    //Import não utilizado no momento
     compile 'de.greenrobot:eventbus:2.4.0'
-    compile 'com.afollestad.material-dialogs:core:0.9.4.1'
+
+    //Gerado automaticamente pelo Android Studio.
     testCompile 'junit:junit:4.12'
 }

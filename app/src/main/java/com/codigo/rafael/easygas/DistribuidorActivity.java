@@ -54,4 +54,16 @@ public class DistribuidorActivity extends AppCompatActivity {
         rbAvaliacao.setRating(menu.getAvaliacao());
 
     }
+
+    /**
+     * Exemplo SnackBar
+     * @param text
+
+    private void showSnackbar(final String text) {
+    View container = findViewById(android.R.id.content);
+    if (container != null) {
+    Snackbar.make(container, text, Snackbar.LENGTH_LONG).show();
+    }
+    }
+     */
 }
