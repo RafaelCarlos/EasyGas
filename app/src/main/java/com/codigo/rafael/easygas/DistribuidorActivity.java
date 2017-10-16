@@ -1,8 +1,11 @@
 package com.codigo.rafael.easygas;
 
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
@@ -13,6 +16,7 @@ public class DistribuidorActivity extends AppCompatActivity {
     private TextView tvTituloNome, tvBairro, tvDistancia, tvValor;
     private RatingBar rbAvaliacao;
     private Menu menu;
+    private CoordinatorLayout coordinatorLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,13 +28,25 @@ public class DistribuidorActivity extends AppCompatActivity {
         tvDistancia = findViewById(R.id.tv_distancia_distribuidor_activity);
         tvBairro = findViewById(R.id.tv_bairro_distribuidor_activity);
 
+        coordinatorLayout = findViewById(R.id.coordinator_distribuidor);
         tvValor = findViewById(R.id.tv_valor_distribuidor_activity);
 
         rbAvaliacao = findViewById(R.id.rbar_avaliacao_distribuidor_activity);
+
         menu = (Menu) getIntent().getSerializableExtra("menu");
+
         Log.i("MenuRece", menu.toString());
 
+        final Snackbar snackbar = Snackbar.make(coordinatorLayout, "Dados Recebidos", Snackbar.LENGTH_INDEFINITE);
 
+        snackbar.setAction("OK", new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                snackbar.dismiss();
+            }
+        });
+
+        snackbar.show();
         tvTituloNome.setText(menu.getTitulo());
         tvBairro.setText(menu.getBairro());
         tvDistancia.setText(String.valueOf(menu.getDistancia()));

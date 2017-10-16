@@ -5,6 +5,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
@@ -24,6 +26,9 @@ public class ConfiguracaoFragment extends Fragment {
     @Bind(R.id.bt_desativar_usuario_tela_configuracao)
     Button btDesativarUsuario;
 
+    //    @Bind(R.id.coordinator_configuracao_fragment)
+    CoordinatorLayout coordinatorLayout;
+
     public ConfiguracaoFragment() {
         // Required empty public constructor
     }
@@ -39,6 +44,8 @@ public class ConfiguracaoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_configuracao, container, false);
+
+        coordinatorLayout = view.findViewById(R.id.coordinator_configuracao_fragment);
 
         btDesativarUsuario = (Button) view.findViewById(R.id.bt_desativar_usuario_tela_configuracao);
 
@@ -63,7 +70,16 @@ public class ConfiguracaoFragment extends Fragment {
                 .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(getActivity(), "Usuario desativado!", Toast.LENGTH_SHORT).show();
+                        final Snackbar snackbar = Snackbar.make(coordinatorLayout, "Usuário desativado com sucesso!", Snackbar.LENGTH_LONG);
+                        snackbar.show();
+                        new android.os.Handler().postDelayed(
+                                new Runnable() {
+                                    public void run() {
+                                        // On complete call either onLoginSuccess or onLoginFailed
+                                        
+                                    }
+                                }, 2000);
+//                        Toast.makeText(getActivity(), "Usuario desativado!", Toast.LENGTH_SHORT).show();
                         //Limpando a pilha de activities
                         Intent intent = new Intent(getContext(), LoginActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);

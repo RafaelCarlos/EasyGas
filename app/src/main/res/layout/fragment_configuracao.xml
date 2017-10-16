@@ -1,138 +1,145 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinator_configuracao_fragment"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.codigo.rafael.easygas.fragments.ConfiguracaoFragment">
+    android:layout_height="match_parent">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/et_notificacao"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="10dp"
-        android:text="Notificações"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="#000000" />
-
-    <android.support.v7.widget.SwitchCompat
-        android:id="@+id/tb_notificacao"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="10dp"
-        android:checked="true" />
-
-    <TextView
-        android:id="@+id/tv_notificacoes_diarias"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/et_notificacao"
-        android:text="Receber notificações diárias"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="#000000" />
-
-    <TextView
-        android:id="@+id/tv_email_promocional"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignTop="@+id/tb_email_promocional"
-        android:text="E-mails Promocionais"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="#000000" />
-
-    <android.support.v7.widget.SwitchCompat
-        android:id="@+id/tb_email_promocional"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tb_baixo_saldo_tela_configuracao"
-        android:layout_alignParentRight="true"
-        android:layout_alignStart="@+id/tb_baixo_saldo_tela_configuracao"
-        android:layout_below="@+id/tv_notificacoes_diarias"
-        android:layout_marginTop="32dp"
-        android:checked="true" />
-
-    <TextView
-        android:id="@+id/tv_emails"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/tv_email_promocional"
-        android:text="Receber e-mails promocionais"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="#000000" />
-
-    <TextView
-        android:id="@+id/tv_baixo_saldo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignTop="@+id/tb_baixo_saldo_tela_configuracao"
-        android:text="Mensagens SMS"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="#000000" />
-
-    <android.support.v7.widget.SwitchCompat
-        android:id="@+id/tb_baixo_saldo_tela_configuracao"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tb_notificacao"
-        android:layout_alignParentRight="true"
-        android:layout_alignStart="@+id/tb_notificacao"
-        android:layout_below="@+id/tb_email_promocional"
-        android:layout_marginTop="42dp"
-        android:checked="true" />
-
-    <TextView
-        android:id="@+id/tv_descricao_baixo_saldo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/tv_baixo_saldo"
-        android:text="Receber Mensagens SMS"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="#000000" />
-
-    <Button
-
-        android:id="@+id/bt_desativar_usuario_tela_configuracao"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/tv_descricao_baixo_saldo"
-        android:layout_marginTop="58dp"
-        android:background="#ffffff"
-        android:drawableLeft="@mipmap/ic_off"
-        android:drawablePadding="-10dp"
-        android:text="Desligar Minha Conta"
-        android:textColor="#000000" />
+        android:layout_height="match_parent"
+        tools:context="com.codigo.rafael.easygas.fragments.ConfiguracaoFragment">
 
-    <Button
-        android:id="@+id/bt_salvar_tela_configuracao"
-        android:layout_width="match_parent"
-        android:layout_height="46dp"
-        android:layout_below="@+id/bt_desativar_usuario_tela_configuracao"
-        android:layout_marginBottom="24dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginRight="24dp"
-        android:layout_marginTop="24dp"
-        android:background="?attr/colorPrimary"
-        android:paddingTop="10dp"
-        android:text="Salvar"
-        android:textAlignment="center"
-        android:textColor="#ffffff" />
+        <!-- TODO: Update blank fragment layout -->
+        <TextView
+            android:id="@+id/et_notificacao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="10dp"
+            android:text="Notificações"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#000000" />
+
+        <android.support.v7.widget.SwitchCompat
+            android:id="@+id/tb_notificacao"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="10dp"
+            android:checked="true" />
+
+        <TextView
+            android:id="@+id/tv_notificacoes_diarias"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/et_notificacao"
+            android:text="Receber notificações diárias"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#000000" />
+
+        <TextView
+            android:id="@+id/tv_email_promocional"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignTop="@+id/tb_email_promocional"
+            android:text="E-mails Promocionais"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#000000" />
+
+        <android.support.v7.widget.SwitchCompat
+            android:id="@+id/tb_email_promocional"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/tb_baixo_saldo_tela_configuracao"
+            android:layout_alignParentRight="true"
+            android:layout_alignStart="@+id/tb_baixo_saldo_tela_configuracao"
+            android:layout_below="@+id/tv_notificacoes_diarias"
+            android:layout_marginTop="32dp"
+            android:checked="true" />
+
+        <TextView
+            android:id="@+id/tv_emails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/tv_email_promocional"
+            android:text="Receber e-mails promocionais"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#000000" />
+
+        <TextView
+            android:id="@+id/tv_baixo_saldo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignTop="@+id/tb_baixo_saldo_tela_configuracao"
+            android:text="Mensagens SMS"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#000000" />
+
+        <android.support.v7.widget.SwitchCompat
+            android:id="@+id/tb_baixo_saldo_tela_configuracao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/tb_notificacao"
+            android:layout_alignParentRight="true"
+            android:layout_alignStart="@+id/tb_notificacao"
+            android:layout_below="@+id/tb_email_promocional"
+            android:layout_marginTop="42dp"
+            android:checked="true" />
+
+        <TextView
+            android:id="@+id/tv_descricao_baixo_saldo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/tv_baixo_saldo"
+            android:text="Receber Mensagens SMS"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#000000" />
+
+        <Button
+
+            android:id="@+id/bt_desativar_usuario_tela_configuracao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/tv_descricao_baixo_saldo"
+            android:layout_marginTop="58dp"
+            android:background="#ffffff"
+            android:drawableLeft="@mipmap/ic_off"
+            android:drawablePadding="-10dp"
+            android:text="Desligar Minha Conta"
+            android:textColor="#000000" />
+
+        <Button
+            android:id="@+id/bt_salvar_tela_configuracao"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:layout_below="@+id/bt_desativar_usuario_tela_configuracao"
+            android:layout_marginBottom="24dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:layout_marginTop="24dp"
+            android:background="?attr/colorPrimary"
+            android:paddingTop="10dp"
+            android:text="Salvar"
+            android:textAlignment="center"
+            android:textColor="#ffffff" />
 
 
-</RelativeLayout>
+    </RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>
