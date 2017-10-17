@@ -52,8 +52,9 @@ dependencies {
     //Imports para geo localização
     compile 'com.google.android.gms:play-services:11.4.2'
 
-    //Import não utilizado no momento
-    compile 'de.greenrobot:eventbus:2.4.0'
+    //Import eventubus para simplificar a comunicação entre os componentes internos da aplicação. Por exemplo, passar mensagens
+    //De uma classe para uma ou mais classes em apenas algumas linhas de código.
+    compile 'org.greenrobot:eventbus:3.0.0'
 
     //Gerado automaticamente pelo Android Studio.
     testCompile 'junit:junit:4.12'
