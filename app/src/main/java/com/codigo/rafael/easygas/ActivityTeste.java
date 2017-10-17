@@ -3,6 +3,7 @@ package com.codigo.rafael.easygas;
 import android.app.Activity;
 import android.content.IntentSender;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.location.Location;
 import android.os.Bundle;
 import android.os.Looper;
@@ -51,8 +52,8 @@ public class ActivityTeste extends AppCompatActivity {
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         mSettingsClient = LocationServices.getSettingsClient(this);
         toolbar = (Toolbar) findViewById(R.id.tb_activity_teste);
+        toolbar.setBackground(getDrawable(R.color.colorPrimaryDark));
         setSupportActionBar(toolbar);
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
@@ -152,6 +153,7 @@ public class ActivityTeste extends AppCompatActivity {
     private void handleCurrentLocation(Location currentLocation) {
         textView.setText(currentLocation.toString());
     }
+
 
     @Override
     public void onBackPressed() {

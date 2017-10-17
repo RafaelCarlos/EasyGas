@@ -5,22 +5,16 @@ import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
-import android.os.Bundle;
-import android.os.ResultReceiver;
-import android.text.TextUtils;
-import android.util.Log;
 
 import com.codigo.rafael.easygas.EnderecoAddActivity;
 import com.codigo.rafael.easygas.entities.MessageEB;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-
-
-import de.greenrobot.event.EventBus;
 
 /**
  * Created by Rafael Carlos Oliveira on 04/10/2017.
