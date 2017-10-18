@@ -23,7 +23,7 @@
     <color name="primary">#E43F3F</color>
     <color name="primary_dark">#E12929</color>
     <color name="primary_darker">#CC1D1D</color>
-    <color name="accent">#b1b1b1</color>
+    <color name="accent">#c8c2c2</color>
 
     <color name="colorFAB">#1976D2</color>
     <color name="colorFABPressed">#D32F2F</color>

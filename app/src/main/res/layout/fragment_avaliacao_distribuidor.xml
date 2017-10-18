@@ -1,13 +1,30 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.codigo.rafael.easygas.fragments.AvaliacaoDistribuidorFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/tv_titulo_avaliacao_fragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Fragment Avaliação" />
+        android:layout_height="wrap_content"
+        android:background="@color/accent"
+        android:text="Avaliação dos Clientes"
+        android:textAllCaps="false"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp" />
 
-</FrameLayout>
+    <ListView
+        android:id="@+id/lv_avaliacao_usuario_avaliacao_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_titulo_avaliacao_fragment"
+        android:layout_marginTop="10dp"
+        android:choiceMode="singleChoice"
+        android:divider="@null"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp" />
+
+</LinearLayout>
