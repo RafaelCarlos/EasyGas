@@ -127,7 +127,10 @@ public class EnderecoAddActivity extends AppCompatActivity implements GoogleApiC
                             if (response.body().getStatus().equals("OK")) {
                                 Log.i("Route", String.valueOf(response.body().getResults().get(0).getTypes().equals("route")));
 
-                                etLogradouro.setText(response.body().getResults().get(0).getFormatted_address());
+                                String[] valorSeparado = response.body().getResults().get(0).getFormatted_address().split(",");
+
+                                etLogradouro.setText(valorSeparado[0]);
+                                etBairro.setText(valorSeparado[1]);
                                 Log.i("EndReceb", response.body().getResults().get(0).toString());
 
                                 dialog.dismiss();
