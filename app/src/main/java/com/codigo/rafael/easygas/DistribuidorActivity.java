@@ -91,7 +91,7 @@ public class DistribuidorActivity extends AppCompatActivity {
                 case R.id.navigation_distribuidor_home:
                     frag = new DistribuidorHomeFragment();
                     ft.replace(R.id.rl_fragment_container_produto, frag);
-//                    ft.addToBackStack(null);
+                    ft.addToBackStack(null);
                     ft.commit();
                     Toast.makeText(DistribuidorActivity.this, "Distribuidor", Toast.LENGTH_SHORT).show();
                     return true;
@@ -100,13 +100,13 @@ public class DistribuidorActivity extends AppCompatActivity {
                     frag = new AvaliacaoDistribuidorFragment();
 //                    FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
                     ft.replace(R.id.rl_fragment_container_produto, frag);
-//                    ft.addToBackStack(null);
+                    ft.addToBackStack(null);
                     ft.commit();
                     return true;
                 case R.id.navigation_distribuidor_info:
                     frag = new InformacaoDistribuidorFragment();
                     ft.replace(R.id.rl_fragment_container_produto, frag);
-//                    ft.addToBackStack(null);
+                    ft.addToBackStack(null);
                     ft.commit();
                     Toast.makeText(DistribuidorActivity.this, "Informação", Toast.LENGTH_SHORT).show();
                     return true;
