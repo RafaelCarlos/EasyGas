@@ -18,6 +18,7 @@
     <color name="white">#FFFFFF</color>
     <color name="colorAccent">#492416</color>
     <color name="colorTema">#603728</color>
+    <color name="colorTemaMenu">#FF908E8E</color>
 
     <color name="primary">#E43F3F</color>
     <color name="primary_dark">#E12929</color>

@@ -1,25 +1,33 @@
 package com.codigo.rafael.easygas;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.codigo.rafael.easygas.entities.Menu;
+import com.codigo.rafael.easygas.fragments.AvaliacaoDistribuidorFragment;
 import com.codigo.rafael.easygas.fragments.DistribuidorHomeFragment;
+import com.codigo.rafael.easygas.fragments.InformacaoDistribuidorFragment;
+import com.codigo.rafael.easygas.fragments.PedidoConcluidoFragment;
+
+import static java.security.AccessController.getContext;
 
 public class DistribuidorActivity extends AppCompatActivity {
 
     private TextView tvTituloNome, tvBairro, tvDistancia, tvValor;
     private RatingBar rbAvaliacao;
     private Menu menu;
-//    private CoordinatorLayout coordinatorLayout;
+    //    private CoordinatorLayout coordinatorLayout;
     private BottomNavigationView navigation;
-
+    private Fragment frag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +48,9 @@ public class DistribuidorActivity extends AppCompatActivity {
 //
 //        Log.i("MenuRece", menu.toString());
 
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        Fragment frag = frag = getSupportFragmentManager().findFragmentByTag("distribuidorFrag");
+        frag = getSupportFragmentManager().findFragmentByTag("distribuidorFrag");
 
         if (frag == null) {
             frag = new DistribuidorHomeFragment();
@@ -69,6 +78,44 @@ public class DistribuidorActivity extends AppCompatActivity {
 
     }
 
+
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//            Fragment frag = frag = getSupportFragmentManager().findFragmentByTag("mainFrag");
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+
+            switch (item.getItemId()) {
+                case R.id.navigation_distribuidor_home:
+                    frag = new DistribuidorHomeFragment();
+                    ft.replace(R.id.rl_fragment_container_produto, frag);
+//                    ft.addToBackStack(null);
+                    ft.commit();
+                    Toast.makeText(DistribuidorActivity.this, "Distribuidor", Toast.LENGTH_SHORT).show();
+                    return true;
+                case R.id.navigation_distribuidor_avaliacao:
+                    Toast.makeText(DistribuidorActivity.this, "Avaliação", Toast.LENGTH_SHORT).show();
+                    frag = new AvaliacaoDistribuidorFragment();
+//                    FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                    ft.replace(R.id.rl_fragment_container_produto, frag);
+//                    ft.addToBackStack(null);
+                    ft.commit();
+                    return true;
+                case R.id.navigation_distribuidor_info:
+                    frag = new InformacaoDistribuidorFragment();
+                    ft.replace(R.id.rl_fragment_container_produto, frag);
+//                    ft.addToBackStack(null);
+                    ft.commit();
+                    Toast.makeText(DistribuidorActivity.this, "Informação", Toast.LENGTH_SHORT).show();
+                    return true;
+
+            }
+            return false;
+        }
+
+    };
     /**
      * Exemplo SnackBar
      * @param text
