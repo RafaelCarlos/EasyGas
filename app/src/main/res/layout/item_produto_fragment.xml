@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:id="@+id/rl_pai_item_produto_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/iv_arrow_right_item_produto_fragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="10dp"
+            app:srcCompat="@mipmap/ic_arrow_right" />
+
+        <TextView
+            android:id="@+id/tv_valor_item_produto_fragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/iv_arrow_right_item_produto_fragment"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toStartOf="@+id/iv_arrow_right_item_produto_fragment"
+            android:text="R$" />
+
+        <TextView
+            android:id="@+id/tv_nome_item_produto_fragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="10dp"
+            android:text="Nome Produto" />
+
+        <TextView
+            android:id="@+id/tv_descricao_item__produto_fragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/tv_nome_item_produto_fragment"
+            android:layout_below="@+id/tv_nome_item_produto_fragment"
+            android:layout_marginTop="19dp"
+            android:text="Descrição" />
+
+        <!--android:layout_alignEnd="@+id/tv_valor_produto_item_produto_fragment"-->
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/view_divider_item_produto_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/colorPrimary">
+
+    </View>
+
+</LinearLayout>

@@ -1,0 +1,106 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="6dp"
+    android:layout_marginRight="6dp"
+    android:orientation="vertical"
+    tools:context="com.codigo.rafael.easygas.fragments.DistribuidorHomeFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+
+    <ListView
+        android:id="@+id/lv_produtos_distribuidor_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:choiceMode="singleChoice"
+        android:divider="@null"
+        android:scrollbars="vertical"
+        android:layout_below="@+id/tv_produtos_disponiveis_distribuidor_fragment"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="12dp" />
+
+    <TextView
+        android:id="@+id/tv_nome_distribuidor_fragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="11dp"
+        android:text="Nome Distribuidor" />
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/bt_shopping_car_item_meu_fragment"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_alignBottom="@+id/tv_nome_distribuidor_fragment"
+        android:layout_alignParentEnd="true"
+        android:background="#54db06"
+        android:drawableLeft="@mipmap/ic_shopping_cart"
+        android:text="ABERTO"
+        android:textColor="#fff" />
+
+    <TextView
+        android:id="@+id/tv_endereco_distribuidor_fragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tv_nome_distribuidor_fragment"
+        android:text="Endereco" />
+
+    <TextView
+        android:id="@+id/tv_distancia_distribuidor_fragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tv_endereco_distribuidor_fragment"
+        android:layout_marginTop="11dp"
+        android:text="Distância" />
+
+    <ImageView
+        android:id="@+id/iv_shopping_car_distribuidor_activity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/tv_nome_distribuidor_fragment"
+        android:layout_below="@+id/tv_endereco_distribuidor_fragment"
+        app:srcCompat="@mipmap/ic_car" />
+
+    <TextView
+        android:id="@+id/tv_valor_distribuidor_fragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tv_distancia_distribuidor_fragment"
+        android:layout_alignBottom="@+id/tv_distancia_distribuidor_fragment"
+        android:layout_marginStart="12dp"
+        android:layout_toEndOf="@+id/iv_shopping_car_distribuidor_activity"
+        android:text="Valor" />
+
+    <RatingBar
+        android:id="@+id/rbar_avaliacao_distribuidor_fragment"
+        style="?android:attr/ratingBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/tv_valor_distribuidor_fragment"
+        android:layout_marginLeft="4dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:layout_toEndOf="@+id/tv_valor_distribuidor_fragment"
+        android:isIndicator="true"
+        android:numStars="5" />
+
+    <TextView
+        android:id="@+id/tv_produtos_disponiveis_distribuidor_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/iv_shopping_car_distribuidor_activity"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="13dp"
+        android:background="@color/accent"
+        android:text="Produtos Disponíveis"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+</RelativeLayout>

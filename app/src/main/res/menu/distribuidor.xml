@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_distribuidor_home"
+        android:icon="@mipmap/ic_home_distribuidor"
+        android:title="Distribuidora" />
+
+
+    <item
+        android:id="@+id/navigation_distribuidor_avaliacao"
+        android:icon="@mipmap/ic_avaliacao"
+        android:title="Avaliação" />
+    <item
+        android:id="@+id/navigation_distribuidor_info"
+        android:icon="@mipmap/ic_info"
+        android:title="Informações" />
+
+</menu>
