@@ -64,7 +64,7 @@ public class MenuAdapter extends ArrayAdapter<Menu> {
 
 //        btCar.setText(lista.get(position).getBtCar());
 
-        TextView tvValor = (TextView) convertView.findViewById(R.id.tv_valor_distribuidor_fragment);
+        TextView tvValor = (TextView) convertView.findViewById(R.id.tv_valor_distribuidor_activity);
         tvValor.setText(lista.get(position).getValor());
 
 
