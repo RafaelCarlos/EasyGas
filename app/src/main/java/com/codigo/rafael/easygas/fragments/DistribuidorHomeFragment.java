@@ -1,15 +1,18 @@
 package com.codigo.rafael.easygas.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.codigo.rafael.easygas.PedidoMapsActivity;
 import com.codigo.rafael.easygas.R;
 import com.codigo.rafael.easygas.adapters.ProdutoDistribuidorAdapter;
 import com.codigo.rafael.easygas.entities.Menu;
@@ -76,6 +79,15 @@ public class DistribuidorHomeFragment extends Fragment {
         tvDistancia.setText(String.valueOf(menu.getDistancia()));
         tvValor.setText(menu.getValor());
         rbAvaliacao.setRating(menu.getAvaliacao());
+
+
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                startActivity(new Intent(getActivity(), PedidoMapsActivity.class));
+            }
+        });
 
         return view;
     }
