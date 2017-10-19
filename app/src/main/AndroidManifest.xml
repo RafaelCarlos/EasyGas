@@ -28,7 +28,9 @@
         <activity
             android:name=".ActivityTeste"
             android:label="@string/title_activity_teste" />
-        <activity android:name=".user.LoginActivity">
+        <activity
+            android:name=".user.LoginActivity"
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -39,8 +41,12 @@
         <activity android:name=".user.EnderecoCadastroActivity" />
         <activity android:name=".EnderecoAddActivity" />
         <activity android:name=".PrincipalActivity" />
-        <activity android:name=".TesteLocationActivity" />
-        <activity android:name=".DistribuidorActivity"></activity>
+        <activity
+            android:name=".TesteLocationActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".DistribuidorActivity"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

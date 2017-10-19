@@ -12,18 +12,39 @@
         android:id="@+id/tb_activity_distribuidor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+        android:theme="?attr/actionBarTheme">
+
+        <TextView
+            android:id="@+id/tv_qtd_produtos_car_activity_distribuidor"
+            android:layout_width="wrap_content"
+            android:layout_height="16dp"
+            android:layout_alignTop="@+id/iv_car_toolbar_distribuidor_activity"
+            android:layout_gravity="right"
+            android:layout_marginBottom="10dp"
+            android:text="0" />
+
+        <ImageView
+            android:id="@+id/iv_car_toolbar_distribuidor_activity"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_below="@id/tv_qtd_produtos_car_activity_distribuidor"
+            android:layout_gravity="right"
+            android:src="@mipmap/ic_shopping_cart"
+            android:text="Imagem" />
+
+
+    </android.support.v7.widget.Toolbar>
 
     <RelativeLayout
         android:id="@+id/rl_fragment_container_produto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tb_activity_distribuidor"
         android:layout_above="@+id/navigation_distribuidor"
+        android:layout_below="@+id/tb_activity_distribuidor"
         android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp">
 
@@ -36,6 +57,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_gravity="bottom"
+        android:background="#DCDCDC"
         app:menu="@menu/distribuidor" />
 
 </RelativeLayout>

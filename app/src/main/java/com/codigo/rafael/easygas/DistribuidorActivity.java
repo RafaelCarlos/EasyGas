@@ -6,6 +6,7 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.RatingBar;
@@ -28,6 +29,7 @@ public class DistribuidorActivity extends AppCompatActivity {
     //    private CoordinatorLayout coordinatorLayout;
     private BottomNavigationView navigation;
     private Fragment frag;
+    private Toolbar tbDistribuidor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,8 @@ public class DistribuidorActivity extends AppCompatActivity {
         setContentView(R.layout.activity_distribuidor);
 
         navigation = (BottomNavigationView) findViewById(R.id.navigation_distribuidor);
+        tbDistribuidor = findViewById(R.id.tb_activity_distribuidor);
+        setSupportActionBar(tbDistribuidor);
 //        tvTituloNome = findViewById(R.id.tv_titulo_nome_distribuidor_activity);
 //        tvDistancia = findViewById(R.id.tv_distancia_distribuidor_activity);
 //        tvBairro = findViewById(R.id.tv_bairro_distribuidor_activity);
@@ -53,6 +57,7 @@ public class DistribuidorActivity extends AppCompatActivity {
         frag = getSupportFragmentManager().findFragmentByTag("distribuidorFrag");
 
         if (frag == null) {
+            tbDistribuidor.setTitle("Distribuidora");
             frag = new DistribuidorHomeFragment();
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.rl_fragment_container_produto, frag, "distribuidorFrag");
@@ -90,6 +95,7 @@ public class DistribuidorActivity extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.navigation_distribuidor_home:
                     frag = new DistribuidorHomeFragment();
+                    tbDistribuidor.setTitle("Distribuidora");
                     ft.replace(R.id.rl_fragment_container_produto, frag);
                     ft.addToBackStack(null);
                     ft.commit();
@@ -98,6 +104,7 @@ public class DistribuidorActivity extends AppCompatActivity {
                 case R.id.navigation_distribuidor_avaliacao:
                     Toast.makeText(DistribuidorActivity.this, "Avaliação", Toast.LENGTH_SHORT).show();
                     frag = new AvaliacaoDistribuidorFragment();
+                    tbDistribuidor.setTitle("Avaliações");
 //                    FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
                     ft.replace(R.id.rl_fragment_container_produto, frag);
                     ft.addToBackStack(null);
@@ -105,6 +112,7 @@ public class DistribuidorActivity extends AppCompatActivity {
                     return true;
                 case R.id.navigation_distribuidor_info:
                     frag = new InformacaoDistribuidorFragment();
+                    tbDistribuidor.setTitle("Informações");
                     ft.replace(R.id.rl_fragment_container_produto, frag);
                     ft.addToBackStack(null);
                     ft.commit();
