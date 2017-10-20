@@ -19,7 +19,7 @@
         android:textStyle="bold" />
 
     <com.melnykov.fab.FloatingActionButton
-        android:id="@+id/fab_endereco"
+        android:id="@+id/fab_cartoes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -38,7 +38,7 @@
         android:id="@+id/bt_geocoder_teste"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/fab_endereco"
+        android:layout_above="@+id/fab_cartoes"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="50dp"
         android:text="Página De Teste" />

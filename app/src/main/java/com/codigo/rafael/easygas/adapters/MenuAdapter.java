@@ -45,17 +45,17 @@ public class MenuAdapter extends ArrayAdapter<Menu> {
         }
 
 
-        TextView tvTitulo = (TextView) convertView.findViewById(R.id.tv_titulo_nome_distribuidor_activity);
+        TextView tvTitulo = convertView.findViewById(R.id.tv_titulo_nome_distribuidor_activity);
         tvTitulo.setText(lista.get(position).getTitulo());
 
-        TextView tvBairro = (TextView) convertView.findViewById(R.id.tv_bairro_distribuidor_activity);
+        TextView tvBairro = convertView.findViewById(R.id.tv_bairro_distribuidor_activity);
         tvBairro.setText(lista.get(position).getBairro());
 
-        TextView tvDistancia = (TextView) convertView.findViewById(R.id.tv_distancia_distribuidor_activity);
+        TextView tvDistancia = convertView.findViewById(R.id.tv_distancia_distribuidor_activity);
         tvDistancia.setText(String.valueOf(lista.get(position).getDistancia()) + " km");
 
 
-        ImageView vrImageView = (ImageView) convertView.findViewById(R.id.iv_ic_car_distribuidor_activity);
+        ImageView vrImageView = convertView.findViewById(R.id.iv_ic_car_distribuidor_activity);
         vrImageView.setImageBitmap(BitmapFactory.decodeResource(context.getResources(), lista.get(position).getFoto()));
 
 
@@ -64,11 +64,11 @@ public class MenuAdapter extends ArrayAdapter<Menu> {
 
 //        btCar.setText(lista.get(position).getBtCar());
 
-        TextView tvValor = (TextView) convertView.findViewById(R.id.tv_valor_distribuidor_activity);
+        TextView tvValor = convertView.findViewById(R.id.tv_valor_distribuidor_activity);
         tvValor.setText(lista.get(position).getValor());
 
 
-        RatingBar rBarAvaliacao = (RatingBar) convertView.findViewById(R.id.rbar_avaliacao_distribuidor_activity);
+        RatingBar rBarAvaliacao = convertView.findViewById(R.id.rbar_avaliacao_distribuidor_activity);
 //        rBarAvaliacao.setNumStars(lista.get(position).getAvaliacao());
         rBarAvaliacao.setRating(lista.get(position).getAvaliacao());
         return convertView;

@@ -1,5 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp">
+
+    <ImageView
+        android:id="@+id/iv_bandeira_cartao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="16dp"
+        app:srcCompat="@mipmap/ic_visa" />
+
+    <TextView
+        android:id="@+id/tv_nome_titular_cartao_item_cartoes_fragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/iv_bandeira_cartao"
+        android:layout_marginStart="18dp"
+        android:layout_toEndOf="@+id/iv_bandeira_cartao"
+        android:text="Nome Titular"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_numero_cartao_item_cartoes_fragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/iv_bandeira_cartao"
+        android:layout_alignStart="@+id/tv_nome_titular_cartao_item_cartoes_fragment"
+        android:text="Numero Cartão" />
+
+    <View
+
+        android:id="@+id/view_divisao_item_cartoes_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignStart="@+id/tv_numero_cartao_item_cartoes_fragment"
+        android:layout_below="@+id/tv_numero_cartao_item_cartoes_fragment"
+        android:layout_marginBottom="4dp"
+        android:layout_marginTop="4dp"
+        android:background="@color/colorPrimary" />
 
 </RelativeLayout>

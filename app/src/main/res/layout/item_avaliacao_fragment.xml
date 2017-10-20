@@ -49,7 +49,7 @@
 
     <View
 
-        android:id="@+id/view_divisao_item_avaliacao_fragment"
+        android:id="@+id/view_divisao_item_cartoes_fragment"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_below="@+id/tv_descricao_item_avaliacao_fragment"

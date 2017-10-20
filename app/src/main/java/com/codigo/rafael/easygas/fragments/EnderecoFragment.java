@@ -1,6 +1,5 @@
 package com.codigo.rafael.easygas.fragments;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,7 +10,6 @@ import android.widget.Button;
 
 import com.codigo.rafael.easygas.ActivityTeste;
 import com.codigo.rafael.easygas.EnderecoAddActivity;
-import com.codigo.rafael.easygas.PrincipalActivity;
 import com.codigo.rafael.easygas.R;
 import com.codigo.rafael.easygas.TesteLocationActivity;
 import com.melnykov.fab.FloatingActionButton;
@@ -39,7 +37,7 @@ public class EnderecoFragment extends Fragment {
         btPageTeste = view.findViewById(R.id.bt_geocoder_teste);
         btPageTeste2 = view.findViewById(R.id.bt_teste_geolocation);
 
-        fabAddEndereco = (FloatingActionButton) view.findViewById(R.id.fab_endereco);
+        fabAddEndereco = (FloatingActionButton) view.findViewById(R.id.fab_cartoes);
 
         btPageTeste2.setOnClickListener(new View.OnClickListener() {
             @Override
