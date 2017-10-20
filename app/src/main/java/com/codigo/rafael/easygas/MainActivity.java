@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.codigo.rafael.easygas.fragments.AtualizarCadastro;
+import com.codigo.rafael.easygas.fragments.CartaoFragment;
 import com.codigo.rafael.easygas.fragments.ConfiguracaoFragment;
 import com.codigo.rafael.easygas.fragments.EnderecoFragment;
 import com.codigo.rafael.easygas.fragments.FeedbackFragment;
@@ -114,18 +115,24 @@ public class MainActivity extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(), "Posicao: " + position, Toast.LENGTH_SHORT).show();
 
                         } else if (position == 6) {
+                            frag = new CartaoFragment();
+                            toolbar.setTitle("Cartões");
+                            toolbar.setTitleTextColor(Color.WHITE);
+                            Toast.makeText(getApplicationContext(), "Posicao: " + position, Toast.LENGTH_SHORT).show();
+
+                        } else if (position == 7) {
                             frag = new AtualizarCadastro();
                             toolbar.setTitle("Atualizar Cadastro");
                             toolbar.setTitleTextColor(Color.WHITE);
                             Toast.makeText(getApplicationContext(), "Posicao: " + position, Toast.LENGTH_SHORT).show();
 
-                        } else if (position == 7) {
+                        } else if (position == 8) {
                             frag = new ConfiguracaoFragment();
                             toolbar.setTitle("Configurações");
                             toolbar.setTitleTextColor(Color.WHITE);
                             Toast.makeText(getApplicationContext(), "Posicao: " + position, Toast.LENGTH_SHORT).show();
 
-                        } else if (position == 8) {
+                        } else if (position == 9) {
                             frag = new MenuFragment();
                             Intent sendIntent = new Intent();
                             sendIntent.setAction(Intent.ACTION_SEND);
@@ -156,6 +163,7 @@ public class MainActivity extends AppCompatActivity {
         drawerMenu.addItem(new PrimaryDrawerItem().withName("Meus Endereços").withIcon(getDrawable(R.mipmap.ic_local)));
         drawerMenu.addItem(new PrimaryDrawerItem().withName("Feedback").withIcon(getDrawable(R.mipmap.ic_feedback)));
         drawerMenu.addItem(new SectionDrawerItem());
+        drawerMenu.addItem(new PrimaryDrawerItem().withName("Meus Cartões").withIcon(getDrawable(R.mipmap.ic_card)));
         drawerMenu.addItem(new PrimaryDrawerItem().withName("Atualizar Cadastro").withIcon(getDrawable(R.mipmap.ic_edit)));
         drawerMenu.addItem(new PrimaryDrawerItem().withName("Configurações").withIcon(getDrawable(R.mipmap.ic_setting)));
         drawerMenu.addItem(new PrimaryDrawerItem().withName("Indique-nos").withIcon(getDrawable(R.mipmap.ic_share)));
