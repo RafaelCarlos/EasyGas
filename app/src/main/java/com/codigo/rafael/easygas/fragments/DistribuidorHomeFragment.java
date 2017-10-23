@@ -17,6 +17,7 @@ import com.codigo.rafael.easygas.R;
 import com.codigo.rafael.easygas.adapters.ProdutoDistribuidorAdapter;
 import com.codigo.rafael.easygas.entities.Menu;
 import com.codigo.rafael.easygas.entities.Produto;
+import com.melnykov.fab.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +27,7 @@ public class DistribuidorHomeFragment extends Fragment {
 
     private ListView mListView;
     private List<Produto> produtos;
-
+    private FloatingActionButton fabCarrinhoProduto;
     private TextView tvTituloNome, tvBairro, tvDistancia, tvValor;
     private RatingBar rbAvaliacao;
     private Menu menu;
@@ -55,7 +56,7 @@ public class DistribuidorHomeFragment extends Fragment {
         tvBairro = view.findViewById(R.id.tv_endereco_distribuidor_fragment);
         tvValor = view.findViewById(R.id.tv_valor_distribuidor_fragment);
         mListView = view.findViewById(R.id.lv_produtos_distribuidor_fragment);
-
+        fabCarrinhoProduto = view.findViewById(R.id.fab_carrinho_produto);
         rbAvaliacao = view.findViewById(R.id.rbar_avaliacao_distribuidor_fragment);
         produtos = new ArrayList<>();
 
@@ -80,7 +81,8 @@ public class DistribuidorHomeFragment extends Fragment {
         tvValor.setText(menu.getValor());
         rbAvaliacao.setRating(menu.getAvaliacao());
 
-
+        fabCarrinhoProduto.attachToListView(mListView);
+        fabCarrinhoProduto.show();
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {

@@ -53,6 +53,7 @@ public class DistribuidorActivity extends AppCompatActivity {
 //        Log.i("MenuRece", menu.toString());
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        tbDistribuidor.setTitle("Distribuidora");
 
         frag = getSupportFragmentManager().findFragmentByTag("distribuidorFrag");
 
