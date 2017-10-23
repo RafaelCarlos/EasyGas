@@ -41,6 +41,7 @@
         <activity android:name=".user.EnderecoCadastroActivity" />
         <activity android:name=".EnderecoAddActivity" />
         <activity android:name=".PrincipalActivity" />
+        <activity android:name=".ItensDialogAddCartaoActivity" />
         <activity
             android:name=".TesteLocationActivity"
             android:theme="@style/AppTheme" />
@@ -61,8 +62,8 @@
 
         <activity
             android:name=".PedidoMapsActivity"
-            android:theme="@style/AppTheme"
-            android:label="@string/title_activity_pedido_maps"></activity>
+            android:label="@string/title_activity_pedido_maps"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

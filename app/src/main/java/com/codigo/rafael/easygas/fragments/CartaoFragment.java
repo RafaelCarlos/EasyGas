@@ -1,6 +1,7 @@
 package com.codigo.rafael.easygas.fragments;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.codigo.rafael.easygas.ItensDialogAddCartaoActivity;
 import com.codigo.rafael.easygas.R;
 import com.codigo.rafael.easygas.adapters.CartaoAdapter;
 import com.codigo.rafael.easygas.entities.Cartao;
@@ -33,11 +35,6 @@ public class CartaoFragment extends Fragment {
     private ArrayList<Cartao> cartoes;
     private MaterialDialog dialog;
 
-    private EditText etNumeroCartao, etValidade, etCodigoSeguranca;
-    private Button btConfirmar;
-    private View viewDialog;
-
-    private CreditCardFormatTextWatcher tv;
 
     public CartaoFragment() {
         // Required empty public constructor
@@ -54,20 +51,6 @@ public class CartaoFragment extends Fragment {
 
         mListView = view.findViewById(R.id.lv_cartoes_fragment);
 
-
-//        viewDialog = view.findViewById(R.layout.itens_dialog_add_cartao);
-//
-//        etNumeroCartao = viewDialog.findViewById(R.id.et_numero_cartao_itens_add_cartao);
-//        etValidade = viewDialog.findViewById(R.id.et_data_validade_itens_dialog_add_cartao);
-//        etCodigoSeguranca = viewDialog.findViewById(R.id.et_cvc_itens_dialog_add_cartao);
-//        btConfirmar = viewDialog.findViewById(R.id.bt_confirmar_itens_add_cartao);
-
-
-        // the EditText here is used to compute the padding (1 EM) which depends
-        // on the actual size of the Text rendered on screen taking into account:
-        // the font, the text size, the user scaling on text
-//        tv = new CreditCardFormatTextWatcher(etNumeroCartao);
-//        etNumeroCartao.addTextChangedListener(tv);
 
         cartoes = new ArrayList<>();
 
@@ -87,43 +70,15 @@ public class CartaoFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                boolean wrapInScrollView = true;
 
                 //TODO
                 /**
                  * Terminar essa parte
                  */
-                btConfirmar = getActivity().findViewById(R.id.bt_confirmar_itens_add_cartao);
-                dialog = new MaterialDialog.Builder(getActivity())
-                        .title("Add Novo Cartão")
-//                        .customView(viewDialog, wrapInScrollView)
-//                        .onPositive(confimar())
-                        .positiveText("Continuar")
-                        .onPositive(new MaterialDialog.SingleButtonCallback() {
-                            @Override
-                            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
 
-                            }
-                        })
-                        .inputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_CLASS_PHONE)
-                        .input("Número Cartão", "Numero", new MaterialDialog.InputCallback() {
-                            @Override
-                            public void onInput(@NonNull MaterialDialog dialog, CharSequence input) {
+                startActivity(new Intent(getActivity(), ItensDialogAddCartaoActivity.class));
 
-                            }
-                        })
-                        .show();
 
-//                        .title("Add Novo Cartão")
-//                        .content("Nome Titular")
-//                        .content("Número Cartão")
-//                        .inputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD)
-//                        .input("Nome Titular", "Número Cartão", new MaterialDialog.InputCallback() {
-//                            @Override
-//                            public void onInput(MaterialDialog dialog, CharSequence input) {
-//                                // Do something
-//                            }
-//                        }).show();
             }
         });
 
