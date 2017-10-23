@@ -48,12 +48,12 @@ public class MainActivity extends AppCompatActivity {
 //        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         setSupportActionBar(toolbar);
-        toolbar.setTitle("Distribuidoras");
 
         Fragment frag = frag = getSupportFragmentManager().findFragmentByTag("mainFrag");
 
         if (frag == null) {
             frag = new MenuFragment();
+            toolbar.setTitle("Distribuidoras");
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.rl_fragment_container, frag, "mainFrag");
             ft.commit();

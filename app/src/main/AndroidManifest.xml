@@ -24,12 +24,16 @@
             android:name=".service.LocationIntentService"
             android:exported="false" />
 
-        <activity android:name=".MainActivity" />
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ActivityTeste"
-            android:label="@string/title_activity_teste" />
+            android:label="@string/title_activity_teste"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".user.LoginActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -37,16 +41,30 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".user.CadastrarUserActivity" />
-        <activity android:name=".user.EnderecoCadastroActivity" />
-        <activity android:name=".EnderecoAddActivity" />
-        <activity android:name=".PrincipalActivity" />
-        <activity android:name=".ItensDialogAddCartaoActivity" />
+        <activity
+            android:name=".user.CadastrarUserActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".user.EnderecoCadastroActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".EnderecoAddActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PrincipalActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ItensDialogAddCartaoActivity"
+            android:label="Add Novo Cartão"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".TesteLocationActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".DistribuidorActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.

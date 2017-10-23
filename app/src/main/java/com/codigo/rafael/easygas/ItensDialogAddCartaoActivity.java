@@ -1,5 +1,6 @@
 package com.codigo.rafael.easygas;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -32,14 +33,21 @@ public class ItensDialogAddCartaoActivity extends AppCompatActivity {
         etValidade = findViewById(R.id.et_data_validade_itens_dialog_add_cartao);
         etCodigoSeguranca = findViewById(R.id.et_cvc_itens_dialog_add_cartao);
         btConfirmar = findViewById(R.id.bt_confirmar_itens_add_cartao);
+        tbItens = findViewById(R.id.tb_itens_add_cartao);
 
+        setSupportActionBar(tbItens);
+
+        tbItens.setTitle("Add Novo Cartão");
+        tbItens.setTitleTextColor(Color.WHITE);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         // the EditText here is used to compute the padding (1 EM) which depends
         // on the actual size of the Text rendered on screen taking into account:
         // the font, the text size, the user scaling on text
         tv = new CreditCardFormatTextWatcher(etNumeroCartao);
         etNumeroCartao.addTextChangedListener(tv);
-
 
         btConfirmar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,5 +57,11 @@ public class ItensDialogAddCartaoActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }
