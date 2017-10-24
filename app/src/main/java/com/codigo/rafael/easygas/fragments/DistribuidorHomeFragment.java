@@ -42,6 +42,7 @@ public class DistribuidorHomeFragment extends Fragment {
     private Menu menu;
     private MaterialDialog dialog;
     private boolean isEmpty = false;
+    private int qtd = 0;
 
 
 //    private CoordinatorLayout coordinatorLayout;
@@ -122,6 +123,7 @@ public class DistribuidorHomeFragment extends Fragment {
                                 produtoCarrinho = (Produto) mListView.getItemAtPosition(i);
                                 produtosCar.add(produtoCarrinho);
                                 isEmpty = true;
+                                qtd++;
 
                                 SharedPreferences sharedPreferences = getActivity().getPreferences(Context.MODE_PRIVATE);
                                 SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -138,6 +140,26 @@ public class DistribuidorHomeFragment extends Fragment {
                         .show();
 
 //                startActivity(new Intent(getActivity(), PedidoMapsActivity.class));
+            }
+        });
+
+
+        mListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                dialog = new MaterialDialog.Builder(getActivity())
+                        .content("Deseja remover esse produto ao carrinho?")
+                        .positiveText("Sim")
+                        .negativeText("Não")
+                        .onPositive(new MaterialDialog.SingleButtonCallback() {
+                            @Override
+                            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                                
+                            }
+                        })
+                        .show();
+
+                return false;
             }
         });
 

@@ -1,9 +1,11 @@
 package com.codigo.rafael.easygas.user;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.text.SpannableString;
 import android.text.style.StyleSpan;
 import android.text.style.UnderlineSpan;
@@ -24,6 +26,7 @@ public class CadastrarUserActivity extends AppCompatActivity {
     private TextView tvLinkLogin;
     private Bundle bundle;
     private Usuario user;
+    private Toolbar tbCadastroUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +36,12 @@ public class CadastrarUserActivity extends AppCompatActivity {
 
         //Adicionando um TextWatcher do tipo TEL(Telefone) em um EditText.
         etTelefone.addTextChangedListener(Mask.insert(Mask.MaskType.TEL, etTelefone));
+        setSupportActionBar(tbCadastroUser);
+        tbCadastroUser.setTitle("Cadastro");
+        tbCadastroUser.setTitleTextColor(Color.WHITE);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
         btCadastrarEndereco.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -68,17 +76,24 @@ public class CadastrarUserActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
+
     private void initiAll() {
 
         bundle = new Bundle();
         user = new Usuario();
-        tvLinkLogin = (TextView) findViewById(R.id.link_login);
-        etNome = (EditText) findViewById(R.id.et_nome_cadastrar_activity);
-        etEmail = (EditText) findViewById(R.id.et_email_cadastrar_activity);
-        etSenha = (EditText) findViewById(R.id.et_senha_cadastrar_activity);
-        etTelefone = (EditText) findViewById(R.id.et_telefone_activity_cadastrar_user);
+        tvLinkLogin = findViewById(R.id.link_login);
+        etNome = findViewById(R.id.et_nome_cadastrar_activity);
+        etEmail = findViewById(R.id.et_email_cadastrar_activity);
+        etSenha = findViewById(R.id.et_senha_cadastrar_activity);
+        etTelefone = findViewById(R.id.et_telefone_activity_cadastrar_user);
 
-        btCadastrarEndereco = (Button) findViewById(R.id.bt_cadastrar_activity_cadastrar);
+        btCadastrarEndereco = findViewById(R.id.bt_cadastrar_activity_cadastrar);
+        tbCadastroUser = findViewById(R.id.tb_cadastro_user);
     }
 
 }

@@ -20,7 +20,9 @@
 
     <ScrollView
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+        android:layout_height="fill_parent"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
         <!--android:fitsSystemWindows="true"-->
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -45,7 +47,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="20dp"
                 android:text="Bem vindo ao EasyGás"
-                android:textColor="#000000"
+                android:textColor="@color/colorAccent"
                 android:textSize="24sp" />
 
             <!--  Email Label -->
@@ -98,7 +100,7 @@
                 android:layout_marginRight="24dp"
                 android:layout_marginTop="24dp"
                 android:background="?attr/colorPrimary"
-                android:drawableLeft="@mipmap/ic_launcher"
+                android:drawableLeft="@mipmap/ic_truck"
                 android:padding="12dp"
                 android:paddingLeft="24dp"
                 android:paddingRight="24dp"

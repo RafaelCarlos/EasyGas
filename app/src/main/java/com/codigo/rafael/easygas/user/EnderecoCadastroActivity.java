@@ -1,8 +1,10 @@
 package com.codigo.rafael.easygas.user;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -25,6 +27,7 @@ public class EnderecoCadastroActivity extends AppCompatActivity {
     private List<String> estados = new ArrayList<>();
     private String estado;
     private Button btConfirmar;
+    private Toolbar tbEnderecoCadastro;
 
     private Usuario user = new Usuario();
     private Bundle bundle = new Bundle();
@@ -36,12 +39,21 @@ public class EnderecoCadastroActivity extends AppCompatActivity {
         preencheLista();
         user = (Usuario) getIntent().getSerializableExtra("user");
 
-        etCep = (EditText) findViewById(R.id.et_cep_endereco_cadatro_activity);
+        etCep = findViewById(R.id.et_cep_endereco_cadatro_activity);
 
-        spEstados = (Spinner) findViewById(R.id.sp_estados_endereco_cadastro_activity);
+        spEstados = findViewById(R.id.sp_estados_endereco_cadastro_activity);
 
+        tbEnderecoCadastro = findViewById(R.id.tb_cadastro_endereco);
+
+        setSupportActionBar(tbEnderecoCadastro);
+        tbEnderecoCadastro.setTitle("Endereço");
+        tbEnderecoCadastro.setTitleTextColor(Color.WHITE);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, estados);
-        btConfirmar = (Button) findViewById(R.id.bt_cadastrar_endereco_cadastro_activity);
+        btConfirmar = findViewById(R.id.bt_cadastrar_endereco_cadastro_activity);
+
         ArrayAdapter<String> spinnerAdapter = arrayAdapter;
         spinnerAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         spEstados.setAdapter(spinnerAdapter);
@@ -76,6 +88,12 @@ public class EnderecoCadastroActivity extends AppCompatActivity {
 //                startActivity(new Intent(EnderecoCadastroActivity.this, MainActivity.class));
             }
         });
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
     private void preencheLista() {

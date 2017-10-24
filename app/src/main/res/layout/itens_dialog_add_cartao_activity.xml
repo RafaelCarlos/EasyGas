@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/accent">
+    android:background="@color/accent"
+    tools:context=".ItensDialogAddCartaoActivity">
 
 
     <android.support.v7.widget.Toolbar
@@ -79,7 +81,7 @@
                 android:hint="MM/AA"
                 android:inputType="date"
                 android:maxLength="5"
-                android:textAlignment="center"
+                android:textAlignment="viewStart"
                 android:textColor="@color/colorAccent" />
 
         </android.support.design.widget.TextInputLayout>
@@ -104,9 +106,10 @@
                 android:hint="CVC"
                 android:inputType="number"
                 android:maxLength="3"
-                android:textAlignment="center"
+                android:textAlignment="viewStart"
                 android:textColor="@color/colorAccent" />
         </android.support.design.widget.TextInputLayout>
+
 
         <TextView
             android:id="@+id/tv_texto_informativo_itens_dialog_add_cartao"
@@ -118,6 +121,29 @@
             android:layout_marginTop="4dp"
             android:text="3 últimos dígitos no verso do cartão."
             android:textSize="9sp" />
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_layout_et_cpf_titular_itens_add_cartao_activity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/tv_texto_informativo_itens_dialog_add_cartao"
+            android:textColorHint="@color/colorAccent"
+            app:hintAnimationEnabled="true">
+
+
+            <EditText
+                android:id="@+id/et_cpf_itens_dialog_add_cartao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:ems="10"
+                android:hint="CPF Titular"
+                android:inputType="number"
+                android:maxLength="14"
+                android:textAlignment="viewStart"
+                android:textColor="@color/colorAccent" />
+        </android.support.design.widget.TextInputLayout>
 
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/bt_confirmar_itens_add_cartao"
@@ -143,7 +169,7 @@
             android:layout_width="wrap_content"
             android:layout_height="28dp"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/tv_texto_informativo_itens_dialog_add_cartao"
+            android:layout_below="@+id/input_layout_et_cpf_titular_itens_add_cartao_activity"
             android:layout_marginTop="10dp"
             android:drawableLeft="@mipmap/ic_card"
             android:text="Selecione o tipo de cartão "

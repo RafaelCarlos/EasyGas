@@ -43,10 +43,12 @@
         </activity>
         <activity
             android:name=".user.CadastrarUserActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".user.EnderecoCadastroActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".EnderecoAddActivity"
             android:screenOrientation="portrait" />

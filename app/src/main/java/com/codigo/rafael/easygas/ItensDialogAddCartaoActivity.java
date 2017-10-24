@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.codigo.rafael.easygas.util.CreditCardFormatTextWatcher;
+import com.codigo.rafael.easygas.util.Mask;
 
 /**
  * Created by Rafael Carlos Oliveira on 23/10/2017.
@@ -17,7 +18,7 @@ import com.codigo.rafael.easygas.util.CreditCardFormatTextWatcher;
 
 public class ItensDialogAddCartaoActivity extends AppCompatActivity {
 
-    private EditText etNomeTitular, etNumeroCartao, etValidade, etCodigoSeguranca;
+    private EditText etNomeTitular, etNumeroCartao, etValidade, etCodigoSeguranca, etCpfTitular;
     private Button btConfirmar;
     private CreditCardFormatTextWatcher tv;
     private Toolbar tbItens;
@@ -34,6 +35,7 @@ public class ItensDialogAddCartaoActivity extends AppCompatActivity {
         etCodigoSeguranca = findViewById(R.id.et_cvc_itens_dialog_add_cartao);
         btConfirmar = findViewById(R.id.bt_confirmar_itens_add_cartao);
         tbItens = findViewById(R.id.tb_itens_add_cartao);
+        etCpfTitular = findViewById(R.id.et_cpf_itens_dialog_add_cartao);
 
         setSupportActionBar(tbItens);
 
@@ -56,6 +58,8 @@ public class ItensDialogAddCartaoActivity extends AppCompatActivity {
             }
         });
 
+        etValidade.addTextChangedListener(Mask.insert(Mask.MaskType.VALIDADE, etValidade));
+        etCpfTitular.addTextChangedListener(Mask.insert(Mask.MaskType.CPF, etCpfTitular));
 
     }
 

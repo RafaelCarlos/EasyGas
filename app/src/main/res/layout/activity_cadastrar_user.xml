@@ -21,7 +21,9 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fitsSystemWindows="true">
+        android:fitsSystemWindows="true"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -36,7 +38,7 @@
                 android:layout_height="72dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="24dp"
-                android:src="@mipmap/ic_launcher" />
+                android:src="@mipmap/ic_truck" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -44,7 +46,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="20dp"
                 android:text="Cadastre-se"
-                android:textColor="#000000"
+                android:textColor="@color/colorAccent"
                 android:textSize="24sp" />
 
             <!-- Name Label -->
@@ -53,14 +55,16 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="8dp"
-                android:textColorHint="#000000">
+                android:textColorHint="@color/colorAccent">
 
                 <EditText
                     android:id="@+id/et_nome_cadastrar_activity"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Nome"
-                    android:inputType="textCapWords" />
+                    android:inputType="textCapWords"
+                    android:textColor="@color/colorAccent"
+                    android:textColorHint="@color/colorAccent" />
             </android.support.design.widget.TextInputLayout>
 
             <!--  Email Label -->
@@ -69,7 +73,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="8dp"
-                android:textColorHint="#000000">
+                android:textColorHint="@color/colorAccent">
 
                 <EditText
                     android:id="@+id/et_email_cadastrar_activity"
@@ -77,7 +81,7 @@
                     android:layout_height="wrap_content"
                     android:hint="Email"
                     android:inputType="textEmailAddress"
-                    android:textColorHint="#000000" />
+                    android:textColorHint="@color/colorAccent" />
             </android.support.design.widget.TextInputLayout>
 
             <!-- Password Label -->
@@ -86,7 +90,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="8dp"
-                android:textColorHint="#000000">
+                android:textColorHint="@color/colorAccent">
 
                 <EditText
                     android:id="@+id/et_senha_cadastrar_activity"
@@ -102,7 +106,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="8dp"
-                android:textColorHint="#000000">
+                android:textColorHint="@color/colorAccent">
 
                 <EditText
                     android:id="@+id/et_telefone_activity_cadastrar_user"
@@ -122,12 +126,12 @@
                 android:layout_marginRight="24dp"
                 android:layout_marginTop="24dp"
                 android:background="?attr/colorPrimary"
-                android:drawableLeft="@mipmap/ic_launcher"
+                android:drawableLeft="@mipmap/ic_truck"
                 android:padding="12dp"
-                android:textColor="#ffffff"
                 android:paddingLeft="24dp"
                 android:paddingRight="24dp"
-                android:text="Cadastrar" />
+                android:text="Cadastrar"
+                android:textColor="#ffffff" />
 
             <TextView
                 android:id="@+id/link_login"
@@ -136,8 +140,8 @@
                 android:layout_marginBottom="24dp"
                 android:gravity="center"
                 android:text="Já é cadastrado? Login"
-                android:textColor="#000000"
-                android:textColorHint="#000000"
+                android:textColor="@color/colorAccent"
+                android:textColorHint="@color/colorAccent"
                 android:textSize="16dip" />
 
         </LinearLayout>

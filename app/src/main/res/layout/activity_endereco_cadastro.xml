@@ -20,7 +20,9 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:tools="http://schemas.android.com/tools"
@@ -38,46 +40,56 @@
                 android:layout_marginTop="10dp"
                 android:text="Insira Seu Endereço"
                 android:textAlignment="center"
-                android:textColor="#000000"
+                android:textColor="@color/colorAccent"
                 android:textSize="24sp" />
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/colorAccent">
 
                 <EditText
                     android:id="@+id/et_cep_endereco_cadatro_activity"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="CEP"
-                    android:inputType="number" />
+                    android:inputType="number"
+                    android:textColor="@color/colorAccent"
+                    android:textColorHint="@color/colorAccent" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/colorAccent">
 
                 <EditText
                     android:id="@+id/et_rua_endereco_cadastro_activity"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Rua / Alameda / Avenida" />
+                    android:hint="Rua / Alameda / Avenida"
+                    android:textColor="@color/colorAccent"
+                    android:textColorHint="@color/colorAccent" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:textColorHint="@color/colorAccent">
 
                 <EditText
                     android:id="@+id/et_complemento_endereco_cadastro_activity"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Número / Complemento" />
+                    android:hint="Número / Complemento"
+                    android:textColor="@color/colorAccent"
+                    android:textColorHint="@color/colorAccent" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/colorAccent">
 
                 <EditText
                     android:id="@+id/et_bairro_endereco_cadastro_activity"
@@ -90,15 +102,26 @@
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/colorAccent">
 
                 <EditText
                     android:id="@+id/et_cidade_endereco_cadastro_activity"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Cidade" />
+                    android:hint="Cidade"
+                    android:textColor="@color/colorAccent"
+                    android:textColorHint="@color/colorAccent" />
 
             </android.support.design.widget.TextInputLayout>
+
+            <TextView
+                android:id="@+id/tv_estado_endereco_cadsatro_activity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Selecione o estado: "
+                android:textColor="@color/colorAccent"
+                android:textSize="16dp" />
 
             <Spinner
                 android:id="@+id/sp_estados_endereco_cadastro_activity"
@@ -108,6 +131,7 @@
                 android:layout_marginTop="6dp"
                 android:layout_weight="1"
                 android:background="@color/colorSecondText"
+                android:spinnerMode="dropdown"
                 android:visibility="visible" />
 
             <Button

@@ -5,14 +5,14 @@ import android.text.TextWatcher;
 import android.widget.EditText;
 
 /**
- * Created by Rafael Carlos Oliveiraon 29/09/2017.
+ * Created by Rafael Carlos Oliveira on 29/09/2017.
  * Classe responsável por criar mascaras de CNPJ CPF CEP e Telefone;
  */
 
 public abstract class Mask {
 
     public enum MaskType {
-        CNPJ("##.###.###/####-##"), CPF("###.###.###-##"), CEP("#####-###"), TEL("(##) #####-####");
+        CNPJ("##.###.###/####-##"), CPF("###.###.###-##"), CEP("#####-###"), TEL("(##) #####-####"), VALIDADE("##/##");
 
         String mask;
 
