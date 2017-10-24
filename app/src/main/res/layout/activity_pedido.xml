@@ -22,7 +22,9 @@
         android:id="@+id/sv_elementos_activity_pedido"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/tb_pedido_activity">
+        android:layout_below="@+id/tb_pedido_activity"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
 
 
         <RelativeLayout
@@ -46,7 +48,7 @@
             <ListView
                 android:id="@+id/lv_produtos_activity_pedido"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_nome_distribuidor_activity_pedido"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
@@ -58,11 +60,14 @@
             <TextView
                 android:id="@+id/tv_endereco_entrega_activity_pedido"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="28dp"
+                android:layout_alignParentEnd="true"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/lv_produtos_activity_pedido"
                 android:layout_marginTop="10dp"
+                android:drawableLeft="@mipmap/ic_truck"
                 android:text="Endereço de Entrega"
+                android:textAlignment="textStart"
                 android:textColor="@color/colorPrimary"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -76,13 +81,63 @@
 
             </RelativeLayout>
 
+            <TextView
+                android:id="@+id/tv_forma_pagamento_activity_pedido"
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/rl_endereco_entrega_activity_pedido"
+                android:layout_marginTop="10dp"
+                android:drawableLeft="@mipmap/ic_card"
+                android:text="Forma de Pagamento "
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <RadioGroup
+                android:id="@+id/rg_tipo_cartao_itens_add_cartao_activity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_forma_pagamento_activity_pedido"
+                android:orientation="vertical">
+
+                <android.support.v7.widget.AppCompatRadioButton
+                    android:id="@+id/rb_cartao_credito_activity_pedido"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cartão de Crédito"
+                    android:textColor="@color/colorAccent" />
+
+                <android.support.v7.widget.AppCompatRadioButton
+                    android:id="@+id/rb_cartao_debito_activity_pedido"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cartão de Débito"
+                    android:textColor="@color/colorAccent" />
+
+                <android.support.v7.widget.AppCompatRadioButton
+                    android:id="@+id/rb_cartao_dinheiro_activity_pedido"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Dinheiro"
+                    android:textColor="@color/colorAccent" />
+
+            </RadioGroup>
+
+            <RelativeLayout
+                android:id="@+id/rl_cartoes_activity_pedido"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rg_tipo_cartao_itens_add_cartao_activity">
+
+            </RelativeLayout>
 
             <TextView
                 android:id="@+id/tv_total_activity_pedido"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/rl_endereco_entrega_activity_pedido"
+                android:layout_below="@+id/rl_cartoes_activity_pedido"
                 android:layout_marginTop="10dp"
                 android:text="Total "
                 android:textColor="@color/colorPrimary"

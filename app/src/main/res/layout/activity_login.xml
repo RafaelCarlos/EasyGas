@@ -81,6 +81,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Senha"
+                    android:imeActionLabel="Feito"
+                    android:imeOptions="actionDone"
                     android:inputType="textPassword"
                     android:textColor="@color/colorAccent"
                     android:textColorHint="@color/colorAccent"

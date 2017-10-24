@@ -30,7 +30,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="16dp">
+            android:layout_marginTop="16dp"
+            android:textColorHint="@color/colorAccent">
 
             <EditText
                 android:id="@+id/et_nome_titular_itens_add_cartao"
@@ -46,7 +47,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/input_layout_et_nome_titular_itens_add_cartao"
-            android:layout_marginTop="6dp">
+            android:layout_marginTop="6dp"
+            android:textColorHint="@color/colorAccent">
 
             <EditText
                 android:id="@+id/et_numero_cartao_itens_add_cartao"
@@ -62,7 +64,8 @@
             android:id="@+id/input_layout_et_validade_itens_add_cartoes_activity"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/textInputLayout">
+            android:layout_below="@+id/textInputLayout"
+            android:textColorHint="@color/colorAccent">
 
 
             <EditText
@@ -87,6 +90,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_below="@+id/textInputLayout"
+            android:textColorHint="@color/colorAccent"
             app:hintAnimationEnabled="true">
 
 
@@ -117,17 +121,59 @@
 
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/bt_confirmar_itens_add_cartao"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="46dp"
-            android:layout_alignParentEnd="true"
-            android:layout_below="@+id/tv_texto_informativo_itens_dialog_add_cartao"
-            android:layout_marginTop="18dp"
-            android:background="@color/colorAccent"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/rg_tipo_cartao_itens_add_cartao_activity"
+            android:layout_marginBottom="24dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:layout_marginTop="24dp"
+            android:background="?attr/colorPrimary"
             android:onClick="confimar"
+            android:padding="12dp"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp"
             android:shadowColor="@color/colorAccent"
             android:text="Confirmar"
             android:textColor="#ffffff" />
 
+        <TextView
+            android:id="@+id/tv_tipo_cartao_itens_add_cartao_activity"
+            android:layout_width="wrap_content"
+            android:layout_height="28dp"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/tv_texto_informativo_itens_dialog_add_cartao"
+            android:layout_marginTop="10dp"
+            android:drawableLeft="@mipmap/ic_card"
+            android:text="Selecione o tipo de cartão "
+            android:textColor="@color/colorPrimary"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <RadioGroup
+            android:id="@+id/rg_tipo_cartao_itens_add_cartao_activity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_tipo_cartao_itens_add_cartao_activity"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <android.support.v7.widget.AppCompatRadioButton
+                android:id="@+id/rb_cartao_credito_itens_add_cartao_activity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cartão de Crédito"
+                android:textColor="@color/colorAccent" />
+
+            <android.support.v7.widget.AppCompatRadioButton
+                android:id="@+id/rb_cartao_debito_itens_add_cartao_activity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cartão de Débito"
+                android:textColor="@color/colorAccent" />
+
+        </RadioGroup>
     </RelativeLayout>
 
 </RelativeLayout>
