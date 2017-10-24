@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btTe;
     private Drawer drawerMenu;
     private Toolbar toolbar;
+    private Bundle bundle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +49,9 @@ public class MainActivity extends AppCompatActivity {
 //        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         setSupportActionBar(toolbar);
+        bundle = getIntent().getExtras();
+        String nome = bundle.getString("name");
+        String email = bundle.getString("email");
 
         Fragment frag = frag = getSupportFragmentManager().findFragmentByTag("mainFrag");
 
@@ -64,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
                 .withActivity(this)
                 .withHeaderBackground(R.color.colorTema)
                 .addProfiles(
-                        new ProfileDrawerItem().withName("Rafael Oliveira").withEmail("rafaellcarloss@hotmail.com")
+                        new ProfileDrawerItem().withName(nome).withEmail(email)
                                 .withIcon(getResources().getDrawable(R.mipmap.ic_user))
                 )
                 .withOnAccountHeaderListener(new AccountHeader.OnAccountHeaderListener() {

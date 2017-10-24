@@ -108,22 +108,35 @@
                 android:text="Login"
                 android:textColor="#ffffff" />
 
-            <android.support.v7.widget.AppCompatButton
-                android:id="@+id/btn_facebook"
+            <!--<android.support.v7.widget.AppCompatButton-->
+            <!--android:id="@+id/btn_facebook"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="46dp"-->
+            <!--android:layout_marginBottom="24dp"-->
+            <!--android:layout_marginLeft="24dp"-->
+            <!--android:layout_marginRight="24dp"-->
+            <!--android:layout_marginTop="24dp"-->
+            <!--android:background="@color/colorFacebook"-->
+            <!--android:drawableLeft="@mipmap/ic_facebook"-->
+            <!--android:padding="12dp"-->
+            <!--android:paddingLeft="24dp"-->
+            <!--android:paddingRight="24dp"-->
+            <!--android:shadowColor="@color/colorAccent"-->
+            <!--android:text="Login Com Facebook"-->
+            <!--android:textColor="#ffffff" />-->
+
+            <com.facebook.login.widget.LoginButton
+                android:id="@+id/login_button"
                 android:layout_width="match_parent"
                 android:layout_height="46dp"
                 android:layout_marginBottom="24dp"
                 android:layout_marginLeft="24dp"
                 android:layout_marginRight="24dp"
                 android:layout_marginTop="24dp"
-                android:background="@color/colorFacebook"
-                android:drawableLeft="@mipmap/ic_facebook"
                 android:padding="12dp"
                 android:paddingLeft="24dp"
-                android:paddingRight="24dp"
-                android:shadowColor="@color/colorAccent"
-                android:text="Login Com Facebook"
-                android:textColor="#ffffff" />
+                android:paddingRight="24dp" />
+
 
             <android.support.v7.widget.AppCompatButton
                 android:id="@+id/btn_Google"
