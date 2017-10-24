@@ -9,7 +9,9 @@ import android.support.v7.widget.Toolbar;
 import android.text.SpannableString;
 import android.text.style.StyleSpan;
 import android.text.style.UnderlineSpan;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -40,6 +42,17 @@ public class CadastrarUserActivity extends AppCompatActivity {
         tbCadastroUser.setTitle("Cadastro");
         tbCadastroUser.setTitleTextColor(Color.WHITE);
 
+        etTelefone.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
+
+                if (keyEvent != null && KeyEvent.KEYCODE_ENTER == keyEvent.getKeyCode() || actionId == EditorInfo.IME_ACTION_DONE) {
+                    startActivity(new Intent(CadastrarUserActivity.this, EnderecoCadastroActivity.class));
+
+                }
+                return false;
+            }
+        });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         btCadastrarEndereco.setOnClickListener(new View.OnClickListener() {

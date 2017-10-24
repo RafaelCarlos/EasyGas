@@ -79,7 +79,7 @@
                 android:layout_marginTop="10dp"
                 android:ems="10"
                 android:hint="MM/AA"
-                android:inputType="date"
+                android:inputType="number"
                 android:maxLength="5"
                 android:textAlignment="viewStart"
                 android:textColor="@color/colorAccent" />
