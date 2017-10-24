@@ -81,7 +81,12 @@
         <activity
             android:name=".PedidoMapsActivity"
             android:label="@string/title_activity_pedido_maps"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".PedidoActivity"
+            android:theme="@style/AppTheme">
+
+        </activity>
     </application>
 
 </manifest>

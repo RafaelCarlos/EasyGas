@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.codigo.rafael.easygas.PedidoActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/tb_pedido_activity"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentLeft="true"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:minHeight="?attr/actionBarSize"
+        android:title="Meu Pedido"
+        android:titleTextColor="#ffffff"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+    <ScrollView
+        android:id="@+id/sv_elementos_activity_pedido"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tb_pedido_activity">
+
+
+        <RelativeLayout
+            android:id="@+id/rl_elementos_activity_pedido"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tb_pedido_activity">
+
+
+            <TextView
+                android:id="@+id/tv_nome_distribuidor_activity_pedido"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="8dp"
+                android:text="Nome Distribuidor"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <ListView
+                android:id="@+id/lv_produtos_activity_pedido"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_below="@+id/tv_nome_distribuidor_activity_pedido"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:choiceMode="singleChoice"
+                android:divider="@null"
+                android:scrollbars="vertical" />
+
+
+            <TextView
+                android:id="@+id/tv_endereco_entrega_activity_pedido"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/lv_produtos_activity_pedido"
+                android:layout_marginTop="10dp"
+                android:text="Endereço de Entrega"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <RelativeLayout
+                android:id="@+id/rl_endereco_entrega_activity_pedido"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_endereco_entrega_activity_pedido"
+                android:layout_marginTop="10dp">
+
+            </RelativeLayout>
+
+
+            <TextView
+                android:id="@+id/tv_total_activity_pedido"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/rl_endereco_entrega_activity_pedido"
+                android:layout_marginTop="10dp"
+                android:text="Total "
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/bt_finalizar_pedido_activity_pedido"
+                android:layout_width="fill_parent"
+                android:layout_height="46dp"
+                android:layout_below="@+id/tv_total_activity_pedido"
+                android:layout_marginBottom="24dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginTop="24dp"
+                android:background="?attr/colorPrimary"
+                android:padding="12dp"
+                android:paddingLeft="24dp"
+                android:paddingRight="24dp"
+                android:shadowColor="@color/colorAccent"
+                android:text="Finalizar"
+                android:textColor="#ffffff" />
+
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

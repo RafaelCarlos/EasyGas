@@ -11,6 +11,7 @@ public class Produto implements Serializable {
     private String nome;
     private String descricao;
     private String valor;
+    private int quantidade;
     private int seta;
 
     public Produto() {
@@ -55,12 +56,21 @@ public class Produto implements Serializable {
         this.seta = seta;
     }
 
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
+
     @Override
     public String toString() {
         return "Produto{" +
                 "nome='" + nome + '\'' +
                 ", descricao='" + descricao + '\'' +
                 ", valor='" + valor + '\'' +
+                ", quantidade=" + quantidade +
                 ", seta=" + seta +
                 '}';
     }
