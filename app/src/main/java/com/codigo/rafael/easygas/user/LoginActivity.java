@@ -54,6 +54,9 @@ public class LoginActivity extends AppCompatActivity {
     private static final int REQUEST_SIGNUP = 0;
     private static final String chaveFacebook = "+F7e0vDnxU8H4co9SGbWQVmkNKY=";
     private static final String hashFacebook = "Hni6PDUXmVmo09glvl3+iicOtNo=";
+    private static final String shaGoogle = "4A:E2:9D:23:C1:66:F0:C5:E2:B2:F0:60:D0:E8:87:EF:43:9F:F9:12";
+    private static final String clientIDGoogle = "313647538384-aqaid1nb1b12ujhl17ibaltbqu6gg2v5.apps.googleusercontent.com ";
+    private static final String chaveGoogle = "GS18lbMtmrDtk_evc01RNLtO ";
     @Bind(R.id.et_email_cadastrar_activity)
     EditText _emailText;
     @Bind(R.id.et_senha_cadastrar_activity)
