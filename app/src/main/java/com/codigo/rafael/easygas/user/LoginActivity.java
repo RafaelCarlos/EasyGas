@@ -87,6 +87,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     private String nome;
     private String email;
     private Bundle parametr;
+    private Button btGoogle;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -102,7 +103,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         String senha = preferences.getString("senha", null);
         SignInButton signInButton = (SignInButton) findViewById(R.id.sign_in_button);
         signInButton.setSize(SignInButton.SIZE_WIDE);
-
+//        btGoogle = findViewById(R.id.btn_google);
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
@@ -230,7 +231,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         });
 
         Bundle parameters = new Bundle();
-        parameters.putString("fields", "id, name, email, gender, birthday");
+        parameters.putString("fields", "id, name, email, gender, birthday, picture.width(120).height(120)");
         request.setParameters(parameters);
         request.executeAsync();
 
