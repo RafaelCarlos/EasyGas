@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.SpannableString;
@@ -44,6 +45,7 @@ import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
+import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
 
@@ -54,7 +56,7 @@ import java.util.Arrays;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
 
     private static final String TAG = "LoginActivity";
     private static final int REQUEST_SIGNUP = 0;
@@ -82,6 +84,9 @@ public class LoginActivity extends AppCompatActivity {
     private SharedPreferences preferences;
     private GraphRequest graphRequest;
     private GoogleApiClient mGoogleApiClient;
+    private String nome;
+    private String email;
+    private Bundle parametr;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -89,11 +94,15 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
 
+
+        parametr = new Bundle();
+
         preferences = getSharedPreferences("pref", Context.MODE_PRIVATE);
         String login = preferences.getString("login", null);
         String senha = preferences.getString("senha", null);
         SignInButton signInButton = (SignInButton) findViewById(R.id.sign_in_button);
-        signInButton.setSize(SignInButton.SIZE_STANDARD);
+        signInButton.setSize(SignInButton.SIZE_WIDE);
+
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
@@ -102,7 +111,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
         mGoogleApiClient = new GoogleApiClient.Builder(this)
-                .enableAutoManage(this /* FragmentActivity */, (GoogleApiClient.OnConnectionFailedListener) this /* OnConnectionFailedListener */)
+                .enableAutoManage(this /* FragmentActivity */, this /* OnConnectionFailedListener */)
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
 
@@ -203,9 +212,9 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onCompleted(GraphResponse response) {
                 try {
-                    String nome = response.getJSONObject().get("name").toString();
-                    String email = response.getJSONObject().get("email").toString();
-                    Bundle parametr = new Bundle();
+                    nome = response.getJSONObject().get("name").toString();
+                    email = response.getJSONObject().get("email").toString();
+                    parametr = new Bundle();
                     parametr.putString("name", nome);
                     parametr.putString("email", email);
                     Intent i = new Intent(LoginActivity.this, MainActivity.class);
@@ -299,7 +308,16 @@ public class LoginActivity extends AppCompatActivity {
         if (result.isSuccess()) {
             // Signed in successfully, show authenticated UI.
             GoogleSignInAccount acct = result.getSignInAccount();
+            nome = acct.getDisplayName();
+            email = acct.getEmail();
+            parametr = new Bundle();
+            parametr.putString("name", nome);
+            parametr.putString("email", email);
+            Intent i = new Intent(LoginActivity.this, MainActivity.class);
+            i.putExtras(parametr);
+            startActivity(i);
             Log.i("GoogleCerto", acct.getDisplayName());
+            Log.i("GoogleCerto", acct.getEmail());
 //            mStatusTextView.setText(getString(R.string.signed_in_fmt, acct.getDisplayName()));
 //            updateUI(true);
         } else {
@@ -365,5 +383,10 @@ public class LoginActivity extends AppCompatActivity {
                         dialog.dismiss();
                     }
                 }).show();
+    }
+
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+
     }
 }

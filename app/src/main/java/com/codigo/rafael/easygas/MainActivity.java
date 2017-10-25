@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -37,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
     private Drawer drawerMenu;
     private Toolbar toolbar;
     private Bundle bundle;
+    private String nome;
+    private String email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,8 +53,13 @@ public class MainActivity extends AppCompatActivity {
 
         setSupportActionBar(toolbar);
         bundle = getIntent().getExtras();
-        String nome = bundle.getString("name");
-        String email = bundle.getString("email");
+        try {
+
+            nome = bundle.getString("name");
+            email = bundle.getString("email");
+        } catch (Exception e) {
+            Log.i("ErroReceb", "Não foi possível receber os dados de login na MainActivity");
+        }
 
         Fragment frag = frag = getSupportFragmentManager().findFragmentByTag("mainFrag");
 
@@ -63,13 +71,25 @@ public class MainActivity extends AppCompatActivity {
             ft.commit();
         }
 
+        ProfileDrawerItem person = new ProfileDrawerItem();
+
+        if (nome != null && email != null) {
+            person.withName(nome).withEmail(email)
+                    .withIcon(getDrawable(R.mipmap.ic_user));
+
+        } else {
+            person.withName("Rafael Carlos Oliveira").withEmail("rafaellcarloss@hotmail.com")
+                    .withIcon(getDrawable(R.mipmap.ic_user));
+        }
+//        person.withName()
 
         AccountHeader headerResult = new AccountHeaderBuilder()
                 .withActivity(this)
                 .withHeaderBackground(R.color.colorTema)
                 .addProfiles(
-                        new ProfileDrawerItem().withName(nome).withEmail(email)
-                                .withIcon(getResources().getDrawable(R.mipmap.ic_user))
+                        person
+//                        new ProfileDrawerItem().withName(nome).withEmail(email)
+//                                .withIcon(getDrawable(R.mipmap.ic_user))
                 )
                 .withOnAccountHeaderListener(new AccountHeader.OnAccountHeaderListener() {
                     @Override
