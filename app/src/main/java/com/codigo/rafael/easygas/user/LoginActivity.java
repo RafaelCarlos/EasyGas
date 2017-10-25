@@ -40,6 +40,12 @@ import com.facebook.login.LoginBehavior;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.auth.api.signin.GoogleSignInResult;
+import com.google.android.gms.common.SignInButton;
+import com.google.android.gms.common.api.GoogleApiClient;
 
 import org.json.JSONException;
 
@@ -57,6 +63,7 @@ public class LoginActivity extends AppCompatActivity {
     private static final String shaGoogle = "4A:E2:9D:23:C1:66:F0:C5:E2:B2:F0:60:D0:E8:87:EF:43:9F:F9:12";
     private static final String clientIDGoogle = "313647538384-aqaid1nb1b12ujhl17ibaltbqu6gg2v5.apps.googleusercontent.com ";
     private static final String chaveGoogle = "GS18lbMtmrDtk_evc01RNLtO ";
+    private static final int RC_SIGN_IN = 0;
     @Bind(R.id.et_email_cadastrar_activity)
     EditText _emailText;
     @Bind(R.id.et_senha_cadastrar_activity)
@@ -74,6 +81,7 @@ public class LoginActivity extends AppCompatActivity {
     private FacebookContentProvider facebookContentProvider;
     private SharedPreferences preferences;
     private GraphRequest graphRequest;
+    private GoogleApiClient mGoogleApiClient;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -84,6 +92,27 @@ public class LoginActivity extends AppCompatActivity {
         preferences = getSharedPreferences("pref", Context.MODE_PRIVATE);
         String login = preferences.getString("login", null);
         String senha = preferences.getString("senha", null);
+        SignInButton signInButton = (SignInButton) findViewById(R.id.sign_in_button);
+        signInButton.setSize(SignInButton.SIZE_STANDARD);
+
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+//                .requestProfile()
+                .build();
+
+
+        mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .enableAutoManage(this /* FragmentActivity */, (GoogleApiClient.OnConnectionFailedListener) this /* OnConnectionFailedListener */)
+                .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
+                .build();
+
+        signInButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                signIn();
+
+            }
+        });
 
         if (login != null && senha != null) {
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
@@ -162,6 +191,11 @@ public class LoginActivity extends AppCompatActivity {
             }
 
         });
+    }
+
+    private void signIn() {
+        Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
+        startActivityForResult(signInIntent, RC_SIGN_IN);
     }
 
     private void executeGraphRequest(final String userId) {
@@ -253,7 +287,29 @@ public class LoginActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         callbackManager.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == RC_SIGN_IN) {
+            GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
+            handleSignInResult(result);
+        }
+
     }
+
+    private void handleSignInResult(GoogleSignInResult result) {
+        Log.d(TAG, "handleSignInResult:" + result.isSuccess());
+        if (result.isSuccess()) {
+            // Signed in successfully, show authenticated UI.
+            GoogleSignInAccount acct = result.getSignInAccount();
+            Log.i("GoogleCerto", acct.getDisplayName());
+//            mStatusTextView.setText(getString(R.string.signed_in_fmt, acct.getDisplayName()));
+//            updateUI(true);
+        } else {
+            Log.i("GoogleErrado", "Não deu certo");
+
+            // Signed out, show unauthenticated UI.
+//            updateUI(false);
+        }
+    }
+
 
     public void onLoginSuccess() {
         _loginButton.setEnabled(true);
