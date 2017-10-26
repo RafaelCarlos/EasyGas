@@ -15,8 +15,10 @@
         android:layout_marginTop="31dp"
         android:text="Você não possui endereço cadastrado"
         android:textAlignment="center"
+        android:textColor="@color/colorAccent"
         android:textSize="24sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_alignParentLeft="true" />
 
     <com.melnykov.fab.FloatingActionButton
         android:id="@+id/fab_cartoes"
@@ -32,7 +34,8 @@
         android:src="@mipmap/ic_add"
         fab:fab_colorNormal="@color/colorPrimary"
         fab:fab_colorPressed="@color/colorFeedback"
-        fab:fab_colorRipple="@color/colorFeedback" />
+        fab:fab_colorRipple="@color/colorFeedback"
+        android:layout_alignParentRight="true" />
 
     <Button
         android:id="@+id/bt_geocoder_teste"

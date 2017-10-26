@@ -17,189 +17,206 @@
         android:elevation="4dp"
         android:minHeight="?attr/actionBarSize" />
 
-    <RelativeLayout
-        android:id="@+id/rl_elementos_itens_add_cartoes"
+    <ScrollView
+        android:id="@+id/sv_elementos_itens_add_cartao_activity"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tb_itens_add_cartao"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp">
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tb_itens_add_cartao">
 
-
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/input_layout_et_nome_titular_itens_add_cartao"
+        <RelativeLayout
+            android:id="@+id/rl_elementos_itens_add_cartoes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="16dp"
-            android:textColorHint="@color/colorAccent">
+            android:layout_below="@+id/tb_itens_add_cartao"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
 
-            <EditText
-                android:id="@+id/et_nome_titular_itens_add_cartao"
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_layout_et_nome_titular_itens_add_cartao"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Nome Titular"
-                android:textColor="@color/colorAccent" />
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/textInputLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/input_layout_et_nome_titular_itens_add_cartao"
-            android:layout_marginTop="6dp"
-            android:textColorHint="@color/colorAccent">
-
-            <EditText
-                android:id="@+id/et_numero_cartao_itens_add_cartao"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Número do Cartão de Crédito"
-                android:inputType="phone"
-                android:maxLength="16"
-                android:textColor="@color/colorAccent" />
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/input_layout_et_validade_itens_add_cartoes_activity"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textInputLayout"
-            android:textColorHint="@color/colorAccent">
-
-
-            <EditText
-                android:id="@+id/et_data_validade_itens_dialog_add_cartao"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="16dp"
+                android:textColorHint="@color/colorAccent">
+
+                <EditText
+                    android:id="@+id/et_nome_titular_itens_add_cartao"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Nome Titular"
+                    android:textColor="@color/colorAccent" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/textInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/input_layout_et_nome_titular_itens_add_cartao"
+                android:layout_marginTop="6dp"
+                android:textColorHint="@color/colorAccent">
+
+                <EditText
+                    android:id="@+id/et_numero_cartao_itens_add_cartao"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Número do Cartão de Crédito"
+                    android:inputType="phone"
+                    android:maxLength="16"
+                    android:textColor="@color/colorAccent" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_layout_et_validade_itens_add_cartoes_activity"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/textInputLayout"
-                android:layout_marginTop="10dp"
-                android:ems="10"
-                android:hint="MM/AA"
-                android:inputType="number"
-                android:maxLength="5"
-                android:textAlignment="viewStart"
-                android:textColor="@color/colorAccent" />
-
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/input_layout_et_cvc_itens_add_cartoes_activity"
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_below="@+id/textInputLayout"
-            android:textColorHint="@color/colorAccent"
-            app:hintAnimationEnabled="true">
+                android:textColorHint="@color/colorAccent">
 
 
-            <EditText
-                android:id="@+id/et_cvc_itens_dialog_add_cartao"
-                android:layout_width="80dp"
+                <EditText
+                    android:id="@+id/et_data_validade_itens_dialog_add_cartao"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/textInputLayout"
+                    android:layout_marginTop="10dp"
+                    android:ems="10"
+                    android:hint="MM/AA"
+                    android:inputType="phone"
+                    android:maxLength="5"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/colorAccent" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_layout_et_cvc_itens_add_cartoes_activity"
+                android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_alignTop="@+id/input_layout_et_validade_itens_add_cartoes_activity"
-                android:ems="10"
-                android:hint="CVC"
-                android:inputType="number"
-                android:maxLength="3"
-                android:textAlignment="viewStart"
-                android:textColor="@color/colorAccent" />
-        </android.support.design.widget.TextInputLayout>
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/textInputLayout"
+                android:textColorHint="@color/colorAccent"
+                app:hintAnimationEnabled="true">
 
 
-        <TextView
-            android:id="@+id/tv_texto_informativo_itens_dialog_add_cartao"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignStart="@+id/input_layout_et_cvc_itens_add_cartoes_activity"
-            android:layout_below="@+id/input_layout_et_cvc_itens_add_cartoes_activity"
-            android:layout_marginTop="4dp"
-            android:text="3 últimos dígitos no verso do cartão."
-            android:textSize="9sp" />
-
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/input_layout_et_cpf_titular_itens_add_cartao_activity"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/tv_texto_informativo_itens_dialog_add_cartao"
-            android:textColorHint="@color/colorAccent"
-            app:hintAnimationEnabled="true">
+                <EditText
+                    android:id="@+id/et_cvc_itens_dialog_add_cartao"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignTop="@+id/input_layout_et_validade_itens_add_cartoes_activity"
+                    android:ems="10"
+                    android:hint="CVC"
+                    android:inputType="phone"
+                    android:maxLength="3"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/colorAccent" />
+            </android.support.design.widget.TextInputLayout>
 
 
-            <EditText
-                android:id="@+id/et_cpf_itens_dialog_add_cartao"
+            <TextView
+                android:id="@+id/tv_texto_informativo_itens_dialog_add_cartao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignStart="@+id/input_layout_et_cvc_itens_add_cartoes_activity"
+                android:layout_below="@+id/input_layout_et_cvc_itens_add_cartoes_activity"
+                android:layout_marginTop="4dp"
+                android:text="3 últimos dígitos no verso do cartão."
+                android:textSize="9sp" />
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_layout_et_cpf_titular_itens_add_cartao_activity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:ems="10"
-                android:hint="CPF Titular"
-                android:inputType="number"
-                android:maxLength="14"
-                android:textAlignment="viewStart"
-                android:textColor="@color/colorAccent" />
-        </android.support.design.widget.TextInputLayout>
+                android:layout_below="@+id/tv_texto_informativo_itens_dialog_add_cartao"
+                android:textColorHint="@color/colorAccent"
+                app:hintAnimationEnabled="true">
 
-        <android.support.v7.widget.AppCompatButton
-            android:id="@+id/bt_confirmar_itens_add_cartao"
-            android:layout_width="match_parent"
-            android:layout_height="46dp"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/rg_tipo_cartao_itens_add_cartao_activity"
-            android:layout_marginBottom="24dp"
-            android:layout_marginLeft="24dp"
-            android:layout_marginRight="24dp"
-            android:layout_marginTop="24dp"
-            android:background="?attr/colorPrimary"
-            android:onClick="confimar"
-            android:padding="12dp"
-            android:paddingLeft="24dp"
-            android:paddingRight="24dp"
-            android:shadowColor="@color/colorAccent"
-            android:text="Confirmar"
-            android:textColor="#ffffff" />
 
-        <TextView
-            android:id="@+id/tv_tipo_cartao_itens_add_cartao_activity"
-            android:layout_width="wrap_content"
-            android:layout_height="28dp"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/input_layout_et_cpf_titular_itens_add_cartao_activity"
-            android:layout_marginTop="10dp"
-            android:drawableLeft="@mipmap/ic_card"
-            android:text="Selecione o tipo de cartão "
-            android:textColor="@color/colorPrimary"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+                <EditText
+                    android:id="@+id/et_cpf_itens_dialog_add_cartao"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:ems="10"
+                    android:hint="CPF Titular"
+                    android:inputType="phone"
+                    android:maxLength="14"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/colorAccent" />
+            </android.support.design.widget.TextInputLayout>
 
-        <RadioGroup
-            android:id="@+id/rg_tipo_cartao_itens_add_cartao_activity"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_tipo_cartao_itens_add_cartao_activity"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/bt_confirmar_itens_add_cartao"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/rg_tipo_cartao_itens_add_cartao_activity"
+                android:layout_marginBottom="24dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginTop="24dp"
+                android:background="?attr/colorPrimary"
+                android:onClick="confimar"
+                android:padding="12dp"
+                android:paddingLeft="24dp"
+                android:paddingRight="24dp"
+                android:shadowColor="@color/colorAccent"
+                android:text="Confirmar"
+                android:textColor="#ffffff" />
 
-            <android.support.v7.widget.AppCompatRadioButton
-                android:id="@+id/rb_cartao_credito_itens_add_cartao_activity"
+            <TextView
+                android:id="@+id/tv_tipo_cartao_itens_add_cartao_activity"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Cartão de Crédito"
-                android:textColor="@color/colorAccent" />
+                android:layout_height="28dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/input_layout_et_cpf_titular_itens_add_cartao_activity"
+                android:layout_marginTop="10dp"
+                android:drawableLeft="@mipmap/ic_card"
+                android:text="Selecione o tipo de cartão "
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
-            <android.support.v7.widget.AppCompatRadioButton
-                android:id="@+id/rb_cartao_debito_itens_add_cartao_activity"
-                android:layout_width="wrap_content"
+            <RadioGroup
+                android:id="@+id/rg_tipo_cartao_itens_add_cartao_activity"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Cartão de Débito"
-                android:textColor="@color/colorAccent" />
+                android:layout_below="@+id/tv_tipo_cartao_itens_add_cartao_activity"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
-        </RadioGroup>
-    </RelativeLayout>
+                <android.support.v7.widget.AppCompatRadioButton
+                    android:id="@+id/rb_cartao_credito_itens_add_cartao_activity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cartão de Crédito"
+                    android:textColor="@color/colorAccent" />
+
+                <android.support.v7.widget.AppCompatRadioButton
+                    android:id="@+id/rb_cartao_debito_itens_add_cartao_activity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cartão de Débito"
+                    android:textColor="@color/colorAccent" />
+
+            </RadioGroup>
+        </RelativeLayout>
+    </ScrollView>
 
 </RelativeLayout>

@@ -16,7 +16,9 @@
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
 
 
             <!-- Name Label -->
@@ -25,14 +27,16 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="8dp"
-                android:textColorHint="#000000">
+                android:textColorHint="@color/colorAccent">
 
                 <EditText
                     android:id="@+id/et_nome_atualizar_cadastro"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Nome"
-                    android:inputType="textCapWords" />
+                    android:inputType="textCapWords"
+                    android:textColor="@color/colorAccent"
+                    android:textColorHint="@color/colorAccent" />
             </android.support.design.widget.TextInputLayout>
 
             <!--  Email Label -->
@@ -41,7 +45,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="8dp"
-                android:textColorHint="#000000">
+                android:textColorHint="@color/colorAccent">
 
                 <EditText
                     android:id="@+id/et_email_atualizar_cadastro"
@@ -49,7 +53,8 @@
                     android:layout_height="wrap_content"
                     android:hint="Email"
                     android:inputType="textEmailAddress"
-                    android:textColorHint="#000000" />
+                    android:textColor="@color/colorAccent"
+                    android:textColorHint="@color/colorAccent" />
             </android.support.design.widget.TextInputLayout>
 
             <!-- Password Label -->
@@ -58,14 +63,16 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="8dp"
-                android:textColorHint="#000000">
+                android:textColorHint="@color/colorAccent">
 
                 <EditText
                     android:id="@+id/et_senha_atualizar_cadastro"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Senha Atual"
-                    android:inputType="textPassword" />
+                    android:inputType="textPassword"
+                    android:textColor="@color/colorAccent"
+                    android:textColorHint="@color/colorAccent" />
             </android.support.design.widget.TextInputLayout>
 
             <!-- Password Label -->
@@ -74,14 +81,16 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="8dp"
-                android:textColorHint="#000000">
+                android:textColorHint="@color/colorAccent">
 
                 <EditText
                     android:id="@+id/et_nova_senha_atualizar_cadastro"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Nova Senha"
-                    android:inputType="textPassword" />
+                    android:inputType="textPassword"
+                    android:textColor="@color/colorAccent"
+                    android:textColorHint="@color/colorAccent" />
             </android.support.design.widget.TextInputLayout>
 
             <!-- Telefone Label -->
@@ -90,14 +99,16 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="8dp"
-                android:textColorHint="#000000">
+                android:textColorHint="@color/colorAccent">
 
                 <EditText
                     android:id="@+id/et_telefone_atualizar_cadastro"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Telefone"
-                    android:inputType="phone" />
+                    android:inputType="phone"
+                    android:textColor="@color/colorAccent"
+                    android:textColorHint="@color/colorAccent" />
             </android.support.design.widget.TextInputLayout>
 
             <!-- Signup Button -->

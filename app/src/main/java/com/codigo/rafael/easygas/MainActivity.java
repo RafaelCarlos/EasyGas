@@ -75,11 +75,11 @@ public class MainActivity extends AppCompatActivity {
 
         if (nome != null && email != null) {
             person.withName(nome).withEmail(email)
-                    .withIcon(getDrawable(R.mipmap.ic_user));
+                    .withIcon(getResources().getDrawable(R.mipmap.ic_user));
 
         } else {
             person.withName("Rafael Carlos Oliveira").withEmail("rafaellcarloss@hotmail.com")
-                    .withIcon(getDrawable(R.mipmap.ic_user));
+                    .withIcon(getResources().getDrawable(R.mipmap.ic_user));
         }
 //        person.withName()
 
@@ -182,15 +182,15 @@ public class MainActivity extends AppCompatActivity {
                 })
                 .build();
 
-        drawerMenu.addItem(new PrimaryDrawerItem().withName("Distribuidoras").withIcon(getDrawable(R.mipmap.ic_truck)));
-        drawerMenu.addItem(new PrimaryDrawerItem().withName("Meus Pedidos").withIcon(getDrawable(R.mipmap.ic_historico)));
-        drawerMenu.addItem(new PrimaryDrawerItem().withName("Meus Endereços").withIcon(getDrawable(R.mipmap.ic_local)));
-        drawerMenu.addItem(new PrimaryDrawerItem().withName("Feedback").withIcon(getDrawable(R.mipmap.ic_feedback)));
+        drawerMenu.addItem(new PrimaryDrawerItem().withName("Distribuidoras").withIcon(getResources().getDrawable(R.mipmap.ic_truck)));
+        drawerMenu.addItem(new PrimaryDrawerItem().withName("Meus Pedidos").withIcon(getResources().getDrawable(R.mipmap.ic_historico)));
+        drawerMenu.addItem(new PrimaryDrawerItem().withName("Meus Endereços").withIcon(getResources().getDrawable(R.mipmap.ic_local)));
+        drawerMenu.addItem(new PrimaryDrawerItem().withName("Feedback").withIcon(getResources().getDrawable(R.mipmap.ic_feedback)));
         drawerMenu.addItem(new SectionDrawerItem());
-        drawerMenu.addItem(new PrimaryDrawerItem().withName("Meus Cartões").withIcon(getDrawable(R.mipmap.ic_card)));
-        drawerMenu.addItem(new PrimaryDrawerItem().withName("Atualizar Cadastro").withIcon(getDrawable(R.mipmap.ic_edit)));
-        drawerMenu.addItem(new PrimaryDrawerItem().withName("Configurações").withIcon(getDrawable(R.mipmap.ic_setting)));
-        drawerMenu.addItem(new PrimaryDrawerItem().withName("Indique-nos").withIcon(getDrawable(R.mipmap.ic_share)));
+        drawerMenu.addItem(new PrimaryDrawerItem().withName("Meus Cartões").withIcon(getResources().getDrawable(R.mipmap.ic_card)));
+        drawerMenu.addItem(new PrimaryDrawerItem().withName("Atualizar Cadastro").withIcon(getResources().getDrawable(R.mipmap.ic_edit)));
+        drawerMenu.addItem(new PrimaryDrawerItem().withName("Configurações").withIcon(getResources().getDrawable(R.mipmap.ic_setting)));
+        drawerMenu.addItem(new PrimaryDrawerItem().withName("Indique-nos").withIcon(getResources().getDrawable(R.mipmap.ic_share)));
         drawerMenu.addStickyFooterItem(new PrimaryDrawerItem().withName("EasyGás desenvolvido por Rafael Oliveira"));
 
 

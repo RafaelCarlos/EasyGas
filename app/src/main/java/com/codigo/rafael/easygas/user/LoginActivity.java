@@ -256,7 +256,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         final MaterialDialog dialog = new MaterialDialog.Builder(this)
                 .title("")
                 .content("Autenticando" + "\nPor favor, aguarde...")
-                .icon(getDrawable(R.mipmap.ic_easygas))
+                .icon(getResources().getDrawable(R.mipmap.ic_easygas))
                 .canceledOnTouchOutside(false)
                 .contentColorRes(R.color.colorAccent)
                 .progress(true, 0)
