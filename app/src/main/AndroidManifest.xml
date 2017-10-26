@@ -23,6 +23,9 @@
         <service
             android:name=".service.LocationIntentService"
             android:exported="false" />
+        <service
+            android:name=".service.MyService"
+            android:process=":my_service" />
 
         <activity
             android:name=".MainActivity"
