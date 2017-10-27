@@ -10,6 +10,7 @@ import android.widget.Button;
 
 import com.codigo.rafael.easygas.ActivityTeste;
 import com.codigo.rafael.easygas.EnderecoAddActivity;
+import com.codigo.rafael.easygas.LocationUpdateTeste;
 import com.codigo.rafael.easygas.R;
 import com.codigo.rafael.easygas.TesteLocationActivity;
 import com.melnykov.fab.FloatingActionButton;
@@ -42,7 +43,7 @@ public class EnderecoFragment extends Fragment {
         btPageTeste2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getContext(), TesteLocationActivity.class));
+                startActivity(new Intent(getContext(), LocationUpdateTeste.class));
 
             }
         });

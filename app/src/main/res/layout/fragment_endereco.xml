@@ -9,6 +9,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="16dp"
@@ -17,8 +18,7 @@
         android:textAlignment="center"
         android:textColor="@color/colorAccent"
         android:textSize="24sp"
-        android:textStyle="bold"
-        android:layout_alignParentLeft="true" />
+        android:textStyle="bold" />
 
     <com.melnykov.fab.FloatingActionButton
         android:id="@+id/fab_cartoes"
@@ -26,6 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
         android:layout_gravity="bottom|right"
         android:layout_marginBottom="26dp"
         android:layout_marginEnd="12dp"
@@ -34,8 +35,7 @@
         android:src="@mipmap/ic_add"
         fab:fab_colorNormal="@color/colorPrimary"
         fab:fab_colorPressed="@color/colorFeedback"
-        fab:fab_colorRipple="@color/colorFeedback"
-        android:layout_alignParentRight="true" />
+        fab:fab_colorRipple="@color/colorFeedback" />
 
     <Button
         android:id="@+id/bt_geocoder_teste"
@@ -53,6 +53,6 @@
         android:layout_above="@+id/bt_geocoder_teste"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="71dp"
-        android:text="Página de Teste 2" />
+        android:text="Página Location Update Teste" />
 
 </RelativeLayout>

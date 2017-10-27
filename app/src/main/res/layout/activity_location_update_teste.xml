@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.codigo.rafael.easygas.LocationUpdateTeste">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/tb_location_update_teste"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentLeft="true"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:minHeight="?attr/actionBarSize" />
+
+    <TextView
+        android:id="@+id/tv_latitude_location_update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tb_location_update_teste"
+        android:layout_marginTop="14dp"
+        android:text="Latitude" />
+
+    <TextView
+        android:id="@+id/tv_longitude_location_update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tv_latitude_location_update"
+        android:layout_marginTop="17dp"
+        android:text="Longitude" />
+
+    <TextView
+        android:id="@+id/tv_last_update_location_update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_longitude_location_update"
+        android:layout_marginTop="35dp"
+        android:text="Ultima Atualizacao" />
+
+
+</RelativeLayout>

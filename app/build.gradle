@@ -44,6 +44,8 @@ dependencies {
     //De uma classe para uma ou mais classes em apenas algumas linhas de código.
 
     //Gerado automaticamente pelo Android Studio.
+
+
     compile 'com.android.support:appcompat-v7:26.0.2'
     compile 'com.android.support:design:26.+'
     compile 'com.android.support:support-v4:26.+'
@@ -57,15 +59,11 @@ dependencies {
     compile 'io.realm:realm-android:0.72.0'
     compile 'org.greenrobot:eventbus:3.0.0'
     compile 'com.facebook.android:facebook-login:[4,5)'
-
     compile 'com.google.android.gms:play-services:11.4.2'
     compile 'com.google.android.gms:play-services-maps:11.4.2'
     compile 'com.google.android.gms:play-services-auth:11.4.2'
     compile 'com.github.medyo:fancybuttons:+'
-
     compile 'com.android.support:multidex:1.0.1'
-
-
     testCompile 'junit:junit:4.12'
 }
 apply plugin: 'com.google.gms.google-services'
