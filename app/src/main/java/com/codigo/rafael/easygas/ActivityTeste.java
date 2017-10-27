@@ -52,7 +52,7 @@ public class ActivityTeste extends AppCompatActivity {
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         mSettingsClient = LocationServices.getSettingsClient(this);
         toolbar = (Toolbar) findViewById(R.id.tb_activity_teste);
-        toolbar.setBackground(getDrawable(R.color.colorPrimaryDark));
+//        toolbar.setBackground(getResources().getDrawable(R.color.colorPrimaryDark));
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
@@ -134,7 +134,7 @@ public class ActivityTeste extends AppCompatActivity {
         } else if (!checkPermissions()) {
             //Não implementado, apenas necessário se targetSdkVersion >= 23
 //            requestPermissions();
-            Toast.makeText(this, "Não possível obter a localização", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Não foi possível obter a localização", Toast.LENGTH_LONG).show();
         }
     }
 

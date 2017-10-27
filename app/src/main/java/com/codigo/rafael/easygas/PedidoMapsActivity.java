@@ -27,6 +27,7 @@ public class PedidoMapsActivity extends FragmentActivity implements OnMapReadyCa
     final int MY_PERMISSION_REQUEST_CODE = 7171;
     private String slatlng;
     private double latitude, longitude;
+    private static final int DEFAULT_ZOOM = 15;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,9 +107,10 @@ public class PedidoMapsActivity extends FragmentActivity implements OnMapReadyCa
                 // Criamos o LatLng através do Location
                 final LatLng latLng = new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude());
                 // Adicionamos um Marker com a posição...
-                mMap.addMarker(new MarkerOptions().draggable(true).icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_pin_map)).position(latLng).title("Minha Posição"));
+                mMap.addMarker(new MarkerOptions().draggable(true).icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_pin_map)).position(latLng).title("Minha Posição" + "\nSegure e arraste para selecionar o lugar correto."));
                 // Um zoom no mapa para a seua posição atual...
-                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 18));
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
+//                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, DEFAULT_ZOOM));
 
             }
 
