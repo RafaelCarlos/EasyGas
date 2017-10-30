@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -21,7 +22,7 @@ import com.melnykov.fab.FloatingActionButton;
 public class PedidoFragment extends Fragment {
 
     private FloatingActionButton fab;
-
+    private Fragment frag;
 
     public PedidoFragment() {
         // Required empty public constructor
@@ -47,13 +48,25 @@ public class PedidoFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 //Finalizando Fragment atual.
-                getActivity().getSupportFragmentManager().popBackStack();
+//                getActivity().getSupportFragmentManager().popBackStack();
+                //Limpando toda pilha de Fragments.
+                getActivity().getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
             }
         });
 
         BottomNavigationView navigation = (BottomNavigationView) view.findViewById(R.id.navigation_main);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
+        FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+
+        frag = getParentFragment();
+        if (frag == null) {
+
+            frag = new PedidoPendenteFragment();
+            ft.replace(R.id.rl_fragment_container_pedido, frag);
+            ft.addToBackStack(null);
+            ft.commit();
+        }
         // Inflate the layout for this fragment
         return view;
     }
@@ -63,21 +76,29 @@ public class PedidoFragment extends Fragment {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            Fragment frag = frag = getActivity().getSupportFragmentManager().findFragmentByTag("mainFrag");
+
+            FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
 
             switch (item.getItemId()) {
                 case R.id.navigation_home:
+                    frag = new PedidoPendenteFragment();
+                    ft.replace(R.id.rl_fragment_container_pedido, frag);
+//                    ft.addToBackStack(null);
+                    ft.commit();
                     Toast.makeText(getContext(), "Andamento", Toast.LENGTH_SHORT).show();
                     return true;
                 case R.id.navigation_dashboard:
                     Toast.makeText(getContext(), "Concluídos", Toast.LENGTH_SHORT).show();
                     frag = new PedidoConcluidoFragment();
-                    FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
                     ft.replace(R.id.rl_fragment_container_pedido, frag);
-                    ft.addToBackStack(null);
+//                    ft.addToBackStack(null);
                     ft.commit();
                     return true;
                 case R.id.navigation_notifications:
+                    frag = new PedidoCanceladoFragment();
+                    ft.replace(R.id.rl_fragment_container_pedido, frag);
+//                    ft.addToBackStack(null);
+                    ft.commit();
                     Toast.makeText(getContext(), "Cancelados", Toast.LENGTH_SHORT).show();
                     return true;
 
