@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 //        ButterKnife.bind(this);
 
-        toolbar = (Toolbar) findViewById(R.id.tb_endereco_add_activity);
+        toolbar =  findViewById(R.id.tb_main_activity);
 //        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation_main);
 //        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 

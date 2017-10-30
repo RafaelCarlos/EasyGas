@@ -8,7 +8,7 @@
     tools:context="com.codigo.rafael.easygas.MainActivity">
 
     <android.support.v7.widget.Toolbar
-        android:id="@+id/tb_endereco_add_activity"
+        android:id="@+id/tb_main_activity"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:layout_alignParentLeft="true"
@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/ll_navegacao"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/tb_endereco_add_activity">
+        android:layout_below="@+id/tb_main_activity">
 
     </RelativeLayout>
 
