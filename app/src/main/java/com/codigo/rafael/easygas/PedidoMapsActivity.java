@@ -31,6 +31,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -46,6 +47,7 @@ public class PedidoMapsActivity extends FragmentActivity implements OnMapReadyCa
     private LocationSettingsRequest mLocationSettingsRequest;
     private LocationCallback mLocationCallback;
     private MarkerOptions marcador;
+    private Marker marker;
     final int MY_PERMISSION_REQUEST_CODE = 7171;
     private String slatlng;
     private static final int REQUEST_CHECK_SETTINGS = 0;
@@ -238,11 +240,19 @@ public class PedidoMapsActivity extends FragmentActivity implements OnMapReadyCa
 
     private void handleCurrentLocation(Location currentLocation) {
 
+        if (marker != null) {
+            marker.remove();
+        }
         final LatLng latLng = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
-        mMap.addMarker(marcador.position(latLng).title("Minha Posição" + "\nSegure e arraste para selecionar o lugar correto."));
+        marker = mMap.addMarker(new MarkerOptions().draggable(true).icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_navigation)).position(latLng).title("Minha Posição" + "\nSegure e arraste para selecionar o lugar correto."));
+//        mMap.addMarker(marcador.position(latLng).title("Minha Posição" + "\nSegure e arraste para selecionar o lugar correto."));
 //        mMap.addMarker(new MarkerOptions().draggable(true).icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_pin_map)).position(latLng).title("Minha Posição" + "\nSegure e arraste para selecionar o lugar correto."));
         // Um zoom no mapa para a seua posição atual...
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            return;
+        }
+        mMap.setMyLocationEnabled(true);
 //                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, DEFAULT_ZOOM));
 
     }
