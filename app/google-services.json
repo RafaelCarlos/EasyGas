@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "170601603664",
+    "project_id": "easygas-1507578589899"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:170601603664:android:ca3a435b7ac70094",
+        "android_client_info": {
+          "package_name": "com.codigo.rafael.easygas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "170601603664-bt7jvau1hs2plems82bricv4ihjeoba3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.codigo.rafael.easygas",
+            "certificate_hash": "4ae29d23c166f0c5e2b2f060d0e887ef439ff912"
+          }
+        },
+        {
+          "client_id": "170601603664-ftdiekpqo1qj501n6ulnr8jfs6716m2o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPWUCPuxMB8XoyfswRotpU7PH9Dd7tzbQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
