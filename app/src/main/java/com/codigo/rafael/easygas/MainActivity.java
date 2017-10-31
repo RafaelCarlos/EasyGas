@@ -47,11 +47,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 //        ButterKnife.bind(this);
 
-        toolbar =  findViewById(R.id.tb_main_activity);
+        toolbar = findViewById(R.id.tb_main_activity);
 //        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation_main);
 //        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         setSupportActionBar(toolbar);
+        toolbar.setTitle("Distribuidoras");
+        toolbar.setTitleTextColor(Color.WHITE);
+        
         bundle = getIntent().getExtras();
         try {
 

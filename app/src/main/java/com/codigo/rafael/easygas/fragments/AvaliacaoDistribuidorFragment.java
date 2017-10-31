@@ -59,7 +59,8 @@ public class AvaliacaoDistribuidorFragment extends Fragment {
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm", new Locale("pt", "BR"));
         DateTime dateTime = new DateTime();
-        Log.i("Data", String.valueOf(dateTime.getHourOfDay() + ":" + dateTime.getMinuteOfHour()));
+        Date dataJoda = dateTime.toDate();
+        Log.i("Data", String.valueOf(dateTime));
         String dataAtualizada = sdf.format(dataComentario);
 
 
@@ -70,7 +71,7 @@ public class AvaliacaoDistribuidorFragment extends Fragment {
             e.printStackTrace();
         }
 
-        avaliacoes.add(new Avaliacao("Rafael Carlos", "Serviço muito bom!", 5, dataConvertida));
+        avaliacoes.add(new Avaliacao("Rafael Carlos", "Serviço muito bom!", 5, dataJoda));
         avaliacoes.add(new Avaliacao("Radharane", "A entrega demorou muito", 2.5f, dataConvertida));
         avaliacoes.add(new Avaliacao("Carlos Henrique", "Gostei!", 4, dataComentario));
         avaliacoes.add(new Avaliacao("João", "Serviço muito ruim!", 0, dataComentario));
