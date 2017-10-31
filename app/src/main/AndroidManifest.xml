@@ -16,28 +16,37 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_easygas"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_easygas"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyTheme">
-
-
-        <!-- FirebaseInstanceIdService performs security checks at runtime,
-      no need for explicit permissions despite exported="true"             -->
-        <service
-            android:name=".service.FirebaseInstanceIdService"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
-            </intent-filter>
-        </service>
 
         <!-- Ao utilizar o false, apenas essa aplicação poderá acessar esse IntentService -->
         <service
             android:name=".service.LocationIntentService"
             android:exported="false" />
-        <service
-            android:name=".service.MyService"
-            android:process=":my_service" />
+
+        <service android:name=".service.FirebaseMessagingEntregadorService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <service android:name=".service.FirebaseInstanceEntregadorService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+
+        <!-- Set custom default icon. This is used when no icon is set for incoming notification messages.
+     See README(https://goo.gl/l4GJaQ) for more. -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@mipmap/ic_truck" />
+        <!-- Set color used with incoming notification messages. This is used when no color is set for the incoming
+             notification message. See README(https://goo.gl/6BKBk7) for more. -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/colorAccent" />
 
         <activity
             android:name=".MainActivity"
