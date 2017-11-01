@@ -1,8 +1,10 @@
 package com.codigo.rafael.easygas;
 
+import android.content.Intent;
 import android.content.IntentSender;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.net.Uri;
 import android.os.Looper;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -10,6 +12,8 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -42,6 +46,7 @@ public class PedidoMapsActivity extends FragmentActivity implements OnMapReadyCa
     //    private Location mLastLocation;
     private GoogleApiClient mGoogleApiClient;
     private FusedLocationProviderClient mFusedLocationClient;
+    private Location localMapa;
     private LocationRequest mLocationRequest;
     private SettingsClient mSettingsClient;
     private LocationSettingsRequest mLocationSettingsRequest;
@@ -53,6 +58,7 @@ public class PedidoMapsActivity extends FragmentActivity implements OnMapReadyCa
     private static final int REQUEST_CHECK_SETTINGS = 0;
     private double latitude, longitude;
     private static final int DEFAULT_ZOOM = 15;
+    private Button btIniciar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +73,7 @@ public class PedidoMapsActivity extends FragmentActivity implements OnMapReadyCa
 
         marcador = new MarkerOptions().draggable(true).icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_pin_map));
 
-
+        btIniciar = findViewById(R.id.bt_iniciar_pedido_maps_activity);
         //LocationResquest com as definições requeridas
         mLocationRequest = LocationRequest.create()
                 .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
@@ -85,9 +91,19 @@ public class PedidoMapsActivity extends FragmentActivity implements OnMapReadyCa
                 super.onLocationResult(locationResult);
 
                 Location currentLocation = locationResult.getLastLocation();
+                localMapa = locationResult.getLastLocation();
                 handleCurrentLocation(currentLocation);
             }
         };
+
+        btIniciar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("geo:" + localMapa.getLatitude() + "," + localMapa.getLongitude() + "?z=15"));
+                startActivity(i);
+            }
+        });
+
     }
 
 
@@ -244,7 +260,7 @@ public class PedidoMapsActivity extends FragmentActivity implements OnMapReadyCa
             marker.remove();
         }
         final LatLng latLng = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
-        marker = mMap.addMarker(new MarkerOptions().draggable(true).icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_navigation)).position(latLng).title("Minha Posição" + "\nSegure e arraste para selecionar o lugar correto."));
+        marker = mMap.addMarker(new MarkerOptions().draggable(true).icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_truck)).position(latLng).title("Minha Posição" + "\nSegure e arraste para selecionar o lugar correto."));
 //        mMap.addMarker(marcador.position(latLng).title("Minha Posição" + "\nSegure e arraste para selecionar o lugar correto."));
 //        mMap.addMarker(new MarkerOptions().draggable(true).icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_pin_map)).position(latLng).title("Minha Posição" + "\nSegure e arraste para selecionar o lugar correto."));
         // Um zoom no mapa para a seua posição atual...
