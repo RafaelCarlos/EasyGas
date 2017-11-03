@@ -1,13 +1,48 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.codigo.rafael.easygas.fragments.CarteiraFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/tv_saldo_carteira_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_carteira_fragment_carteira"
+        android:background="@color/colorPrimary"
+        android:text="Saldo da carteira"
+        android:textColor="@color/abc_primary_text_material_dark" />
+
+    <TextView
+        android:id="@+id/tv_carteira_fragment_carteira"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@color/colorPrimary"
+        android:text="R$: 0,00"
+        android:textColor="@color/abc_primary_text_material_dark"
+        android:textSize="50dp"
+        android:textStyle="italic" />
+
+    <LinearLayout
+        android:id="@+id/ll_listview_fragment_carteira"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_below="@+id/tv_carteira_fragment_menu"
+        android:layout_marginTop="6dp"
+        android:orientation="vertical"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
 
-</FrameLayout>
+
+        <ListView
+            android:id="@+id/lv_itens_carteira"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:choiceMode="singleChoice"
+            android:divider="@null"
+            android:scrollbars="vertical" />
+    </LinearLayout>
+
+</LinearLayout>

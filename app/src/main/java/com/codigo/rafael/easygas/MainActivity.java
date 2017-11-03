@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.codigo.rafael.easygas.fragments.AtualizarCadastro;
 import com.codigo.rafael.easygas.fragments.CartaoFragment;
+import com.codigo.rafael.easygas.fragments.CarteiraFragment;
 import com.codigo.rafael.easygas.fragments.ConfiguracaoFragment;
 import com.codigo.rafael.easygas.fragments.EnderecoFragment;
 import com.codigo.rafael.easygas.fragments.FeedbackFragment;
@@ -48,13 +49,11 @@ public class MainActivity extends AppCompatActivity {
 //        ButterKnife.bind(this);
 
         toolbar = findViewById(R.id.tb_main_activity);
-//        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation_main);
-//        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         setSupportActionBar(toolbar);
         toolbar.setTitle("Distribuidoras");
         toolbar.setTitleTextColor(Color.WHITE);
-        
+
         bundle = getIntent().getExtras();
         try {
 
@@ -136,12 +135,12 @@ public class MainActivity extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(), "Posicao: " + position, Toast.LENGTH_SHORT).show();
 
                         } else if (position == 4) {
-                            frag = new FeedbackFragment();
+                            frag = new CarteiraFragment();
                             toolbar.setTitle("Feedback");
                             toolbar.setTitleTextColor(Color.WHITE);
                             Toast.makeText(getApplicationContext(), "Posicao: " + position, Toast.LENGTH_SHORT).show();
 
-                        } else if (position == 6) {
+                        } else if (position == 5) {
                             frag = new CartaoFragment();
                             toolbar.setTitle("Cartões");
                             toolbar.setTitleTextColor(Color.WHITE);
@@ -154,12 +153,18 @@ public class MainActivity extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(), "Posicao: " + position, Toast.LENGTH_SHORT).show();
 
                         } else if (position == 8) {
-                            frag = new ConfiguracaoFragment();
+                            frag = new FeedbackFragment();
                             toolbar.setTitle("Configurações");
                             toolbar.setTitleTextColor(Color.WHITE);
                             Toast.makeText(getApplicationContext(), "Posicao: " + position, Toast.LENGTH_SHORT).show();
 
                         } else if (position == 9) {
+                            frag = new ConfiguracaoFragment();
+                            toolbar.setTitle("Configurações");
+                            toolbar.setTitleTextColor(Color.WHITE);
+                            Toast.makeText(getApplicationContext(), "Posicao: " + position, Toast.LENGTH_SHORT).show();
+
+                        } else if (position == 10) {
                             frag = new MenuFragment();
                             Intent sendIntent = new Intent();
                             sendIntent.setAction(Intent.ACTION_SEND);
@@ -188,35 +193,15 @@ public class MainActivity extends AppCompatActivity {
         drawerMenu.addItem(new PrimaryDrawerItem().withName("Distribuidoras").withIcon(getResources().getDrawable(R.mipmap.ic_truck)));
         drawerMenu.addItem(new PrimaryDrawerItem().withName("Meus Pedidos").withIcon(getResources().getDrawable(R.mipmap.ic_historico)));
         drawerMenu.addItem(new PrimaryDrawerItem().withName("Meus Endereços").withIcon(getResources().getDrawable(R.mipmap.ic_local)));
-        drawerMenu.addItem(new PrimaryDrawerItem().withName("Feedback").withIcon(getResources().getDrawable(R.mipmap.ic_feedback)));
-        drawerMenu.addItem(new SectionDrawerItem());
+        drawerMenu.addItem(new PrimaryDrawerItem().withName("Carteira").withIcon(getResources().getDrawable(R.mipmap.ic_carteira)));
         drawerMenu.addItem(new PrimaryDrawerItem().withName("Meus Cartões").withIcon(getResources().getDrawable(R.mipmap.ic_card)));
+        drawerMenu.addItem(new SectionDrawerItem());
         drawerMenu.addItem(new PrimaryDrawerItem().withName("Atualizar Cadastro").withIcon(getResources().getDrawable(R.mipmap.ic_edit)));
+        drawerMenu.addItem(new PrimaryDrawerItem().withName("Feedback").withIcon(getResources().getDrawable(R.mipmap.ic_feedback)));
         drawerMenu.addItem(new PrimaryDrawerItem().withName("Configurações").withIcon(getResources().getDrawable(R.mipmap.ic_setting)));
         drawerMenu.addItem(new PrimaryDrawerItem().withName("Indique-nos").withIcon(getResources().getDrawable(R.mipmap.ic_share)));
-        drawerMenu.addStickyFooterItem(new PrimaryDrawerItem().withName("EasyGás desenvolvido por Rafael Oliveira"));
+        drawerMenu.addStickyFooterItem(new PrimaryDrawerItem().withName("EasyGás - Desenvolvido por Rafael Oliveira"));
 
 
     }
-
-//    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-//            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-//
-//        @Override
-//        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//            switch (item.getItemId()) {
-//                case R.id.navigation_home:
-//                    Toast.makeText(MainActivity.this, "Home", Toast.LENGTH_SHORT).show();
-//                    return true;
-//                case R.id.navigation_dashboard:
-//                    Toast.makeText(MainActivity.this, "Dashboard", Toast.LENGTH_SHORT).show();
-//                    return true;
-//                case R.id.navigation_notifications:
-//                    Toast.makeText(MainActivity.this, "Notication", Toast.LENGTH_SHORT).show();
-//                    return true;
-//            }
-//            return false;
-//        }
-//
-//    };
 }
